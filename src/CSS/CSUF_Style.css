@@ -1,0 +1,96 @@
+/* CSUF Color Scheme */
+:root{
+	--FSBlue: #13284c;
+	--FSRed: #b1102b;
+	--FSGray: #ced1d4;
+	--Lines: #ced1d4;
+	--Circle: #b1102b;}
+*{
+	margin: 0 0;
+	padding: 0 0;}
+html{
+	text-align: center;
+	color: var(--FSGray);
+	height: 100%;
+	width: 100%;
+	/*background-image: linear-gradient(to top right, var(--FSBlue), var(--FSRed));*/
+	background-color: var(--FSBlue);
+	background-repeat: no-repeat;
+	background-size: cover;}
+
+/*Navigation/Menu Bar*/
+nav{
+	position: sticky;
+	top: 0;
+}
+nav ul{
+	background-color: var(--FSRed);
+	color: var(--FSGray);
+	/*overflow: hidden;*/
+	/*margin: 0 0;don't need this because display is block*/
+	text-align: center;
+	list-style-type: none;
+	/*border-radius: 25px;*/
+	font-size: 115%;}
+nav li{
+	float: none;
+	padding: 0 1%;
+	margin: 0 0%;
+	display: inline-block;
+	border-radius: 25px;}
+nav li:hover{
+	color: var(--FSGray);
+	background-color: var(--FSBlue);}
+
+h1{
+	font-size: 300%;}
+h1, h2{
+	color: var(--FSGray);}
+nav a{
+	text-decoration: none;
+	color: var(--FSGray);}
+p, h2 {
+	text-align: left;
+	margin-left: 1vw;}
+a{
+	color: var(--FSGray);
+}
+footer{
+	background-color: var(--FSRed);
+	width: 100%;
+	text-align: left;
+	position: absolute;
+	bottom: 0;}
+footer a{
+	text-decoration: none;
+	color: var(--FSGray);}
+footer ul{
+	text-align: center;
+	list-style-type: none;
+}
+footer li{
+	display: inline-block;
+	padding: 0 2%;
+}
+#profilePic{
+	border-radius: 15% 15%;
+	border: 3px solid var(--FSGray);
+}
+
+/*Login & Register pages*/
+form{
+	margin-left: auto;
+	margin-right: auto;
+	width: 65%;}
+fieldset{
+	padding: 5%;}
+legend{
+	font-size: 150%;}
+form ul{
+	list-style-type: none;
+	text-align: left;
+}
+form input{
+	margin: 1% 0;
+}
+

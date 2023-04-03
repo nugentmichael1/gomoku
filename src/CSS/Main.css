@@ -1,0 +1,45 @@
+h1 {
+    font-size: 400%;
+    margin: 10% 0;
+}
+
+.mmenu li {
+    float: center;
+    background-color: var(--FSRed);
+    margin: 0 0;
+    font-size: 200%;
+    border: 1px solid var(--FSGray);
+}
+
+.mmenu li:hover {
+    background-color: var(--FSBlue);
+}
+
+ul.mmenu {
+    list-style-type: none;
+    width: 40%;
+    margin: 10% auto;
+    border: 1px solid var(--FSGray);
+}
+
+ul.mmenu a {
+    text-decoration: none;
+}
+
+img#bd1 {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 30vh;
+}
+
+img#bd2 {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 30vh;
+}
+
+img#homeFSLogo {
+    height: 10vh;
+}
