@@ -12,13 +12,13 @@ import "../CSS/Main.css"
 
 
 const Home = () => {
-    return <>
+    return <div className="home">
         <img src={FSLogo} id="homeFSLogo" alt="Fresno State Logo" />
         <h1>Gomoku!</h1>
         <img src={FSBulldog} id="bd1" alt="Bulldog Logo" />
         <Menu />
         <img src={FSBulldog} id="bd2" alt="Bulldog Logo" />
-    </>
+    </div>
 };
 
 export default Home;

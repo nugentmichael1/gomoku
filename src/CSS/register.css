@@ -1,6 +1,7 @@
-legend {
+.register legend {
     font-size: 150%;
 }
-p{
+
+.register p {
     text-align: center;
 }

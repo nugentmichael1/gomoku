@@ -25,7 +25,8 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path='/' element={<Nav />} /> */}
+        <Route path='/' element={<Nav />} />
+        {/* <Route path='/' /> */}
         <Route path='/:page' element={<Nav />} />
       </Routes>
       <Routes>

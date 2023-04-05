@@ -1,39 +1,28 @@
 
+//Function to create list of <Link> tags based on pages configuration file
+import buildLinksList from "../AuxilaryFunctions/buildLinksList";
+
 //Navigation
 import { Link } from "react-router-dom";
 
-
-//Pages data
-const pages = require("../Configurations/Pages.json")
-
-
 const buildNav = () => {
 
-    const linksList = []
-
     //JSON file of links does not include "Home".
-    linksList.push(
+    const linksList = [
         <Link to={'/'} key='/'>
             <li>
                 Home
             </li>
         </Link>
-    )
+    ]
 
-    pages.forEach((page) => {
+    linksList.push(buildLinksList())
 
-        linksList.push(
-            <Link to={'/' + page} key={page}>
-                <li>
-                    {page}
-                </li>
-            </Link>
-        )
-
-    })
-
-    return <ul>{linksList}</ul>
-
+    return <nav>
+        <ul>
+            {linksList}
+        </ul>
+    </nav>
 }
 
 const Nav = () => {

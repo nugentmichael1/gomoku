@@ -1,28 +1,47 @@
-table.stats{
+table.stats {
 	margin-left: auto;
 	margin-right: auto;
-	width:100%;
+	width: 100%;
 	margin-top: 1vh;
-	font-size: 100%;}
+	font-size: 100%;
+}
+
 /*.stats td{
 	height: 5vh;
 	width: 5vw;
 }
 */
-table#p1StatusTbl, table#p2StatusTbl{
+table#p1StatusTbl,
+table#p2StatusTbl {
 	width: 9%;
 	font-size: 100%;
+	display: inline-table;
 }
-table#p1StatusTbl td, table#p2StatusTbl td, 
-table#p1StatusTbl th, table#p2StatusTbl th{
+
+table#p1StatusTbl td,
+table#p2StatusTbl td,
+table#p1StatusTbl th,
+table#p2StatusTbl th {
 	padding: 0 0 0 0;
 	vertical-align: middle;
 	height: 7vh;
 	text-align: center;
 }
-table#p1StatusTbl tr{
+
+table#p1StatusTbl tr {
 	height: 6vh;
 }
+
+#p1ColDisp {
+	background-color: black;
+	border-radius: 50%;
+}
+
+#p2ColDisp {
+	background-color: white;
+	border-radius: 50%;
+}
+
 /*
 tr#boardColor{
 	margin: 10vh 0;
@@ -30,73 +49,96 @@ tr#boardColor{
 	color: black;
 }
 */
-table{
+table {
 	border-collapse: collapse;
 	border-style: hidden;
 	table-layout: fixed;
 }
-td{
+
+td {
 	text-align: center;
 	/*The javascript function createBoard() assigns these values for board, now.
 	height: 6vh;
 	width: 6vw;
 	*/
 	/*border: solid 1px black;*/
-	position: relative;}
-div.vertical{
+	position: relative;
+}
+
+div.vertical {
 	background-color: var(--Lines);
 	width: 1px;
 	height: 100%;
 	position: absolute;
 	left: 50%;
-	bottom: 0%;}
-div.horizontal{
+	bottom: 0%;
+}
+
+div.horizontal {
 	background-color: var(--Lines);
 	width: 100%;
 	height: 1px;
 	position: absolute;
-	bottom: 50%;}
-	/*transform: translate(0,-2800%);}*/
-.row0 div.vertical{
+	bottom: 50%;
+}
+
+/*transform: translate(0,-2800%);}*/
+.row0 div.vertical {
 	background-color: var(--Lines);
 	width: 1px;
 	height: 50%;
-	position: absolute;}
-.rowLast div.vertical{
-        background-color: var(--Lines);
-        width: 1px;
-        height: 50%;
-        bottom: 50%;
-        position: absolute;}
-.col0 div.horizontal{
-        background-color: var(--Lines);
-        width: 50%;
-        height: 1px;
-        left: 50%;
-        position: absolute;}
-.colLast div.horizontal{
-        background-color: var(--Lines);
-        width: 50%;
-        height: 1px;
-        left: 0%;
-        position: absolute;}
-.board{
-		width: 70%;/*accomodate both player status tables at 10% each*/
+	position: absolute;
+}
 
-		margin-left: auto;
-        margin-right: auto;
+.rowLast div.vertical {
+	background-color: var(--Lines);
+	width: 1px;
+	height: 50%;
+	bottom: 50%;
+	position: absolute;
+}
 
-		background-repeat: no-repeat;
-		background-size: 90%;
-		background-position: center center;
-}.board td{
-		border-radius: 50% 50%;
-		}
-.board td:hover{
-        border-radius: 50% 50%;
-        background-color: var(--Circle);}
-.board td:hover div{
-        background-color: var(--Circle);}
+.col0 div.horizontal {
+	background-color: var(--Lines);
+	width: 50%;
+	height: 1px;
+	left: 50%;
+	position: absolute;
+}
+
+.colLast div.horizontal {
+	background-color: var(--Lines);
+	width: 50%;
+	height: 1px;
+	left: 0%;
+	position: absolute;
+}
+
+.board {
+	width: 70%;
+	/*accomodate both player status tables at 10% each*/
+
+	margin-left: auto;
+	margin-right: auto;
+
+	background-repeat: no-repeat;
+	background-size: 90%;
+	background-position: center center;
+}
+
+.board td {
+	border-radius: 50% 50%;
+}
+
+.board td:hover {
+	border-radius: 50% 50%;
+	background-color: var(--Circle);
+}
+
+.board td:hover div {
+	background-color: var(--Circle);
+}
+
 /*
 .board td:active{
         border-radius: 50% 50%;
@@ -104,4 +146,3 @@ div.horizontal{
 .board td:active div{
        background-color: red;}
 	   */
-
