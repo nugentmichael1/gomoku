@@ -1,0 +1,61 @@
+table.stats {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	margin-top: 1vh;
+	font-size: 100%;
+}
+
+/*.stats td{
+	height: 5vh;
+	width: 5vw;
+}
+*/
+table#p1StatusTbl,
+table#p2StatusTbl {
+	width: 9%;
+	font-size: 100%;
+	display: inline-table;
+}
+
+table#p1StatusTbl td,
+table#p2StatusTbl td,
+table#p1StatusTbl th,
+table#p2StatusTbl th {
+	padding: 0 0 0 0;
+	vertical-align: middle;
+	height: 7vh;
+	text-align: center;
+}
+
+table#p1StatusTbl tr {
+	height: 6vh;
+}
+
+#p1ColDisp {
+	background-color: black;
+	border-radius: 50%;
+}
+
+#p2ColDisp {
+	background-color: white;
+	border-radius: 50%;
+}
+
+
+
+.Game table {
+	border-collapse: collapse;
+	border-style: hidden;
+	table-layout: fixed;
+}
+
+.Game td {
+	text-align: center;
+	/*border: solid 1px black;*/
+	position: relative;
+}
+
+div.Game {
+	margin: 0;
+}

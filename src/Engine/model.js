@@ -2,7 +2,11 @@
 Classes: game, threes, fours, and coordinates.
 */
 
-class game {
+import player from "./player"
+import board from "./Board"
+import coordinates from "./coordinates";
+
+class model {
 
 	constructor(size) {
 		//current turn, used to track: total turns so far (n-1),
@@ -57,7 +61,7 @@ class game {
 		this.matrix[i][j] = val;
 	}
 
-	//checks if a move creates a three-long segment
+	//checks if a move creates a three, four or five-long segment
 	moveAnalyze(clickedCoords) {
 
 		let firstCondition = 3;
@@ -87,8 +91,7 @@ class game {
 		else if (x1 - x0 == secondCondition - 1) {
 			p[pt].addFour(new coordinates(x0, y), new coordinates(x1, y), 'h');
 		}
-		//5s check. win.  this should accomodate overlines since the for-loop above
-		//moves as far as possible (ie will go to 6 or more).
+		// 5s/Win Check.  This accomodates overlines since the for-loop above moves as far as possible (ie will go to 6 or more).
 		else if (x1 - x0 == winCondition - 1) {
 			winStatus = p[pt].name;
 		}
@@ -116,10 +119,6 @@ class game {
 			winStatus = p[pt].name;
 		}
 
-		//0,0 and 2,2: -2,-2
-		//5,0 and 3,0: 2,0
-		//0,2 and 2,0: -2,2
-		//0,0 and 0,2: 0,-2
 
 
 		//check diagonal: top left to bottom right
@@ -174,7 +173,7 @@ class game {
 		if (this.timer != undefined) {
 			let question = "Change board size to " + size + "?  "
 			let warning = "All progress of current game will be lost."
-			if (!confirm(question + warning)) {
+			if (!window.confirm(question + warning)) {
 				//put radio button back to where it was before user changed it
 				let radioId = "radio" + ((size == 15) ? 19 : 15);
 				document.getElementById(radioId).checked = true;
@@ -259,7 +258,7 @@ class game {
 			document.getElementById('p1ColDisp').innerText = ' ';
 		}
 
-		timer = undefined;
+		this.timer = undefined;
 		//current turn, can be used to track total turns so far (n-1).
 		this.turn = 0;
 		//tracks which player's turn: 0=player1, 1=player2. -1: game hasn't started yet.
@@ -295,149 +294,22 @@ class game {
 }
 
 
-
-
-
-class threes {
-	c4th0;//coordinates of 1st possible 4th
-	c4th1;//coordinates of 2nd possible 4th
-	next = null;//linked list pointer
-	constructor(coordinates0, coordinates1, des) {
-		this.c0 = coordinates0;
-		this.c1 = coordinates1;
-		this.designation = des;
-		this.posFourCoords();
-		this.id = gameInstance.getTurn(); //keep track which three segment
-		console.log(coordinates0, coordinates1, des);
-	}
-	posFourCoords() {
-		let x0, x1 = -1;
-		let y0, y1 = -1;
-		if (this.designation == 'h') {
-			x0 = this.c0.x - 1;
-			x1 = this.c1.x + 1;
-			y0 = y1 = this.c0.y;
-		}
-		else if (this.designation == 'dUp') {
-			x0 = this.c0.x - 1;
-			y0 = this.c0.y + 1;
-			x1 = this.c1.x + 1;
-			y1 = this.c1.y - 1;
-
-		}
-		else if (this.designation == 'dDown') {
-			x0 = this.c0.x - 1;
-			y0 = this.c0.y - 1;
-			x1 = this.c1.x + 1;
-			y1 = this.c1.y + 1;
-		}
-		else {//this.designation=='v'
-			x0 = x1 = this.c0.x;
-			y0 = this.c0.y - 1;
-			y1 = this.c1.y + 1;
-		}
-
-		console.log(x0, x1, y0, y1);
-		if (x0 >= 0 && y0 >= 0
-			&& x0 < gameInstance.getBoardSize()
-			&& y0 < gameInstance.getBoardSize()) { //inside board boundaries check
-			console.log(gameInstance.getMatrixValue(y0, x0));
-			if (gameInstance.getMatrixValue(y0, x0) == 0) {//coordinate availability check
-				this.c4th0 = new coordinates(x0, y0);
-				console.log(this.c4th0);
-			}
-		}
-		if (x1 >= 0 && y1 >= 0
-			&& x1 < gameInstance.getBoardSize() &&
-			y1 < gameInstance.getBoardSize()) {//inside board boundaries check
-			if (gameInstance.getMatrixValue(y1, x1) == 0) {//coordinate availability check
-				this.c4th1 = new coordinates(x1, y1);
-			}
-		}
-	}
-}
-
-class fours {
-	//need to build.  should be almost identicle to threes
-	c5th0; //coordinates of 1st possible 5th
-	c5th1; //coordinates of 2nd possible 5th
-	next = null; //linked list pointer
-	constructor(coordinates0, coordinates1, designation) {
-		this.c0 = coordinates0;
-		this.c1 = coordinates1;
-		//tracks what type of four: vertical, horizontal, diagonal up, diagonal down
-		this.designation = designation;
-		//identify the four-chain by turn it was created
-		this.id = gameInstance.getTurn();
-		this.posFiveCoords();
-	}
-	posFiveCoords() {
-		let x0, x1, y0, y1;
-		x0 = x1 = y0 = y1 = -1;
-		if (this.designation == 'h') {
-			x0 = this.c0.x - 1;
-			x1 = this.c1.x + 1;
-			y0 = y1 = this.c0.y;
-		}
-		else if (this.designation == 'dUp') {
-			x0 = this.c0.x - 1;
-			y0 = this.c0.y + 1;
-			x1 = this.c1.x + 1;
-			y1 = this.c1.y - 1;
-		}
-		else if (this.designation == 'dDown') {
-			x0 = this.c0.x - 1;
-			y0 = this.c0.y - 1;
-			x1 = this.c1.x + 1;
-			y1 = this.c1.y + 1;
-		}
-		//this.designation == 'v'
-		else {
-			x0 = x1 = this.c0.x;
-			y0 = this.c0.y - 1;
-			y1 = this.c1.y + 1;
-		}
-
-		//top and left board boundary check
-		if (x0 >= 0 && y0 >= 0
-			&& x0 < gameInstance.getBoardSize()
-			&& y0 < gameInstance.getBoardSize()) {
-			//coordinate availability check
-			if (gameInstance.getMatrixValue(y0, x0) == 0) {
-				this.c5th0 = new coordinates(x0, y0);
-			}
-		}
-		//bottom and right board boundary check
-		if (x1 >= 0 && y1 >= 0
-			&& x1 < gameInstance.getBoardSize()
-			&& y1 < gameInstance.getBoardSize()) {
-			//coordinate availability check
-			if (gameInstance.getMatrixValue(y1, x1) == 0) {
-				this.c5th1 = new coordinates(x1, y1);
-			}
-		}
-	}
-}
-
-class coordinates {
-	constructor(x, y) {
-		this.x = x;
-		this.y = y;
-	}
-}
-
-//game object defined in load().
-let gameInstance;
-
 //players
 let p = new Array(2);
 p[0] = new player(1, 'Black');
 p[1] = new player(2, 'White');
 
+
+
+//game object defined in load().
+let gameInstance;
+
+
+
 //initialize game board on body tag's load
 function load() {
 
-	gameInstance = new game(15);
+	gameInstance = new model(15);
 
 	//check if user is logged in to update player 1 name.
 	let httpRequest = new XMLHttpRequest();
@@ -498,104 +370,6 @@ function pColUpdate(player, val) {
 	}
 }
 
-function clicked(i, j) {
-
-	//console.log('clicked function');
-	//console.log(i, j);
-
-	//j and i are flipped to better align with x as horizontal and y as vertical
-	let clickedCoords = new coordinates(j, i);
-
-	if (gameInstance.getTurn() == 0) {
-		alert('Click \"Start\" button next to timer to begin game.');
-		return;
-	}
-
-	//check matrix for move clearance
-	if (gameInstance.getCS() == 0 && gameInstance.getMatrixValue(i, j) == 0) {
-		//get td to be changed
-		let td = document.getElementById(i + '-' + j);
-
-		//set td background to a circle.
-		//td.style.borderRadius = '50% 50%';
-
-
-		//reset hints for current player since he's already made a decision.
-		//need to remove hints before 3s and 4s are removed so we know where they
-		//are still.
-		if (p[gameInstance.getPlayerTurn()].hintState) p[gameInstance.getPlayerTurn()].hideHints();
-
-		//mark the cell as taken 
-		td.className = 'claimed';
-
-		//check who's turn it is, set appropriately colored "Go" piece, 
-		//update player turn message status, and matrix index
-		if (gameInstance.getPlayerTurn() == 1) {
-			let p1ColDisp = document.getElementById('p1ColDisp');
-			p1ColDisp.style.color = p[1].color;
-			p1ColDisp.innerText = gameInstance.getTurn() + 1;
-			document.getElementById('p2ColDisp').innerText = ' ';
-			td.style.backgroundColor = p[1].color;
-			td.style.color = p[0].color;//number color
-			td.children[0].style.backgroundColor = p[1].color;
-			td.children[0].style.opacity = "0";
-			td.children[1].style.backgroundColor = p[1].color;
-			td.children[1].style.opacity = "0";
-			gameInstance.setMatrix(i, j, 2);
-			td.appendChild(document.createTextNode(gameInstance.getTurn()));
-			td.className = td.className + " p2Color";
-		}
-		else {
-			let p2ColDisp = document.getElementById('p2ColDisp')
-			p2ColDisp.style.color = p[0].color;
-			p2ColDisp.innerText = gameInstance.getTurn() + 1;
-			document.getElementById('p1ColDisp').innerText = ' ';
-			td.style.backgroundColor = p[0].color;
-			td.style.color = p[1].color;//number color
-			td.children[0].style.backgroundColor = p[0].color;
-			td.children[0].style.opacity = "0";
-			td.children[1].style.backgroundColor = p[0].color;
-			td.children[1].style.opacity = "0";
-			gameInstance.setMatrix(i, j, 1);
-			td.appendChild(document.createTextNode(gameInstance.getTurn()));
-			td.className = td.className + " p1Color";
-		}
-
-		//returns true when a win is detected
-		if (gameInstance.moveAnalyze(clickedCoords)) {
-			alert(p[gameInstance.getPlayerTurn()].name + ' won!');
-			recordWin();
-			gameInstance.setCS(1);
-			clearInterval(gameInstance.timer);
-		}
-		//tie check
-		else if (gameInstance.getTurn() == gameInstance.board.getSize() ** 2) {
-			//else if (turn++ == bSize ** 2) {
-			alert('Draw!');
-			clearInterval(gameInstance.timer);
-		}
-		gameInstance.incrementTurn();
-
-
-		//sifts respective player objects' 3s and 4s arrays for any changes
-		// to hints
-		p[0].cleanStats(clickedCoords);
-		p[1].cleanStats(clickedCoords);
-
-		//show hints for next player if it's enabled
-		if (p[1 - gameInstance.getPlayerTurn()].hintState) p[1 - gameInstance.getPlayerTurn()].showHints();
-
-		//update player displays
-		document.getElementById('p1Threes').innerText = p[0].threesCount;
-		document.getElementById('p2Threes').innerText = p[1].threesCount;
-		document.getElementById('p1Fours').innerText = p[0].foursCount;
-		document.getElementById('p2Fours').innerText = p[1].foursCount;
-
-		//update which player's turn it is
-		gameInstance.switchPlayerTurn();//playerTurn = 1 - playerTurn;
-	}
-}
-
 
 function recordWin() {
 	let httpRequest = new XMLHttpRequest();
@@ -629,3 +403,5 @@ function recordWin() {
 	httpRequest.send(postString);
 
 }
+
+export default model;

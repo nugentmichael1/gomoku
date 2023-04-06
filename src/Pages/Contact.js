@@ -11,7 +11,7 @@ import "../CSS/contact.css"
 
 function Contact() {
   return (
-    <body>
+    <body className='contact'>
       <h1>Contact</h1>
       <table>
         <tr>

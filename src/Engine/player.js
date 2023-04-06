@@ -1,3 +1,8 @@
+
+
+import threes from "./threes"
+import fours from "./fours"
+
 class player {
 	//hint state. 0: no hints; 1: hints.
 	hintState = 0;
@@ -73,7 +78,7 @@ class player {
 			//this player's turn
 			else {
 				//remove every three turned into a four by this coordinate
-				//decrement threesCount by one for ever three removed.
+				//decrement threesCount by one for every three removed.
 
 				//head of linked list
 				let threeToRemove = this.threesArr[cordStr];
@@ -323,3 +328,5 @@ class player {
 
 	}
 }
+
+export default player;

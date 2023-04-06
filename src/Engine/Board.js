@@ -1,99 +1,125 @@
-class board {
-	constructor(size) {
-		//board's background color
-		this.bGColor = 'var(--FSBlue)';
-		//board size: n x n.
-		this.size = size;
-		//create the board through table html tags
-		this.createBoard(size);
-	}
-	getSize() {
-		return this.size;
-	}
 
-	//create board in html with n x n dimension.  should only accept/expect n of 15 or 19.
-	createBoard(size) {
+//Dependencies
+import clicked from "./clicked"
 
-		//initialize table element
-		let tbl = document.createElement('table');
-		tbl.id = "board";
-		tbl.className = 'board';
-		tbl.style.display = 'inline-table';
+//CSS
+import "../CSS/Game/Board.css"
 
-		//smaller tiles for larger dimension
-		let tdSize = (size == 15) ? 5.0 : 4.0;
-		let tdFontSize = (size == 15) ? 200 : 150;
 
-		//fill table with nxn rows and columns
-		for (let i = 0; i < size; i++) {
+// create board in html with n x n dimension.  should only accept/expect n of 15 or 19.
+const createBoard = (size) => {
 
-			//create table row element
-			let r = document.createElement('tr');
+	//array to hold table row tags
+	const tbody = []
 
-			//assign class to table row element
-			r.className = 'row' + i;
+	//fill table with nxn rows and columns
 
-			//add cells of each column
-			for (let j = 0; j < size; j++) {
+	//rows 0 to n-2.  last row is after.
+	for (let i = 0; i < size - 1; i++) {
 
-				//create td element
-				let td = document.createElement('td');
-				//assign class: col{j}
-				td.className = 'col' + j;
-				//assign id: '{i}-{j}'
-				td.id = i + '-' + j;
-				//assign onclick function
-				td.onclick = function () { clicked(i, j) };
-				td.style.height = tdSize + 'vh';
-				td.style.width = tdSize + 'vw';
-				td.style.fontSize = tdFontSize + '%';
+		//Array to hold table cell tags
+		const tdArr = createBoardRow(size, i);
 
-				//create div element (vertical class)
-				let divV = document.createElement('div');
-				divV.className = 'vertical';
-
-				//create div element (horizontalclass)
-				let divH = document.createElement('div');
-				divH.className = 'horizontal';
-
-				//append divs to td 
-				td.appendChild(divV);
-				td.appendChild(divH);
-
-				//append td to tr
-				r.appendChild(td);
-
-			}
-
-			//rename last column cell's class to assist css
-			r.lastChild.className = 'colLast';
-			r.lastChild.id = i + '-' + (size - 1);
-			r.lastChild.onclick = function () { clicked(i, size - 1); };
-
-			//append completed row
-			tbl.appendChild(r);
-		}
-
-		//rename last row's class to assist css
-		tbl.lastChild.className = 'rowLast';
-
-		//append finished child before p2status table
-		let p2StatusTbl = document.getElementById('p2StatusTbl');
-		document.body.insertBefore(tbl, p2StatusTbl);
+		//append completed row
+		tbody.push(
+			<tr className={'row' + i} key={'row' + i}>
+				{tdArr}
+			</tr>
+		)
 	}
 
-	colorChange(color) {
-		this.bBGColor = color;
-		document.getElementById("board").style.backgroundColor = color;
-	}
+	//create last row
+	const lastRow = createBoardRow(size, size - 1);
 
-	bGImgChange() {
-		let brd = document.getElementById('board');
-		if (brd.style.backgroundImage != '') {
-			brd.style.backgroundImage = '';
-		}
-		else {
-			document.getElementById('board').style.backgroundImage = "url('../assets/FresnoStateBulldog.png')";
-		}
-	}
+	//append last row to tbody, but with unique className
+	tbody.push(
+		<tr className="rowLast" key={'row' + (size - 1)}>
+			{lastRow}
+		</tr>
+	)
+
+	console.log(tbody)
+	//rename last row's class to assist css
+	// const lastRow = tbody.pop();
+	console.log(lastRow)
+	// lastRow.props.className = "rowLast"
+
+	return <table
+		id="board"
+		className="board">
+		<tbody className={'size' + size}>
+			{tbody}
+		</tbody>
+	</table>;
 }
+
+const createBoardRow = (size, i) => {
+
+	//Array to hold table cell tags
+	const tdArr = [];
+
+	//add cells of each column
+	for (let j = 0; j < size - 1; j++) {
+
+		//create td element
+		tdArr.push(<td
+			className={'col' + j}
+			id={i + '-' + j}
+			onClick={() => { clicked(i, j) }}
+			key={i + '-' + j}>
+			<div className='vertical'></div>
+			<div className='horizontal'></div>
+		</td>)
+	}
+
+	//create last column cell with different className to assist css
+	tdArr.push(<td
+		className={'colLast'}
+		id={i + '-' + (size - 1)}
+		onClick={() => { clicked(i, (size - 1)) }}
+		key={i + '-' + (size - 1)}>
+		<div className='vertical'></div>
+		<div className='horizontal'></div>
+	</td>)
+
+	return tdArr;
+}
+
+
+const Board = (size) => {
+	// createBoard(15);
+	return createBoard(15);
+}
+
+// class Board {
+// 	constructor(size) {
+// 		//board's background color
+// 		this.bGColor = 'var(--FSBlue)';
+// 		//board size: n x n.
+// 		this.size = size;
+// 		//create the board through table html tags
+// 		this.createBoard(size);
+// 	}
+// 	getSize() {
+// 		return this.size;
+// 	}
+
+// 	
+
+// 	colorChange(color) {
+// 		this.bBGColor = color;
+// 		document.getElementById("board").style.backgroundColor = color;
+// 	}
+
+// 	bGImgChange() {
+// 		let brd = document.getElementById('board');
+// 		if (brd.style.backgroundImage != '') {
+// 			brd.style.backgroundImage = '';
+// 		}
+// 		else {
+// 			document.getElementById('board').style.backgroundImage = "url('../assets/FresnoStateBulldog.png')";
+// 		}
+// 	}
+// }
+
+export default Board;
