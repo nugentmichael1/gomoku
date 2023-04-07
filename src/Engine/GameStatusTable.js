@@ -7,7 +7,7 @@ import { React, useState, useEffect } from 'react';
 // import model from "./model"
 
 const start = () => {
-    console.log("start")
+    // console.log("start")
     // "gameInstance.start()" 
 }
 
@@ -17,37 +17,15 @@ const boardSizeChange = (size) => {
 
     // console.log(`boardSizeChange(${size})`)
 }
-const boardColorChange = (color) => {
-    // "gameInstance.board.colorChange(value)"
-    console.log(`boardColorChange(${color})`)
-}
-const bGImgChange = () => {
-
-    // "gameInstance.board.bGImgChange()"
-}
 
 
-
-const GameStatusTable = () => {
-
-    const [boardColor, setBoardColor] = useState("var(--FSBlue)");
-
-    useEffect(() => {
-        boardColorChange(boardColor);
-    }, [boardColor])
-
+const GameStatusTable = ({ setbgImageOn, bgImageOn, boardBGColor, handleBoardBGColor }) => {
 
     const [boardSize, setBoardSize] = useState(15);
 
     useEffect(() => {
         boardSizeChange(boardSize)
     }, [boardSize])
-
-    const [bGImage, setBGImage] = useState(false);
-
-    useEffect(() => {
-        bGImgChange(bGImage);
-    }, [bGImage])
 
     return <table className="stats">
         <tbody>
@@ -57,21 +35,17 @@ const GameStatusTable = () => {
                 </th>
                 <th>
                     Board Size
-
                 </th>
                 <th>
                     Board Color
-
                 </th>
                 <th>
-
                     Bull Dog BG
                 </th>
             </tr>
             <tr>
                 <td>
                     <input type="Button" value="Start" id="startBut" onClick={start} readOnly={true} />
-
                 </td>
                 <td>
                     <label htmlFor="radio15">
@@ -96,21 +70,21 @@ const GameStatusTable = () => {
                         checked={19 === boardSize} />
                 </td>
                 <td>
-                    <select onChange={(e) => setBoardColor(e.target.value)} value={boardColor}>
-                        <option value="var(--FSBlue)">
+                    <select onChange={(e) => handleBoardBGColor(e.target.value)} value={boardBGColor}>
+                        <option value="#13284c">
                             CSU, Fresno Blue
                         </option>
-                        <option value="var(--FSRed)">
+                        <option value="#b1102b">
                             CSU, Fresno Red
                         </option>
                     </select>
                 </td>
                 <td>
-                    <input type="checkbox" onChange={(e) => setBGImage(Boolean(1 - bGImage))} checked={bGImage} />
+                    <input type="checkbox" onChange={(e) => setbgImageOn(Boolean(1 - bgImageOn))} checked={bgImageOn} />
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table >
 }
 
 export default GameStatusTable;

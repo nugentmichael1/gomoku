@@ -83,14 +83,14 @@ div.horizontal {
     border-radius: 50% 50%;
 }
 
-#board td:hover {
+/* #board td:hover {
     border-radius: 50% 50%;
     background-color: var(--Circle);
 }
 
 #board td:hover div {
     background-color: var(--Circle);
-}
+} */
 
 table#board {
     display: inline-table;

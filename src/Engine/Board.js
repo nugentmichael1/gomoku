@@ -1,27 +1,52 @@
 
-//Dependencies
+//Functions
 import clicked from "./clicked"
 
 //CSS
 import "../CSS/Game/Board.css"
 
+//Assets
+import FSBulldog from "../Assets/FresnoStateBulldog.png"
+
+import { useState } from "react"
+
+const BoardCell = ({ i, j, clicked, className, bgColor, hoverColor }) => {
+
+	const [hover, setHover] = useState(false)
+
+	const stylePropBGColor = { backgroundColor: hover ? hoverColor : "inherit" };
+
+	// console.log(stylePropBGColor);
+
+	const stylePropDivColor = { backgroundColor: hover ? hoverColor : "#ced1d4" }
+
+	return <td
+		className={className}
+		id={i + '-' + j}
+		onClick={() => { clicked(i, j) }}
+		key={i + '-' + j}
+		style={stylePropBGColor}
+		onMouseEnter={() => setHover(true)}
+		onMouseLeave={() => setHover(false)}>
+		<div className='vertical' style={stylePropDivColor}></div>
+		<div style={stylePropDivColor} className='horizontal'></div>
+	</td>
+}
 
 // create board in html with n x n dimension.  should only accept/expect n of 15 or 19.
-const createBoard = (size) => {
+const createBoard = (size, bgImageOn, bgColor, hoverColor) => {
 
 	//array to hold table row tags
-	const tbody = []
+	const trArr = []
 
-	//fill table with nxn rows and columns
-
-	//rows 0 to n-2.  last row is after.
+	//rows 0 to size-2.  last row is after.
 	for (let i = 0; i < size - 1; i++) {
 
 		//Array to hold table cell tags
-		const tdArr = createBoardRow(size, i);
+		const tdArr = createBoardRow(size, i, bgColor, hoverColor);
 
 		//append completed row
-		tbody.push(
+		trArr.push(
 			<tr className={'row' + i} key={'row' + i}>
 				{tdArr}
 			</tr>
@@ -29,31 +54,34 @@ const createBoard = (size) => {
 	}
 
 	//create last row
-	const lastRow = createBoardRow(size, size - 1);
+	const lastRow = createBoardRow(size, size - 1, bgColor, hoverColor);
 
 	//append last row to tbody, but with unique className
-	tbody.push(
+	trArr.push(
 		<tr className="rowLast" key={'row' + (size - 1)}>
 			{lastRow}
 		</tr>
 	)
 
-	console.log(tbody)
-	//rename last row's class to assist css
-	// const lastRow = tbody.pop();
-	console.log(lastRow)
-	// lastRow.props.className = "rowLast"
+	//style property of return table
+	const styleProp = {
+		backgroundImage: (bgImageOn) ? `url(${FSBulldog})` : "none",
+		backgroundColor: bgColor
+	}
 
+	//return table rows inside tbody and table tags
 	return <table
 		id="board"
-		className="board">
+		className="board"
+		style={styleProp}
+	>
 		<tbody className={'size' + size}>
-			{tbody}
+			{trArr}
 		</tbody>
-	</table>;
+	</ table >;
 }
 
-const createBoardRow = (size, i) => {
+const createBoardRow = (size, i, bgColor, hoverColor) => {
 
 	//Array to hold table cell tags
 	const tdArr = [];
@@ -62,33 +90,20 @@ const createBoardRow = (size, i) => {
 	for (let j = 0; j < size - 1; j++) {
 
 		//create td element
-		tdArr.push(<td
-			className={'col' + j}
-			id={i + '-' + j}
-			onClick={() => { clicked(i, j) }}
-			key={i + '-' + j}>
-			<div className='vertical'></div>
-			<div className='horizontal'></div>
-		</td>)
+		tdArr.push(<BoardCell i={i} j={j} clicked={clicked} className={'col' + j} key={j} bgColor={bgColor} hoverColor={hoverColor} />)
 	}
 
 	//create last column cell with different className to assist css
-	tdArr.push(<td
-		className={'colLast'}
-		id={i + '-' + (size - 1)}
-		onClick={() => { clicked(i, (size - 1)) }}
-		key={i + '-' + (size - 1)}>
-		<div className='vertical'></div>
-		<div className='horizontal'></div>
-	</td>)
+	tdArr.push(<BoardCell i={i} j={size - 1} clicked={clicked} className={'colLast'} bgColor={bgColor} hoverColor={hoverColor} />)
+
 
 	return tdArr;
 }
 
 
-const Board = (size) => {
-	// createBoard(15);
-	return createBoard(15);
+const Board = ({ size, bgImageOn, bgColor, hoverColor }) => {
+
+	return createBoard(size, bgImageOn, bgColor, hoverColor);
 }
 
 // class Board {
@@ -104,7 +119,7 @@ const Board = (size) => {
 // 		return this.size;
 // 	}
 
-// 	
+//
 
 // 	colorChange(color) {
 // 		this.bBGColor = color;
