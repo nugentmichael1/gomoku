@@ -1,7 +1,7 @@
 //Gomoku
 
 //Style
-import './App.css';
+// import './App.css';
 
 //Components
 import Nav from "./Components/Nav"

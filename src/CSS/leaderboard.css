@@ -1,14 +1,19 @@
-table{
-    margin: auto;
-    width: 80vw;
+.leaderboard table {
+	margin: auto;
+	width: 80vw;
 
-    /*prevent text highlights*/
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
+	/*prevent text highlights*/
+	-webkit-user-select: none;
+	/* Safari */
+	-moz-user-select: none;
+	/* Firefox */
+	-ms-user-select: none;
+	/* IE10+/Edge */
+	user-select: none;
+	/* Standard */
 }
-table caption{
+
+.leaderboard table caption {
 	text-align: center;
 	font-size: 150%;
 	margin: 3vh auto;

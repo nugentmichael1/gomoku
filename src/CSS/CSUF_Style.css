@@ -49,12 +49,15 @@ h1, h2{
 nav a{
 	text-decoration: none;
 	color: var(--FSGray);}
+
 p, h2 {
 	text-align: left;
 	margin-left: 1vw;}
-a{
+
+	a{
 	color: var(--FSGray);
 }
+
 footer{
 	background-color: var(--FSRed);
 	width: 100%;
