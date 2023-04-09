@@ -1,0 +1,72 @@
+@startuml Game Class Diagram
+
+game "1" *-- "1" board : contains
+game "1" *-- "2" player: contains
+game "1" *-- "1" statusTable: contains
+game "1" *-- "1" matrix: contains
+matrix "1" *--- "size^2" matrixCell: contains
+matrix "1" - "1" board
+board "1" *.. "size" boardRow: contains
+boardRow "1" *.. "size" boardCell: contains
+
+note "'cells' is a size x size array of arrays" as n1
+note "'setBoardSize()' needs a warning prompt in case of game in progress" as n2
+
+n1 .. matrix
+n2 .. game
+
+class game {
+    Number turn
+    player playerTurn
+    void setBoardSize()
+    void clicked(Number i, Number j)
+    void moveAnalyze()
+}
+
+
+class board{
+    Number size
+    Bool bgImage
+    String bgColor
+}
+
+class boardRow{
+    Number size
+    Number index
+}
+
+class boardCell{
+    Number i
+    Number j
+    String bgColor
+    String hoverColor
+}
+
+class player{
+    String name
+    String color
+    Bool hints
+    Number id
+}
+
+class statusTable{
+    String timerCountText
+    String timerButtonText
+    Number ctrlBoardSize
+    void setCtrlBoardSize()
+}
+
+
+class matrix{
+    Number size
+    Array[] cells
+    setCell()
+}
+
+class matrixCell{
+    Bool claimed
+    player owner
+    Number turn
+}
+
+@enduml
