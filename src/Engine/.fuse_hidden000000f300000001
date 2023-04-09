@@ -1,3 +1,6 @@
+
+
+
 function clicked(i, j) {
 
     //console.log('clicked function');
@@ -6,6 +9,8 @@ function clicked(i, j) {
     //j and i are flipped to better align with x as horizontal and y as vertical
     let clickedCoords = new coordinates(j, i);
 
+
+    //Verify game is in progress
     if (gameInstance.getTurn() == 0) {
         alert('Click \"Start\" button next to timer to begin game.');
         return;

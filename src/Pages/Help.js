@@ -2,7 +2,7 @@ import React from 'react'
 
 function Help() {
   return (
-    <body>
+    <div className='Help'>
       <h1>Help</h1>
       <ul>
         <li>
@@ -37,7 +37,7 @@ function Help() {
             to change sort criteria or direction.</p>
         </li>
       </ul>
-    </body>
+    </div>
   )
 }
 

@@ -1,0 +1,11 @@
+@startuml myTestDiagram
+
+class game {
+int turn
+}
+
+class board {
+
+}
+
+@enduml

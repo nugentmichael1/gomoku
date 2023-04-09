@@ -1,9 +1,6 @@
 
 import BoardCell from "./BoardCell"
 
-//Functions
-import clicked from "./clicked"
-
 //CSS
 import "../CSS/Game/Board.css"
 
@@ -11,7 +8,7 @@ import "../CSS/Game/Board.css"
 import FSBulldog from "../Assets/FresnoStateBulldog.png"
 
 
-const createBoardRow = (size, i, bgColor, hoverColor, rowClassName) => {
+const createBoardRow = (size, i, bgColor, hoverColor, rowClassName, clicked, gameInstance) => {
 
 	//Array to hold table cell tags
 	const tdArr = [];
@@ -29,6 +26,7 @@ const createBoardRow = (size, i, bgColor, hoverColor, rowClassName) => {
 				key={j}
 				bgColor={bgColor}
 				hoverColor={hoverColor}
+				gameInstance={gameInstance}
 			/>
 		)
 	}
@@ -43,6 +41,7 @@ const createBoardRow = (size, i, bgColor, hoverColor, rowClassName) => {
 			key={'colLast'}
 			bgColor={bgColor}
 			hoverColor={hoverColor}
+			gameInstance={gameInstance}
 		/>
 	)
 
@@ -57,7 +56,7 @@ const createBoardRow = (size, i, bgColor, hoverColor, rowClassName) => {
 }
 
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
-const Board = ({ size, bgImageOn, bgColor, hoverColor }) => {
+const Board = ({ size, bgImageOn, bgColor, hoverColor, clicked, gameInstance }) => {
 
 	//array to hold table row tags
 	const trArr = []
@@ -66,11 +65,11 @@ const Board = ({ size, bgImageOn, bgColor, hoverColor }) => {
 	for (let i = 0; i < size - 1; i++) {
 
 		//Array to hold table cell tags
-		trArr.push(createBoardRow(size, i, bgColor, hoverColor, 'row' + i))
+		trArr.push(createBoardRow(size, i, bgColor, hoverColor, 'row' + i, clicked, gameInstance))
 	}
 
 	//create and push last row into array
-	trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast'))
+	trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))
 
 	//style property of return table
 	const stylePropObj = {

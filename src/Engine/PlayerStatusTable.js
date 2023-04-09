@@ -52,7 +52,9 @@ const PlayerStatusTable = ({ num }) => {
                 <th>{displayText}</th>
             </tr>
             <tr>
-                <td id={colDispID} className={colorClass}></td>
+                <td id={colDispID} className={colorClass}>
+
+                </td>
             </tr>
             <tr>
                 <td>

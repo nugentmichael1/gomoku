@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 
 
-const BoardCell = ({ i, j, clicked, className, bgColor, hoverColor }) => {
+const BoardCell = ({ i, j, clicked, className, bgColor, hoverColor, gameInstance }) => {
 
     const [hover, setHover] = useState(false)
 
@@ -13,11 +13,15 @@ const BoardCell = ({ i, j, clicked, className, bgColor, hoverColor }) => {
     //Set div lines (cross) to hover color or grey.
     const stylePropDivColor = { backgroundColor: hover ? hoverColor : "#ced1d4" }
 
+    //debug
+    // console.log(clicked)
+    // console.log(gameInstance)
+
     return (
         <td
             className={className}
             id={i + '-' + j}
-            onClick={() => { clicked(i, j) }}
+            onClick={() => gameInstance.clicked(i, j)}
             key={i + '-' + j}
             style={stylePropBGColor}
             onMouseEnter={() => setHover(true)}
