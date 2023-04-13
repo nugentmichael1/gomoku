@@ -1,4 +1,4 @@
-table.stats {
+div.gameStatus {
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
@@ -6,11 +6,11 @@ table.stats {
 	font-size: 100%;
 }
 
-/*.stats td{
-	height: 5vh;
-	width: 5vw;
+.gameStatus table {
+	margin: 0 4vw;
+	display: inline;
 }
-*/
+
 table#p1StatusTbl,
 table#p2StatusTbl {
 	width: 9%;

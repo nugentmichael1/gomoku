@@ -11,51 +11,19 @@ import Board from "../Engine/Board"
 //CSS
 import "../CSS/Game/game.css"
 
-//Configurations
-import boardBGColors from "../Configurations/BoardBGColors.json"
-
+//Game class (model) import
 import game from "../Engine/game"
 
+//Game class (model) initialization
 let gameInstance = new game(15);
 
 function Game() {
-
-  //Board BG Color
-  const [boardBGColor, setBoardBGColor] = useState(boardBGColors[0])
-
-  //Board Hover Color
-  const [boardHoverColor, setBoardHoverColor] = useState(boardBGColors[1])
-
-  const handleBoardBGColorChange = (color) => {
-    setBoardBGColor(color)
-    const hoverColor = (color === boardBGColors[0]) ? boardBGColors[1] : boardBGColors[0];
-    setBoardHoverColor(hoverColor);
-  }
-
-  //Game Status Table: Board BG Color Prop
-  const gstBoardBGColor = {
-    value: boardBGColor,
-    fx: handleBoardBGColorChange
-  }
-
-  //Board BG Image
-  const [bgImageOn, setbgImageOn] = useState(false)
-
-  //Game Status Table: BG Image State prop
-  const gstBGImage = {
-    on: bgImageOn,
-    change: setbgImageOn
-  }
 
   return (
     <div className='Game'>
 
       {
-        <GameStatusTable
-          obj={gameInstance.getGameStatusObj()}
-          boardBGColor={gstBoardBGColor}
-          bgImage={gstBGImage}
-        />
+        <GameStatusTable obj={gameInstance.getGameStatusObj()} />
       }
 
       {
@@ -67,9 +35,9 @@ function Game() {
       {
         <Board
           size={gameInstance.size}
-          bgImageOn={bgImageOn}
-          bgColor={boardBGColor}
-          hoverColor={boardHoverColor}
+          bgImageOn={false}
+          // bgColor={boardBGColor}
+          // hoverColor={boardHoverColor}
           clicked={gameInstance.clicked}
           gameInstance={gameInstance}
         />

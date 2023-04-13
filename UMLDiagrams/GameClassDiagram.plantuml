@@ -69,12 +69,23 @@ class gameStatus{
     void setCtrlBoardSize()
 }
 
-gameStatus "1" .. "1" timer: contains
+gameStatus "1" -- "1" timer: contains
+gameStatus "1" -- "1" boardSize: contains
+gameStatus "1" -- "1" boardColor: contains
 
 class timer{
 
 }
 
+class boardSize{
+
+}
+
+boardSize "1" .> "1" timer: dependency
+
+class boardColor{
+
+}
 
 class matrix{
     Number size
@@ -140,7 +151,7 @@ component boardSizeComponent{
 }
 
 component boardColorComponent{
-    
+
 }
 
 boardComponent "1" - "1" board

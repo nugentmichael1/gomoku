@@ -1,4 +1,10 @@
 [
-    "#13284c",
-    "#b1102b"
+    {
+        "name": "CSU, Fresno Blue",
+        "hexCode": "#13284c"
+    },
+    {
+        "name": "CSU, Fresno Red",
+        "hexCode": "#b1102b"
+    }
 ]
