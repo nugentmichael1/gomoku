@@ -1,5 +1,6 @@
 
-import BoardCell from "./BoardCell"
+//Components
+import BoardRow from "./BoardRow"
 
 //CSS
 import "../CSS/Game/Board.css"
@@ -8,55 +9,10 @@ import "../CSS/Game/Board.css"
 import FSBulldog from "../Assets/FresnoStateBulldog.png"
 
 
-const createBoardRow = (size, i, bgColor, hoverColor, rowClassName, clicked, gameInstance) => {
-
-	//Array to hold table cell tags
-	const tdArr = [];
-
-	//add cells of each column
-	for (let j = 0; j < size - 1; j++) {
-
-		//create td element
-		tdArr.push(
-			<BoardCell
-				i={i}
-				j={j}
-				clicked={clicked}
-				className={'col' + j}
-				key={j}
-				bgColor={bgColor}
-				hoverColor={hoverColor}
-				gameInstance={gameInstance}
-			/>
-		)
-	}
-
-	//create last column cell with different className to assist css
-	tdArr.push(
-		<BoardCell
-			i={i}
-			j={size - 1}
-			clicked={clicked}
-			className={'colLast'}
-			key={'colLast'}
-			bgColor={bgColor}
-			hoverColor={hoverColor}
-			gameInstance={gameInstance}
-		/>
-	)
-
-	return (
-		<tr
-			className={rowClassName}
-			key={'row' + i}
-		>
-			{tdArr}
-		</tr>
-	);
-}
-
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
 const Board = ({ size, bgImageOn, bgColor, hoverColor, clicked, gameInstance }) => {
+
+
 
 	//array to hold table row tags
 	const trArr = []
@@ -64,12 +20,32 @@ const Board = ({ size, bgImageOn, bgColor, hoverColor, clicked, gameInstance }) 
 	//rows 0 to size-2.  last row is after.
 	for (let i = 0; i < size - 1; i++) {
 
+		const boardRowProps = {
+			"size": size,
+			"index": i,
+			"bgColor": bgColor,
+			"hoverColor": hoverColor,
+			"rowClassName": 'row' + i,
+			"onClickFx": clicked,
+			"gameInstance": gameInstance
+		}
+
 		//Array to hold table cell tags
-		trArr.push(createBoardRow(size, i, bgColor, hoverColor, 'row' + i, clicked, gameInstance))
+		trArr.push(<BoardRow data={boardRowProps} key={i} />)
 	}
 
 	//create and push last row into array
-	trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))
+	const boardRowProps = {
+		"size": size,
+		"index": size - 1,
+		"bgColor": bgColor,
+		"hoverColor": hoverColor,
+		"rowClassName": 'rowLast',
+		"onClickFx": clicked,
+		"gameInstance": gameInstance
+	}
+	trArr.push(<BoardRow data={boardRowProps} key={size - 1} />)
+	// trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))
 
 	//style property of return table
 	const stylePropObj = {

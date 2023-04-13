@@ -1,10 +1,12 @@
-//Model
+//game class
 
 import player from "./player"
 // import board from "./Board"
 import coordinates from "./coordinates";
+import matrix from "./matrix"
+import gameStatus from "./gameStatus"
 
-class model {
+class game {
 
 	constructor(size) {
 		console.log("model constructor", Math.random())
@@ -19,18 +21,30 @@ class model {
 		this.cS = 0;
 		//Game Timer.  used to stop displayed timer when game restarts or ends.
 		//tracks whether timer has started
-		this.timer = undefined;
+		this.timer = null;
 		//create board class object with default size of 15.
 		// this.board = new board(size);
 		//2d array to track token pieces.  createMatrix()
 		//assists moveAnalyze(). 0: unplayed. 1: player1; 2: player2
-		this.matrix = new Array(size);
-		for (let i = 0; i < size; i++) {
-			this.matrix[i] = new Array(size);
-			this.matrix[i].fill(0);
-		}
+
+
+
+		this.matrix = new matrix(size);
+		// this.matrix = new Array(size);
+		// for (let i = 0; i < size; i++) {
+		// 	this.matrix[i] = new Array(size);
+		// 	this.matrix[i].fill(0);
+		// }
+
+
+
 		//board/matrix size. default to 15.  can be changed to 19.
 		this.size = size;
+
+		this.gameStatusInstance = new gameStatus(size)
+	}
+	getGameStatusObj() {
+		return this.gameStatusInstance;
 	}
 	getTurn() {
 		return this.turn;
@@ -408,7 +422,7 @@ let gameInstance;
 //initialize game board on body tag's load
 function load() {
 
-	gameInstance = new model(15);
+	gameInstance = new game(15);
 
 	//check if user is logged in to update player 1 name.
 	let httpRequest = new XMLHttpRequest();
@@ -503,4 +517,4 @@ function recordWin() {
 
 }
 
-export default model;
+export default game;

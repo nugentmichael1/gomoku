@@ -1,17 +1,20 @@
 //Game Status Table
 
-const GameStatusTable = ({ timer, boardSize, boardBGColor, bgImage }) => {
 
-    return (
+//Components
+import Timer from "./Components/Timer"
+import BoardSize from "./Components/BoardSize"
+
+const GameStatusTable = ({ obj, boardBGColor, bgImage }) => {
+
+    return (<>
+        <Timer timer={obj.getTimerObj()} />
+        <BoardSize boardSizeInstance={obj.getBoardSize()} />
         <table className="stats">
             <tbody>
                 <tr>
-                    <th id="timer">
-                        {timer.count}
-                    </th>
-                    <th>
-                        Board Size
-                    </th>
+
+
                     <th>
                         Board Color
                     </th>
@@ -20,31 +23,7 @@ const GameStatusTable = ({ timer, boardSize, boardBGColor, bgImage }) => {
                     </th>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="Button" value={timer.buttonText} id="startBut" onClick={timer.buttonFx} readOnly={true} />
-                    </td>
-                    <td>
-                        <label htmlFor="radio15">
-                            15x15
-                        </label>
-                        <input
-                            type="radio"
-                            id="radio15"
-                            name="boardSize"
-                            value={15}
-                            onChange={(e) => boardSize.changeFx(Number(e.target.value))}
-                            checked={15 === boardSize.value} />
-                        <label htmlFor="radio19">
-                            19x19
-                        </label>
-                        <input
-                            type="radio"
-                            id="radio19"
-                            name="boardSize"
-                            value={19}
-                            onChange={(e) => boardSize.changeFx(Number(e.target.value))}
-                            checked={19 === boardSize.value} />
-                    </td>
+
                     <td>
                         <select onChange={(e) => boardBGColor.fx(e.target.value)} value={boardBGColor.value}>
                             <option value="#13284c">
@@ -61,6 +40,7 @@ const GameStatusTable = ({ timer, boardSize, boardBGColor, bgImage }) => {
                 </tr>
             </tbody>
         </table >
+    </>
     )
 }
 
