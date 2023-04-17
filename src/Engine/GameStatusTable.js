@@ -7,12 +7,12 @@ import BoardSize from "./Components/BoardSize"
 import BoardBgColor from "./Components/BoardBgColor"
 import BgImage from "./Components/BgImage"
 
-const GameStatusTable = ({ obj }) => {
+const GameStatusTable = ({ obj, ctrl, view }) => {
 
     return (<>
         <div className="gameStatus">
-            <Timer timer={obj.getTimerObj()} />
-            <BoardSize boardSizeInstance={obj.getBoardSize()} />
+            <Timer timer={obj.getTimer()} play={ctrl} timerV={view.getTimer()} />
+            <BoardSize boardSizeInstance={obj.getBoardSizeObj()} />
             <BoardBgColor obj={obj.getBoardBgColorObj()} />
             <BgImage />
         </div>

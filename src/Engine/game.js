@@ -1,15 +1,16 @@
 //game class
 
 import player from "./player"
-// import board from "./Board"
+import board from "./Classes/board"
 import coordinates from "./coordinates";
 import matrix from "./matrix"
-import gameStatus from "./gameStatus"
+import gameStatus from "./view/gameStatus"
+import timer from "./Classes/timer"
 
 class game {
 
-	constructor(size) {
-		console.log("model constructor", Math.random())
+	constructor(size, view) {
+
 		//current turn, used to track: total turns so far (n-1),
 		// whether game has started (n>0), and
 		this.turn = 0;
@@ -41,10 +42,24 @@ class game {
 		//board/matrix size. default to 15.  can be changed to 19.
 		this.size = size;
 
-		this.gameStatusInstance = new gameStatus(size)
+		this.gameStatusInstance = new gameStatus(size, this)
+		this.boardInstance = new board(size)
+		this.view = view
+		this.timer = new timer(view)
 	}
+
+	myTestFunction;
+	gameInProgress = false
+
+	getTimer() {
+		return this.timer;
+	}
+
 	getGameStatusObj() {
 		return this.gameStatusInstance;
+	}
+	getBoardObj() {
+		return this.boardInstance;
 	}
 	getTurn() {
 		return this.turn;
@@ -214,27 +229,31 @@ class game {
 
 	}
 	start() {
-		if (this.timer == undefined) {
-			gameInstance.incrementTurn();
-			let timerElement = document.getElementById('timer');
-			let buttonElement = document.getElementById('startBut');
-			buttonElement.value = "Restart";
-			buttonElement.onclick = gameInstance.restart;
+		console.log("game class start()")
 
-			let p1ColDisp = document.getElementById('p1ColDisp');
-			p1ColDisp.style.color = p[1].color;
-			p1ColDisp.innerText = gameInstance.turn;
+		this.getTimer().start()
 
-			let start = Date.now();
-			//something weird about setInterval required the specific object instead of the class (this) to hold its return value.
-			gameInstance.timer = setInterval(function () {
-				//milliseconds elapsed since start (stackoverflow help)
-				let delta = Date.now() - start;
-				//milliseconds to seconds.
-				timerElement.innerText = Math.floor(delta / 1000);
-			}, 200);
-			gameInstance.playerTurn = 0;
-		}
+		// if (this.timer == undefined) {
+		// 	gameInstance.incrementTurn();
+		// 	let timerElement = document.getElementById('timer');
+		// 	let buttonElement = document.getElementById('startBut');
+		// 	buttonElement.value = "Restart";
+		// 	buttonElement.onclick = gameInstance.restart;
+
+		// 	let p1ColDisp = document.getElementById('p1ColDisp');
+		// 	p1ColDisp.style.color = p[1].color;
+		// 	p1ColDisp.innerText = gameInstance.turn;
+
+		// 	let start = Date.now();
+		// 	//something weird about setInterval required the specific object instead of the class (this) to hold its return value.
+		// 	gameInstance.timer = setInterval(function () {
+		// 		//milliseconds elapsed since start (stackoverflow help)
+		// 		let delta = Date.now() - start;
+		// 		//milliseconds to seconds.
+		// 		timerElement.innerText = Math.floor(delta / 1000);
+		// 	}, 200);
+		// 	gameInstance.playerTurn = 0;
+		// }
 	}
 
 	restart() {

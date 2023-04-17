@@ -1,0 +1,26 @@
+@startuml "Game Controller"
+
+
+package "Controller"{
+    controller "1" -- "1" options: contains
+    controller "1" -- "1" play: contains
+}
+
+class controller{
+
+}
+
+class options{
+    setBoardSize(Number)
+    setBoardColors(color)
+    setBoardBgImage(Boolean)
+    setPlayerColor(player p, color)
+}
+
+class play{
+    start()
+    reset()
+    claimVertex(Number i, Number j, player p)
+}
+
+@enduml

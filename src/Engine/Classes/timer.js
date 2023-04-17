@@ -1,10 +1,69 @@
 
 class timer {
+
+    constructor(view) {
+        this.view = view
+    }
+
     intervalId = null;
 
-    timerRunning = false;
+    active = false;
 
-    timerText = "Start"
+    //default text for counter
+    countText = "Timer"
+
+    start() {
+
+        //snapshot current time
+        const startTime = Date.now();
+
+        //instant first update
+        // this.setCountText(Math.floor((Date.now() - startTime) / 1000))
+
+        this.active = true
+
+        //start interval function
+        this.setIntervalId(
+            setInterval(() => {
+
+                //get elapsed time since start
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+                //update this class's timer text value
+                this.setCountText(elapsed)
+
+                //debug
+                console.log(this.getCountText())
+
+                //update view (react-interface class)
+                this.view.getGameStatus().getTimer().setCounterText(this.getCountText())
+
+            }, 200)
+        )
+        return true;
+    }
+
+    reset() {
+
+        //verify reset of game
+        if (window.confirm("Are you sure?  Current game data will be lost.")) {
+
+            //stop interval function
+            this.stop()
+
+            //update count text
+            this.view.getGameStatus().getTimer().setCounterText("Timer")
+
+            return true;
+        }
+        return false;
+    }
+
+    //used in reset and for game page unmount
+    stop() {
+        clearInterval(this.getIntervalId())
+        this.active = false
+    }
 
     setIntervalId(id) {
         this.intervalId = id;
@@ -14,49 +73,12 @@ class timer {
         return this.intervalId;
     }
 
-    start(setTimerText) {
-
-        //Verify game should start?
-
-        //Increment gameInstance turn by 1
-        //Update P1 Color Display to show number
-
-
-        //snapshot current time
-        const startTime = Date.now();
-
-        //instant first update
-        this.timerText = Math.floor((Date.now() - startTime) / 1000)
-
-        //start interval function
-        this.setIntervalId(
-            setInterval(() => {
-
-                console.log("interval()")
-                //get elapsed time since start
-                const elapsed = Math.floor((Date.now() - startTime) / 1000);
-
-                //update timer text
-                this.timerText = elapsed;
-                setTimerText(this.timerText)
-            }, 200)
-        )
-        return true;
+    setCountText(text) {
+        this.countText = text;
     }
 
-    reset(setTimerText) {
-
-        //verify reset of game
-        if (window.confirm("Are you sure?  Current game data will be lost.")) {
-            //stop interval function
-            clearInterval(this.getIntervalId());
-
-            //update timer text
-            setTimerText("Timer")
-
-            return true;
-        }
-        return false;
+    getCountText() {
+        return this.countText
     }
 }
 

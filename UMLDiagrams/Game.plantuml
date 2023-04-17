@@ -1,0 +1,24 @@
+@startuml "Game"
+
+' View
+!include Class/GameReactComponents.plantuml!0
+
+' Controller
+!include Class/GameController.plantuml!0
+
+' Model
+!include Class/GameModel.plantuml!0
+
+' View / Model  interface
+!include Class/GameReactInterface.plantuml!0
+
+
+' Inter-connections
+Board "1" - "1" board
+PlayerStatusTable "1" - "1" playerStatus
+BoardRow "1" - "1" boardRow
+BoardCell "1" - "1" boardCell
+GameStatusTable "1" - "1" gameStatus
+Timer "1" - "1" timerV
+
+@enduml

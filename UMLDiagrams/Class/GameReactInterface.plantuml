@@ -1,0 +1,60 @@
+@startuml Game View (React) / Model Interface
+
+'Acquires react setState functions'
+
+package "View (React) / Model Interface"{
+    reactInterface "1" -- "1" board: contains
+    reactInterface "1" -- "1" gameStatus: contains
+    board "1" -- "size" boardRow: contains
+    reactInterface "1" -- "1" playerStatus: contains
+    boardRow "1" -- "size" boardCell: contains
+    gameStatus "1" -- "1" boardSize: contains
+    gameStatus "1" -- "1" boardColor: contains
+    gameStatus "1" -- "1" timerV: contains
+
+}
+
+class reactInterface{
+    setBoardSize()
+    setBgImage()
+}
+
+class board{
+}
+
+class boardRow{
+    Number size
+    Number index
+}
+
+class boardCell{
+    Number i
+    Number j
+    String bgColor
+    String hoverColor
+    matrixCell c
+}
+
+class gameStatus{
+
+}
+
+class playerStatus{
+
+}
+
+class boardSize{
+    setBoardSize()
+    void setBoardSizeFx()
+}
+
+class boardColor{
+
+}
+
+class timerV{
+    setCountText()
+    setButtonText()
+}
+
+@enduml

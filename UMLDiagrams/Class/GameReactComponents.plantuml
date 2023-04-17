@@ -1,0 +1,59 @@
+@startuml Game React Components
+
+'React Components (View)'
+
+Game "1" *-- "1" Board: contains
+Board "1" *-- "size" BoardRow: contains
+BoardRow "1" *-- "size" BoardCell: contains
+Game "1" *-- "2" PlayerStatusTable: contains
+Game "1" *-- "1" GameStatusTable: contains
+GameStatusTable "1" *-- "1" Timer: contains
+GameStatusTable "1" *-- "1" BoardSize: contains
+GameStatusTable "1" *-- "1" BoardColor: contains
+GameStatusTable "1" *-- "1" BackgroundImage: contains
+
+
+frame "React Components"{
+    component Board{
+        ' createBoardRow(Number size)
+    }
+
+    component Game{
+
+    }
+
+    component BoardRow{
+
+    }
+
+    component BoardCell{
+
+    }
+
+    component PlayerStatusTable{
+
+    }
+
+    component GameStatusTable{
+
+    }
+
+    component Timer{
+
+    }
+
+    component BoardSize{
+
+    }
+
+    component BoardColor{
+
+    }
+
+    component BackgroundImage{
+
+    }
+}
+
+
+@enduml

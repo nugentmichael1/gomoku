@@ -1,4 +1,6 @@
 
+import { useState } from "react"
+
 //Components
 import BoardRow from "./BoardRow"
 
@@ -10,9 +12,12 @@ import FSBulldog from "../Assets/FresnoStateBulldog.png"
 
 
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
-const Board = ({ size, bgImageOn, bgColor, hoverColor, clicked, gameInstance }) => {
+const Board = ({ bgImageOn, bgColor, hoverColor, clicked, gameInstance, obj }) => {
 
+	const [size, setSize] = useState(15)
 
+	obj.setsetSizeFx(setSize);
+	// console.log(obj.setSizeFx)
 
 	//array to hold table row tags
 	const trArr = []
