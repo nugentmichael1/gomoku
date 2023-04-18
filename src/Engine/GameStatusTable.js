@@ -11,8 +11,8 @@ const GameStatusTable = ({ obj, ctrl, view }) => {
 
     return (<>
         <div className="gameStatus">
-            <Timer timer={obj.getTimer()} play={ctrl} timerV={view.getTimer()} />
-            <BoardSize boardSizeInstance={obj.getBoardSizeObj()} />
+            <Timer play={ctrl.getPlay()} timerV={view.getTimer()} />
+            <BoardSize options={ctrl.getOptions()} view={view.getBoardSize()} />
             <BoardBgColor obj={obj.getBoardBgColorObj()} />
             <BgImage />
         </div>

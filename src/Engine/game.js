@@ -5,7 +5,11 @@ import board from "./Classes/board"
 import coordinates from "./coordinates";
 import matrix from "./matrix"
 import gameStatus from "./view/gameStatus"
-import timer from "./Classes/timer"
+
+//model sub-components
+import timerM from "./model/timerM"
+import optionsM from "./model/optionsM"
+
 
 class game {
 
@@ -31,12 +35,6 @@ class game {
 
 
 		this.matrix = new matrix(size);
-		// this.matrix = new Array(size);
-		// for (let i = 0; i < size; i++) {
-		// 	this.matrix[i] = new Array(size);
-		// 	this.matrix[i].fill(0);
-		// }
-
 
 
 		//board/matrix size. default to 15.  can be changed to 19.
@@ -45,22 +43,23 @@ class game {
 		this.gameStatusInstance = new gameStatus(size, this)
 		this.boardInstance = new board(size)
 		this.view = view
-		this.timer = new timer(view)
+		this.timerM = new timerM(view)
+		this.options = new optionsM(this.timerM, view)
 	}
-
-	myTestFunction;
-	gameInProgress = false
 
 	getTimer() {
-		return this.timer;
+		return this.timerM;
 	}
-
 	getGameStatusObj() {
 		return this.gameStatusInstance;
 	}
 	getBoardObj() {
 		return this.boardInstance;
 	}
+	getOptions() {
+		return this.options;
+	}
+
 	getTurn() {
 		return this.turn;
 	}

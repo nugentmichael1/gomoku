@@ -2,6 +2,10 @@
 
 class timerV {
 
+    //These should be set to react useState functions on component render
+    setCounterTextFx = null
+    setButtonTextFx = null
+
     setUseStateFxCounter(useStateFx) {
         this.setCounterTextFx = useStateFx
     }
@@ -10,21 +14,13 @@ class timerV {
         this.setCounterTextFx(text)
     }
 
-    // getIntervalId() {
-    //     return this.intervalId
-    // }
+    setUseStateFxButtonText(useStateFx) {
+        this.setButtonTextFx = useStateFx
+    }
 
-    // start() {
-    //     this.setIntervalId(
-    //         setInterval(() => {
-
-    //         }, 200)
-    //     )
-    // }
-
-    // setIntervalId(id) {
-    //     this.intervalId = id
-    // }
+    setButtonText(text) {
+        this.setButtonTextFx(text)
+    }
 
 }
 

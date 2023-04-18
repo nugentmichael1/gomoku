@@ -20,12 +20,17 @@ import controller from "../Engine/controller/controller"
 //Game view (react-interface)
 import view from "../Engine/view/view"
 
-//Game class (model) initialization
-const gameInstance = new game(15);
 
+//initializations
+//view - acts as a react interface
 const viewInterface = new view()
+//controller
+const ctrl = new controller(new game(1000, viewInterface))
 
-const ctrl = new controller(new game(15, viewInterface))
+
+//Delete this later
+//Game class (model) initialization
+const gameInstance = new game(15, viewInterface);
 
 function Game() {
 
@@ -33,7 +38,7 @@ function Game() {
     <div className='Game'>
 
       {
-        <GameStatusTable obj={gameInstance.getGameStatusObj()} ctrl={ctrl.getPlay()} view={viewInterface.getGameStatus()} />
+        <GameStatusTable obj={gameInstance.getGameStatusObj()} ctrl={ctrl} view={viewInterface.getGameStatus()} />
       }
 
       {

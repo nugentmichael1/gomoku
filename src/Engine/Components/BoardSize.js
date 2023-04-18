@@ -2,16 +2,13 @@
 
 import React, { useState } from 'react'
 
-function BoardSize({ boardSizeInstance }) {
+function BoardSize({ options, view }) {
 
-    //Board Size
-    const [value, setValue] = useState(boardSizeInstance.size);
+    //useState hook
+    const [value, setValue] = useState(view.getDefault());
 
-    const handleChange = (size) => {
-        if (boardSizeInstance.change(size)) {
-            setValue(size)
-        }
-    }
+    //acquire react hook useState setter function
+    view.setUseStateFx(setValue)
 
     return (
         <>
@@ -32,7 +29,7 @@ function BoardSize({ boardSizeInstance }) {
                                 id="radio15"
                                 name="boardSize"
                                 value={15}
-                                onChange={(e) => handleChange(Number(e.target.value))}
+                                onChange={(e) => options.setBoardSize(Number(e.target.value))}
                                 checked={15 === value} />
                             <label htmlFor="radio19">
                                 19x19
@@ -42,7 +39,7 @@ function BoardSize({ boardSizeInstance }) {
                                 id="radio19"
                                 name="boardSize"
                                 value={19}
-                                onChange={(e) => handleChange(Number(e.target.value))}
+                                onChange={(e) => options.setBoardSize(Number(e.target.value))}
                                 checked={19 === value} />
                         </td>
                     </tr>

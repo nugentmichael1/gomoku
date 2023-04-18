@@ -3,37 +3,28 @@
 import { useState, useEffect } from "react";
 
 
-function Timer({ timer, play, timerV }) {
+function Timer({ play, timerV }) {
 
-
-    //Timer
+    //useState Hook - Counter Text
     const [timerCount, setTimerText] = useState("Timer")
+
+    //useState Hook - Button Text
     const [timerButtonText, setTimerButtonText] = useState("Start")
+
+    //onClick Fx
     const timerController = () => {
 
         //Start or Reset path
-        if (timerButtonText === "Start") {
-
-            if (play.start()) {
-                //timer button text
-                setTimerButtonText("Reset")
-            }
-        }
-        else if (timerButtonText === "Reset") {
-
-            if (play.reset()) {
-                //timer button text
-                setTimerButtonText("Start")
-            }
-        }
+        if (timerButtonText === "Start") play.start()
+        else if (timerButtonText === "Reset") play.reset()
     }
 
     //Enable view-interface to control react state
     timerV.setUseStateFxCounter(setTimerText)
+    timerV.setUseStateFxButtonText(setTimerButtonText)
 
     //Ensures interval function is cleared upon component dismount
     useEffect(() => {
-        // return () => { clearInterval(play.getIntervalId()) }
         return () => { play.stop() }
 
     }, [play])

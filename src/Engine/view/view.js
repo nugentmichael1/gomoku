@@ -10,6 +10,8 @@ class view {
     getGameStatus() {
         return this.gameStatus
     }
+
+    
 }
 
 

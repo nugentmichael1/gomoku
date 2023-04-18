@@ -1,25 +1,35 @@
 //Controller class 
 
-import game from "../game"
-
-
 class controller {
     constructor(model) {
         this.model = model
 
-        this.options = new options()
+        this.options = new options(model)
         this.play = new play(model)
     }
 
     getPlay() {
         return this.play
     }
+
+    getOptions() {
+        return this.options
+    }
 }
 
 class options {
+    constructor(model) {
+        this.model = model
+    }
+
     //player hints
     //player color
+
     //board size
+    setBoardSize(size) {
+        this.model.getOptions().setBoardSize(size)
+    }
+    
     //board color
     //board bg image
 }
@@ -30,10 +40,12 @@ class play {
         this.model = model
     }
 
-    //start (timer)
+    //Affects timer among others
     start() {
         this.model.start()
     }
+
+    //reset (timer)
     reset() {
         this.model.getTimer().reset()
     }
@@ -42,7 +54,10 @@ class play {
         this.model.getTimer().stop()
     }
 
-    //click cell (claim vertex)
+    //click cell
+    claimVertex() {
+
+    }
 }
 
 export default controller;
