@@ -38,7 +38,7 @@ function Game() {
     <div className='Game'>
 
       {
-        <GameStatusTable obj={gameInstance.getGameStatusObj()} ctrl={ctrl} view={viewInterface.getGameStatus()} />
+        <GameStatusTable ctrl={ctrl} view={viewInterface.getGameStatus()} />
       }
 
       {
@@ -48,14 +48,14 @@ function Game() {
       }
 
       {
-        <Board
-          bgImageOn={false}
-          // bgColor={boardBGColor}
-          // hoverColor={boardHoverColor}
-          clicked={gameInstance.clicked}
-          gameInstance={gameInstance}
-          obj={gameInstance.getBoardObj()}
-        />
+        // <Board
+        //   bgImageOn={false}
+        //   // bgColor={boardBGColor}
+        //   // hoverColor={boardHoverColor}
+        //   clicked={gameInstance.clicked}
+        //   gameInstance={gameInstance}
+        //   obj={gameInstance.getBoardObj()}
+        // />
       }
 
       {

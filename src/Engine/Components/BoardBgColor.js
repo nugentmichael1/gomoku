@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const buildOptions = (colorChoices) => {
+const buildColorOptions = (colorChoices) => {
 
     const options = []
 
@@ -13,19 +13,13 @@ const buildOptions = (colorChoices) => {
     return options
 }
 
-function BoardBgColor({ obj }) {
+function BoardBgColor({ options, view }) {
 
     //Board Background Color
-    const [standard, setStandard] = useState(obj.getStandard().getHexCode())
+    const [standard, setStandard] = useState(view.getDefault())
 
-    const handleChange = (color) => {
-
-        if (obj.change(color)) {
-
-            setStandard(obj.getStandard().getHexCode())
-        }
-
-    }
+    //Acquire react hook setState function
+    view.setUseStateFunctionSetStandard(setStandard)
 
     return (
         <>
@@ -38,8 +32,8 @@ function BoardBgColor({ obj }) {
                     </tr>
                     <tr>
                         <td>
-                            <select onChange={(e) => handleChange(e.target.value)} value={standard}>
-                                {buildOptions(obj.getColorChoices())}
+                            <select onChange={(e) => options.setBgColor(e.target.value)} value={standard}>
+                                {buildColorOptions(view.getChoices())}
                             </select>
                         </td>
                     </tr>

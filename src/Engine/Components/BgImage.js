@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 
-function BgImage({ bgImage }) {
+function BgImage({ options, view }) {
 
-    const [bgImageOn, setbgImageOn] = useState(false)
+    const [bgImageOn, setBgImageOn] = useState(view.getDefaultOn())
+
+    view.setUseStateFxOn(setBgImageOn)
 
     return (
         <table>
@@ -14,7 +16,7 @@ function BgImage({ bgImage }) {
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" onChange={(e) => setbgImageOn(Boolean(1 - bgImage.on))} checked={bgImageOn} />
+                        <input type="checkbox" onChange={() => options.setBgImageOn(Boolean(1 - bgImageOn))} checked={bgImageOn} />
                     </td>
                 </tr>
             </tbody>

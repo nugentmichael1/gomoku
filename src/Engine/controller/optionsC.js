@@ -14,7 +14,14 @@ class options {
     }
 
     //board color
+    setBgColor(hexCode) {
+        this.model.getOptions().setBgColor(hexCode)
+    }
+
     //board bg image
+    setBgImageOn(bool) {
+        this.model.getOptions().setBgImageOn(bool)
+    }
 }
 
 export default options;

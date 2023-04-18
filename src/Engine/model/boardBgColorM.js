@@ -3,9 +3,12 @@
 import boardBGColors from "../../Configurations/BoardBGColors.json"
 
 
-class boardBgColor {
+class boardBgColorM {
 
-    constructor() {
+    constructor(view) {
+
+        this.view = view
+
         this.colorChoices = new Array(boardBGColors.length)
         boardBGColors.forEach((color, index) => {
             this.colorChoices[index] = new colorChoice(color)
@@ -13,12 +16,15 @@ class boardBgColor {
 
         this.standard = this.colorChoices[0]
         this.hover = this.colorChoices[1]
+
+        //set default color choice
+        this.view.getGameStatus().getBgColor().setDefault(this.standard.getHexCode());
+
+        //load color choices for view
+        this.view.getGameStatus().getBgColor().setChoices(this.colorChoices)
     }
 
-
-
-    change = (hexCode) => {
-
+    set(hexCode) {
         if (hexCode === this.colorChoices[0].hexCode) {
             this.standard = this.colorChoices[0]
             this.hover = this.colorChoices[1]
@@ -28,11 +34,8 @@ class boardBgColor {
             this.hover = this.colorChoices[0]
         }
 
-        //debug
-        // console.log("standard:", this.standard, "hover:", this.hover)
-
-        //can return false instead to deny color change on view and controller
-        return true;
+        //update view
+        this.view.getGameStatus().getBgColor().setStandard(this.standard.getHexCode())
     }
 
     getStandard() {
@@ -50,6 +53,7 @@ class boardBgColor {
 }
 
 class colorChoice {
+    
     constructor(colorObj) {
         this.name = colorObj.name
         this.hexCode = colorObj.hexCode
@@ -63,4 +67,4 @@ class colorChoice {
     }
 }
 
-export default boardBgColor;
+export default boardBgColorM;

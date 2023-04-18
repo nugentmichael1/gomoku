@@ -42,6 +42,8 @@ class game {
 
 		this.gameStatusInstance = new gameStatus(size, this)
 		this.boardInstance = new board(size)
+
+
 		this.view = view
 		this.timerM = new timerM(view)
 		this.options = new optionsM(this.timerM, view)
@@ -50,15 +52,17 @@ class game {
 	getTimer() {
 		return this.timerM;
 	}
+	getOptions() {
+		return this.options;
+	}
+
 	getGameStatusObj() {
 		return this.gameStatusInstance;
 	}
 	getBoardObj() {
 		return this.boardInstance;
 	}
-	getOptions() {
-		return this.options;
-	}
+
 
 	getTurn() {
 		return this.turn;
