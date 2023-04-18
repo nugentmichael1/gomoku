@@ -1,11 +1,14 @@
 //Controller class 
 
+import optionsC from "./optionsC"
+import playC from "./playC"
+
 class controller {
     constructor(model) {
         this.model = model
 
-        this.options = new options(model)
-        this.play = new play(model)
+        this.options = new optionsC(model)
+        this.play = new playC(model)
     }
 
     getPlay() {
@@ -14,49 +17,6 @@ class controller {
 
     getOptions() {
         return this.options
-    }
-}
-
-class options {
-    constructor(model) {
-        this.model = model
-    }
-
-    //player hints
-    //player color
-
-    //board size
-    setBoardSize(size) {
-        this.model.getOptions().setBoardSize(size)
-    }
-    
-    //board color
-    //board bg image
-}
-
-class play {
-
-    constructor(model) {
-        this.model = model
-    }
-
-    //Affects timer among others
-    start() {
-        this.model.start()
-    }
-
-    //reset (timer)
-    reset() {
-        this.model.getTimer().reset()
-    }
-
-    stop() {
-        this.model.getTimer().stop()
-    }
-
-    //click cell
-    claimVertex() {
-
     }
 }
 

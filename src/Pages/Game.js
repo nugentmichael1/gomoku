@@ -49,7 +49,6 @@ function Game() {
 
       {
         <Board
-          size={gameInstance.getGameStatusObj().getBoardSizeObj().getSize()}
           bgImageOn={false}
           // bgColor={boardBGColor}
           // hoverColor={boardHoverColor}

@@ -4,7 +4,7 @@ import player from "./player"
 import board from "./Classes/board"
 import coordinates from "./coordinates";
 import matrix from "./matrix"
-import gameStatus from "./view/gameStatus"
+import gameStatus from "./view/gameStatusV"
 
 //model sub-components
 import timerM from "./model/timerM"
