@@ -8,7 +8,7 @@ function BoardSize({ options, view }) {
     const [value, setValue] = useState(view.getDefault());
 
     //acquire react hook useState setter function
-    view.setUseStateFx(setValue)
+    view.setUseStateFxRadio(setValue)
 
     return (
         <>

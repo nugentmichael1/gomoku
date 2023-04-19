@@ -1,3 +1,4 @@
+//Board view - React component
 
 import { useState } from "react"
 
@@ -9,15 +10,34 @@ import "../CSS/Game/Board.css"
 
 //Assets
 import FSBulldog from "../Assets/FresnoStateBulldog.png"
+import options from "./controller/optionsC"
 
 
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
-const Board = ({ bgImageOn, bgColor, hoverColor, clicked, gameInstance, obj }) => {
+const Board = ({ ctrl, optionsV, clicked, gameInstance }) => {
 
-	const [size, setSize] = useState(15)
+	//useState functions
+	//size
+	const [size, setSize] = useState(optionsV.getBoardSize().getDefault())
+	//Acquire react hook useState set fx
+	optionsV.getBoardSize().setUseStateFxBoard(setSize)
 
-	obj.setsetSizeFx(setSize);
-	// console.log(obj.setSizeFx)
+	//bg image toggle
+	const [bgImageOn, setBgImageOn] = useState(optionsV.getBgImage().getDefaultOn())
+	//Acquire react hook useState set fx
+	optionsV.getBgImage().setUseStateFxBoard(setBgImageOn)
+
+	//color: bg standard
+	const [bgColor, setBgColor] = useState(optionsV.getBgColor().getDefaultStandard())
+	//Acquire react hook useState set fx
+	optionsV.getBgColor().setUseStateFxBoardStandard(setBgColor)
+
+	//color: bg hover
+	const [hoverColor, setHoverColor] = useState(optionsV.getBgColor().getDefaultHover())
+	//Acquire react hook useState set fx
+	optionsV.getBgColor().setUseStateFxBoardHover(setHoverColor)
+
+
 
 	//array to hold table row tags
 	const trArr = []

@@ -16,7 +16,7 @@ const buildColorOptions = (colorChoices) => {
 function BoardBgColor({ options, view }) {
 
     //Board Background Color
-    const [standard, setStandard] = useState(view.getDefault())
+    const [standard, setStandard] = useState(view.getDefaultStandard())
 
     //Acquire react hook setState function
     view.setUseStateFunctionSetStandard(setStandard)

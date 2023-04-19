@@ -25,6 +25,10 @@ class optionsM {
         this.boardSize.set(size)
     }
 
+    getBoardSize() {
+        return this.boardSize.get()
+    }
+
     setBgColor(hexCode) {
         this.bgColor.set(hexCode)
     }

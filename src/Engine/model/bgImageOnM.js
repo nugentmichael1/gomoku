@@ -13,10 +13,8 @@ class bgImageOnM {
     set(bool) {
         this.on = bool
 
-        //update game status table view
+        //update view
         this.view.getGameStatus().getBgImage().setOn(this.on)
-
-        //update board view
 
     }
 }

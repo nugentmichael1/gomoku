@@ -1,3 +1,4 @@
+//Game Timer.  used to stop displayed timer when game restarts or ends.
 
 class timerM {
 
@@ -9,7 +10,7 @@ class timerM {
     //Variable to store interval fx id
     intervalId = null;
 
-    //Boolean to report whether interval fx is in progress or not
+    //Boolean to report whether timer (interval fx) is in progress or not
     active = false;
 
     //default text for counter

@@ -9,12 +9,14 @@ import BgImage from "./Components/BgImage"
 
 const GameStatusTable = ({ ctrl, view }) => {
 
+    const options = ctrl.getOptions()
+
     return (<>
         <div className="gameStatus">
             <Timer play={ctrl.getPlay()} timerV={view.getTimer()} />
-            <BoardSize options={ctrl.getOptions()} view={view.getBoardSize()} />
-            <BoardBgColor options={ctrl.getOptions()} view={view.getBgColor()} />
-            <BgImage options={ctrl.getOptions()} view={view.getBgImage()} />
+            <BoardSize options={options} view={view.getBoardSize()} />
+            <BoardBgColor options={options} view={view.getBgColor()} />
+            <BgImage options={options} view={view.getBgImage()} />
         </div>
 
     </>

@@ -27,6 +27,7 @@ const viewInterface = new view()
 //controller
 const ctrl = new controller(new game(1000, viewInterface))
 
+//Check if user is logged in.  Change P1 name to user's.
 
 //Delete this later
 //Game class (model) initialization
@@ -48,14 +49,14 @@ function Game() {
       }
 
       {
-        // <Board
-        //   bgImageOn={false}
-        //   // bgColor={boardBGColor}
-        //   // hoverColor={boardHoverColor}
-        //   clicked={gameInstance.clicked}
-        //   gameInstance={gameInstance}
-        //   obj={gameInstance.getBoardObj()}
-        // />
+        <Board
+          ctrl={ctrl.getPlay()}
+          optionsV={viewInterface.getGameStatus()}
+          // bgColor={boardBGColor}
+          // hoverColor={boardHoverColor}
+          clicked={gameInstance.clicked}
+          gameInstance={gameInstance}
+        />
       }
 
       {

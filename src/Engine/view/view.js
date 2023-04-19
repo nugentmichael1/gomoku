@@ -3,9 +3,6 @@
 //Game Status Table view react-interface
 import gameStatusV from "./gameStatusV"
 
-//Board view react-interface
-import boardV from "./boardV"
-
 //Player Status Table view react-interface
 import playerV from "./playerV"
 
@@ -14,9 +11,6 @@ class view {
 
         //Game Status Table
         this.gameStatus = new gameStatusV()
-
-        //Board
-        this.board = new boardV()
 
         //Player Status Table array
         this.players = new Array(2)
@@ -27,13 +21,17 @@ class view {
         return this.gameStatus
     }
 
-    getBoard() {
-        return this.board
-    }
-
     getPlayer(index) {
         return this.players[index]
     }
+}
+
+class optionsV{
+
+}
+
+class playV{
+
 }
 
 export default view;

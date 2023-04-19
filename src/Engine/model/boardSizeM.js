@@ -18,34 +18,42 @@ class boardSizeM {
     //set board size
     set(size) {
 
-        //confirm board size change if game is in progress
+        //Case: Game in progress
         if (this.timer.active === true) {
+
+            //confirm board size change to avoid game progress loss
             if (window.confirm("Are you sure?  A board size change will erase current game's data.")) {
 
                 //set new size
                 this.size = size;
 
-                //update view
-                this.updateView()
+                //set new size and update both views
+                this.updateView(size)
 
                 //call model's reset()
 
             }
-            return false;
         }
+        //case: No game in progress
         else {
 
-            //update size value
+            //set new size
             this.size = size;
 
-            //update view
-            this.updateView()
+            //set new size and update both views
+            this.updateView(size)
         }
     }
 
+    //private
     updateView() {
         this.view.getGameStatus().getBoardSize().set(this.size)
     }
+
+    get() {
+        return this.size
+    }
+
 }
 
 export default boardSizeM;

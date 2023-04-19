@@ -18,7 +18,8 @@ class boardBgColorM {
         this.hover = this.colorChoices[1]
 
         //set default color choice
-        this.view.getGameStatus().getBgColor().setDefault(this.standard.getHexCode());
+        this.view.getGameStatus().getBgColor().setDefaultStandard(this.standard.getHexCode());
+        this.view.getGameStatus().getBgColor().setDefaultHover(this.hover.getHexCode());
 
         //load color choices for view
         this.view.getGameStatus().getBgColor().setChoices(this.colorChoices)
@@ -36,6 +37,7 @@ class boardBgColorM {
 
         //update view
         this.view.getGameStatus().getBgColor().setStandard(this.standard.getHexCode())
+        this.view.getGameStatus().getBgColor().setHover(this.hover.getHexCode())
     }
 
     getStandard() {
@@ -53,7 +55,7 @@ class boardBgColorM {
 }
 
 class colorChoice {
-    
+
     constructor(colorObj) {
         this.name = colorObj.name
         this.hexCode = colorObj.hexCode

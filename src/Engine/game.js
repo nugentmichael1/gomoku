@@ -1,10 +1,11 @@
 //game class
 
 import player from "./player"
-import board from "./Classes/board"
+
+
 import coordinates from "./coordinates";
 import matrix from "./matrix"
-import gameStatus from "./view/gameStatusV"
+// import gameStatus from "./view/gameStatusV"
 
 //model sub-components
 import timerM from "./model/timerM"
@@ -24,29 +25,20 @@ class game {
 		this.cWinC = 5;
 		//game completion status: 0 is incomplete, 1 is completed.
 		this.cS = 0;
-		//Game Timer.  used to stop displayed timer when game restarts or ends.
-		//tracks whether timer has started
-		this.timer = null;
-		//create board class object with default size of 15.
-		// this.board = new board(size);
-		//2d array to track token pieces.  createMatrix()
-		//assists moveAnalyze(). 0: unplayed. 1: player1; 2: player2
 
 
-
-		this.matrix = new matrix(size);
 
 
 		//board/matrix size. default to 15.  can be changed to 19.
 		this.size = size;
 
-		this.gameStatusInstance = new gameStatus(size, this)
-		this.boardInstance = new board(size)
-
-
 		this.view = view
 		this.timerM = new timerM(view)
 		this.options = new optionsM(this.timerM, view)
+
+		//2d array to track token pieces.  createMatrix()
+		//assists moveAnalyze(). 0: unplayed. 1: player1; 2: player2
+		this.matrix = new matrix(this.options.getBoardSize());
 	}
 
 	getTimer() {
@@ -56,12 +48,6 @@ class game {
 		return this.options;
 	}
 
-	getGameStatusObj() {
-		return this.gameStatusInstance;
-	}
-	getBoardObj() {
-		return this.boardInstance;
-	}
 
 
 	getTurn() {
@@ -86,7 +72,7 @@ class game {
 		this.playerTurn = 1 - this.playerTurn;
 	}
 	getBoardSize() {
-		return this.board.getSize();
+		return this.options.getBoardSize();
 	}
 	setMatrix(i, j, val) {
 		this.matrix[i][j] = val;

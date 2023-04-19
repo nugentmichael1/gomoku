@@ -3,18 +3,25 @@
 
 class boardSizeV {
 
-    useStateFx = null
+    useStateFxRadio = null
+
+    useStateFxBoard = null
 
     defaultValue = null
 
     //Interface for react hook useState set-function
-    setUseStateFx(fx) {
-        this.useStateFx = fx
+    setUseStateFxRadio(fx) {
+        this.useStateFxRadio = fx
     }
 
-    //Activation of react hook useState set-function
+    setUseStateFxBoard(fx) {
+        this.useStateFxBoard = fx
+    }
+
+    //Activation of react hook useState set-functions
     set(size) {
-        this.useStateFx(size)
+        this.useStateFxRadio(size)
+        this.useStateFxBoard(size)
     }
 
     setDefault(value) {

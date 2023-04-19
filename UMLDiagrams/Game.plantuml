@@ -9,7 +9,7 @@
 ' Model
 !include Class/GameModel.plantuml!0
 
-' View / Model  interface
+' React-interface
 !include Class/GameReactInterface.plantuml!0
 
 
