@@ -31,10 +31,10 @@ class timerM {
             this.countText = elapsed
 
             //debug
-            console.log(elapsed)
+            // console.log(elapsed)
 
             //update view (react-interface class)
-            this.view.getGameStatus().getTimer().setCounterText(elapsed)
+            this.view.getOptions().getTimer().setCounterText(elapsed)
 
         }, 200)
 
@@ -42,7 +42,7 @@ class timerM {
         this.active = true
 
         //Update button text
-        this.view.getGameStatus().getTimer().setButtonText("Reset")
+        this.view.getOptions().getTimer().setButtonText("Reset")
     }
 
     reset() {
@@ -54,10 +54,10 @@ class timerM {
             this.stop()
 
             //update count text
-            this.view.getGameStatus().getTimer().setCounterText("Timer")
+            this.view.getOptions().getTimer().setCounterText("Timer")
 
             //update button text
-            this.view.getGameStatus().getTimer().setButtonText("Start")
+            this.view.getOptions().getTimer().setButtonText("Start")
 
         }
     }
@@ -72,6 +72,9 @@ class timerM {
         this.active = false
     }
 
+    getActive() {
+        return this.active
+    }
 }
 
 export default timerM;

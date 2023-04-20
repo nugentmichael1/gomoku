@@ -4,7 +4,7 @@
 package "Model"{
     game "1" *-- "2" player: contains
     game "1" *-- "1" matrix: contains
-    game "1" *-- "1" configurations : contains
+    game "1" *-- "1" optionsM : contains
     matrix "1" *-- "size" matrixRow: contains
     matrixRow "1" *-- "size" matrixCell: contains
     ' matrix "1" - "1" board:contains
@@ -30,7 +30,7 @@ class player{
     String getColor()
 }
 
-class configurations{
+class optionsM{
     Number size
     Bool bgImage
     String bgColor

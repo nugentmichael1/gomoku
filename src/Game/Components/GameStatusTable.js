@@ -2,10 +2,10 @@
 
 
 //Components
-import Timer from "./Components/Timer"
-import BoardSize from "./Components/BoardSize"
-import BoardBgColor from "./Components/BoardBgColor"
-import BgImage from "./Components/BgImage"
+import Timer from "./Timer"
+import BoardSize from "./BoardSize"
+import BoardBgColor from "./BoardBgColor"
+import BgImage from "./BgImage"
 
 const GameStatusTable = ({ ctrl, view }) => {
 

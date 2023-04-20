@@ -14,7 +14,7 @@ class playC {
 
     //reset (timer)
     reset() {
-        this.model.getTimer().reset()
+        this.model.reset()
     }
 
     stop() {
@@ -22,8 +22,8 @@ class playC {
     }
 
     //click cell
-    claimVertex() {
-
+    claimVertex(i, j) {
+        this.model.clicked(i, j)
     }
 }
 

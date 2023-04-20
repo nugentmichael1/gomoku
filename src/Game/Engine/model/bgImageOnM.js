@@ -5,7 +5,7 @@ class bgImageOnM {
         this.view = view
 
         //set default
-        this.view.getGameStatus().getBgImage().setDefaultOn(defaultValue)
+        this.view.getOptions().getBgImage().setDefaultOn(defaultValue)
     }
 
     on = false
@@ -14,7 +14,7 @@ class bgImageOnM {
         this.on = bool
 
         //update view
-        this.view.getGameStatus().getBgImage().setOn(this.on)
+        this.view.getOptions().getBgImage().setOn(this.on)
 
     }
 }

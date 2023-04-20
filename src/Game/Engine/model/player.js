@@ -4,6 +4,8 @@ import threes from "./threes"
 import fours from "./fours"
 
 class player {
+
+
 	//hint state. 0: no hints; 1: hints.
 	hintState = 0;
 	//keeps track of all 3-long segments for player
@@ -14,12 +16,19 @@ class player {
 	threesCount = 0;
 	//keeps count of all 4-long segments;
 	foursCount = 0;
+
 	name;
-	constructor(player, color) {
+	constructor(player, color, view) {
 		this.player = player;//integer 1 or 2
-		this.color = color;
 		this.name = 'Player ' + player;
+		this.view = view
 	}
+
+	updateTurnDisplay(turn) {
+		this.view.getPlayer([this.player]).setTurnText(turn)
+	}
+
+	
 	addThree(c0, c1, des) {
 		let three = (new threes(c0, c1, des));
 		this.threesCount++;
@@ -56,7 +65,9 @@ class player {
 			}
 		}
 	}
-	remove3s(cClicked) {
+
+
+	remove3s(cClicked, activePlayer) {
 
 		//since js uses associative arrays, the coordinates object can be stringified
 		// and used as a unique key.  could manually create strings, too.
@@ -66,7 +77,7 @@ class player {
 		if (this.threesArr[cordStr] != undefined) {
 
 			//other player's turn
-			if (this.player - 1 != gameInstance.getPlayerTurn()) {
+			if (this.player != activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -185,7 +196,7 @@ class player {
 	}
 	//identify whether the clicked coordinate (cClicked) was a 5-chain hint
 	// need to add overlines possibility to both.
-	remove4s(cClicked) {
+	remove4s(cClicked, activePlayer) {
 
 		//since js uses associative arrays, the coordinates object can be stringified
 		// and used as a unique key.  could manually create strings, too.
@@ -195,7 +206,7 @@ class player {
 		if (this.foursArr[cordStr] != undefined) {
 
 			//other player's turn
-			if (this.player - 1 != gameInstance.getPlayerTurn()) {
+			if (this.player != activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -267,9 +278,9 @@ class player {
 		this.remove3s(clickedCoords);
 		this.remove4s(clickedCoords)
 	}
-	hints() {
+	hints(activePlayer) {
 		this.hintState = 1 - this.hintState;
-		if (gameInstance.getPlayerTurn() == this.player - 1) {
+		if (activePlayer == this.player - 1) {
 			if (this.hintState) this.showHints();
 			else this.hideHints();
 		}

@@ -6,7 +6,7 @@ import BoardCell from "./BoardCell"
 
 function BoardRow(props) {
 
-    const { size, index, bgColor, hoverColor, rowClassName, onClickFx, gameInstance } = props.data;
+    const { playCtrl, size, index, hoverColor, rowClassName } = props.data;
 
     //Array to hold table cell tags
     const tdArr = [];
@@ -17,14 +17,12 @@ function BoardRow(props) {
         //create td element
         tdArr.push(
             <BoardCell
+                playCtrl={playCtrl}
                 i={index}
                 j={j}
-                clicked={onClickFx}
                 className={'col' + j}
                 key={j}
-                bgColor={bgColor}
                 hoverColor={hoverColor}
-                gameInstance={gameInstance}
             />
         )
     }
@@ -32,14 +30,12 @@ function BoardRow(props) {
     //create last column cell with different className to assist css
     tdArr.push(
         <BoardCell
+            playCtrl={playCtrl}
             i={index}
             j={size - 1}
-            clicked={onClickFx}
             className={'colLast'}
             key={'colLast'}
-            bgColor={bgColor}
             hoverColor={hoverColor}
-            gameInstance={gameInstance}
         />
     )
 

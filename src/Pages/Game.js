@@ -4,32 +4,38 @@
 import { React } from 'react'
 
 //Components
-import GameStatusTable from '../Engine/GameStatusTable'
-import PlayerStatusTable from "../Engine/PlayerStatusTable"
-import Board from "../Engine/Board"
+import GameStatusTable from '../Game/Components/GameStatusTable'
+import PlayerStatusTable from "../Game/Components/PlayerStatusTable"
+import Board from "../Game/Components/Board"
 
 //CSS
 import "../CSS/Game/game.css"
 
 //Game class (model) import
-import game from "../Engine/game"
+import game from "../Game/Engine/model/game"
 
 //Game controller
-import controller from "../Engine/controller/controller"
+import controller from "../Game/Engine/controller/controller"
 
 //Game view (react-interface)
-import view from "../Engine/view/view"
+import view from "../Game/Engine/view/view"
 
 
-//initializations
+//Engine initializations
+
 //view - acts as a react interface
 const viewInterface = new view()
-//controller
-const ctrl = new controller(new game(1000, viewInterface))
+
+//model - takes view as dependency injection
+const model = new game(1000, viewInterface)
+
+//controller - takes model as dependency
+const ctrl = new controller(model)
 
 //Check if user is logged in.  Change P1 name to user's.
+const user = {}
 
-//Delete this later
+//Delete this once all references to it are gone
 //Game class (model) initialization
 const gameInstance = new game(15, viewInterface);
 
@@ -39,29 +45,30 @@ function Game() {
     <div className='Game'>
 
       {
-        <GameStatusTable ctrl={ctrl} view={viewInterface.getGameStatus()} />
+        <GameStatusTable ctrl={ctrl} view={viewInterface.getOptions()} />
       }
 
       {
         <PlayerStatusTable
-          num={1}
+          playerV={viewInterface.getPlayer(0)}
+          optionsC={ctrl.getOptions()}
+          id={0}
+          user={user}
         />
       }
 
       {
         <Board
-          ctrl={ctrl.getPlay()}
-          optionsV={viewInterface.getGameStatus()}
-          // bgColor={boardBGColor}
-          // hoverColor={boardHoverColor}
-          clicked={gameInstance.clicked}
-          gameInstance={gameInstance}
+          playCtrl={ctrl.getPlay()}
+          optionsV={viewInterface.getOptions()}
         />
       }
 
       {
         <PlayerStatusTable
-          num={2}
+          playerV={viewInterface.getPlayer(1)}
+          optionsC={ctrl.getOptions()}
+          id={1}
         />
       }
 

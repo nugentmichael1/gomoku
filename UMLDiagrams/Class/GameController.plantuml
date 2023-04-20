@@ -2,7 +2,7 @@
 
 
 package "Controller"{
-    controller "1" -- "1" options: contains
+    controller "1" -- "1" optionsC: contains
     controller "1" -- "1" play: contains
 }
 
@@ -10,7 +10,7 @@ class controller{
 
 }
 
-class options{
+class optionsC{
     setBoardSize(Number)
     setBoardColors(color)
     setBoardBgImage(Boolean)
@@ -20,6 +20,7 @@ class options{
 class play{
     start()
     reset()
+    stop()
     claimVertex(Number i, Number j, player p)
 }
 

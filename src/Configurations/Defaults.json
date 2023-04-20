@@ -1,4 +1,12 @@
 {
     "boardSize": 15,
-    "bgImageOn": false
+    "bgColor": {
+        "name": "CSU, Fresno Blue",
+        "hexCode": "#13284c"
+    },
+    "bgImageOn": false,
+    "playerColor": {
+        "player1": "Black",
+        "player2": "White"
+    }
 }

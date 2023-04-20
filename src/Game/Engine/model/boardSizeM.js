@@ -12,7 +12,7 @@ class boardSizeM {
         this.size = size
 
         //Set board size view/controller component's default value
-        view.getGameStatus().getBoardSize().setDefault(size)
+        view.getOptions().getBoardSize().setDefault(size)
     }
 
     //set board size
@@ -47,7 +47,7 @@ class boardSizeM {
 
     //private
     updateView() {
-        this.view.getGameStatus().getBoardSize().set(this.size)
+        this.view.getOptions().getBoardSize().set(this.size)
     }
 
     get() {

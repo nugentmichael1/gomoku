@@ -5,7 +5,7 @@ import boardSizeV from "./boardSizeV"
 import bgColorV from "./bgColorV";
 import bgImageV from "./bgImageV"
 
-class gameStatusV {
+class optionsV {
 
     constructor() {
 
@@ -35,4 +35,4 @@ class gameStatusV {
     }
 }
 
-export default gameStatusV;
+export default optionsV;

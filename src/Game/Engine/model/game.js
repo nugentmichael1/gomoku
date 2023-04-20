@@ -1,15 +1,12 @@
-//game class
+//game class (model)
 
 import player from "./player"
-
-
 import coordinates from "./coordinates";
 import matrix from "./matrix"
-// import gameStatus from "./view/gameStatusV"
 
 //model sub-components
-import timerM from "./model/timerM"
-import optionsM from "./model/optionsM"
+import timerM from "./timerM"
+import optionsM from "./optionsM"
 
 
 class game {
@@ -18,9 +15,9 @@ class game {
 
 		//current turn, used to track: total turns so far (n-1),
 		// whether game has started (n>0), and
-		this.turn = 0;
+		this.turn = null;
 		//tracks which player's turn: 0=player1, 1=player2. -1: game hasn't started yet.
-		this.playerTurn = 0;
+		this.activePlayer = 0;
 		//connections win condition (connections needed to win)
 		this.cWinC = 5;
 		//game completion status: 0 is incomplete, 1 is completed.
@@ -39,6 +36,10 @@ class game {
 		//2d array to track token pieces.  createMatrix()
 		//assists moveAnalyze(). 0: unplayed. 1: player1; 2: player2
 		this.matrix = new matrix(this.options.getBoardSize());
+
+		this.players = new Array(2)
+		this.players[0] = new player(0, "black", view)
+		this.players[1] = new player(1, "white", view)
 	}
 
 	getTimer() {
@@ -46,6 +47,9 @@ class game {
 	}
 	getOptions() {
 		return this.options;
+	}
+	getPlayer(index) {
+		return this.players[index]
 	}
 
 
@@ -65,11 +69,11 @@ class game {
 	getMatrixValue(i, j) {
 		return this.matrix[i][j];
 	}
-	getPlayerTurn() {
-		return this.playerTurn;
+	getActivePlayer() {
+		return this.activePlayer;
 	}
-	switchPlayerTurn() {
-		this.playerTurn = 1 - this.playerTurn;
+	switchActivePlayer() {
+		this.activePlayer = 1 - this.activePlayer;
 	}
 	getBoardSize() {
 		return this.options.getBoardSize();
@@ -89,8 +93,8 @@ class game {
 		let x, x0, x1, y, y0, y1;
 		x = x0 = x1 = clickedCoords.x;
 		y = y0 = y1 = clickedCoords.y;
-		let pMark = gameInstance.getPlayerTurn() + 1;
-		let pt = gameInstance.getPlayerTurn();
+		let pMark = gameInstance.getActivePlayer() + 1;
+		let pt = gameInstance.getActivePlayer();
 		let bSize = gameInstance.getBoardSize();
 
 		//check horizontal
@@ -185,8 +189,7 @@ class game {
 
 	boardSizeChange(size) {
 
-		//if game is in progress, confirm user understands it will be reset 
-		// upon board size change.
+		//if game is in progress, confirm user understands it will be reset upon board size change.
 		if (this.timer != undefined) {
 			let question = "Change board size to " + size + "?  "
 			let warning = "All progress of current game will be lost."
@@ -218,31 +221,21 @@ class game {
 
 	}
 	start() {
-		console.log("game class start()")
 
+		//game already in progress guard
+		if (this.getTimer().getActive() === true) return
+
+		//start timer
 		this.getTimer().start()
 
-		// if (this.timer == undefined) {
-		// 	gameInstance.incrementTurn();
-		// 	let timerElement = document.getElementById('timer');
-		// 	let buttonElement = document.getElementById('startBut');
-		// 	buttonElement.value = "Restart";
-		// 	buttonElement.onclick = gameInstance.restart;
+		//initialize turn count
+		this.turn = 1
 
-		// 	let p1ColDisp = document.getElementById('p1ColDisp');
-		// 	p1ColDisp.style.color = p[1].color;
-		// 	p1ColDisp.innerText = gameInstance.turn;
+		//update player 1 turn display
+		this.players[0].updateTurnDisplay(this.turn)
 
-		// 	let start = Date.now();
-		// 	//something weird about setInterval required the specific object instead of the class (this) to hold its return value.
-		// 	gameInstance.timer = setInterval(function () {
-		// 		//milliseconds elapsed since start (stackoverflow help)
-		// 		let delta = Date.now() - start;
-		// 		//milliseconds to seconds.
-		// 		timerElement.innerText = Math.floor(delta / 1000);
-		// 	}, 200);
-		// 	gameInstance.playerTurn = 0;
-		// }
+		//set Active Player to player 1
+		this.activePlayer = 0;
 	}
 
 	restart() {
@@ -263,29 +256,29 @@ class game {
 		// called as separate function to access "this" capabilities.
 		// "restart()" is occasionally called from the html's input button,
 		// and not this class, which makes the variables undefined or random.
-		gameInstance.reset();
+		this.reset();
 	}
 
 	// reset all variables to default: start state, completion state, 
-	// playerTurn, turn, timer.
+	// Active Player, turn, timer.
 	reset() {
-		//reset player color display's text to nothing
-		//console.log(this.getPlayerTurn() == 1);
-		//console.log(this.getPlayerTurn());
-		if (this.getPlayerTurn() == 1) {
-			document.getElementById('p2ColDisp').innerText = ' ';
-		}
-		else {
-			document.getElementById('p1ColDisp').innerText = ' ';
-		}
+		//Reset timer
+		this.getTimer().reset()
 
-		this.timer = undefined;
+
+
 		//current turn, can be used to track total turns so far (n-1).
-		this.turn = 0;
+		this.turn = null;
+
+		//reset player color display's text to nothing
+		this.players[this.activePlayer].updateTurnDisplay("")
+
 		//tracks which player's turn: 0=player1, 1=player2. -1: game hasn't started yet.
-		this.playerTurn = 0;
-		//connections win condition (connections needed to win)
+		this.activePlayer = null;
+
+		//completion status
 		this.cS = 0;
+
 		//create board class object with default size of 15.
 		// this.board = new board(this.size);
 		//2d array to track token pieces.  createMatrix()
@@ -323,7 +316,7 @@ class game {
 
 
 		//Verify game is in progress
-		if (this.getTurn() == 0) {
+		if (this.getTurn() === null) {
 			alert('Click \"Start\" button next to timer to begin game.');
 			return;
 		}
@@ -340,14 +333,14 @@ class game {
 			//reset hints for current player since he's already made a decision.
 			//need to remove hints before 3s and 4s are removed so we know where they
 			//are still.
-			if (p[this.getPlayerTurn()].hintState) p[this.getPlayerTurn()].hideHints();
+			if (p[this.getActivePlayer()].hintState) p[this.getActivePlayer()].hideHints();
 
 			//mark the cell as taken 
 			td.className = 'claimed';
 
 			//check who's turn it is, set appropriately colored "Go" piece, 
 			//update player turn message status, and matrix index
-			if (this.getPlayerTurn() == 1) {
+			if (this.getActivePlayer() == 1) {
 				let p1ColDisp = document.getElementById('p1ColDisp');
 				p1ColDisp.style.color = p[1].color;
 				p1ColDisp.innerText = this.getTurn() + 1;
@@ -380,7 +373,7 @@ class game {
 
 			//returns true when a win is detected
 			if (this.moveAnalyze(clickedCoords)) {
-				alert(p[this.getPlayerTurn()].name + ' won!');
+				alert(p[this.getActivePlayer()].name + ' won!');
 				recordWin();
 				this.setCS(1);
 				clearInterval(this.timer);
@@ -400,7 +393,7 @@ class game {
 			p[1].cleanStats(clickedCoords);
 
 			//show hints for next player if it's enabled
-			if (p[1 - this.getPlayerTurn()].hintState) p[1 - this.getPlayerTurn()].showHints();
+			if (p[1 - this.getActivePlayer()].hintState) p[1 - this.getActivePlayer()].showHints();
 
 			//update player displays
 			document.getElementById('p1Threes').innerText = p[0].threesCount;
@@ -409,7 +402,7 @@ class game {
 			document.getElementById('p2Fours').innerText = p[1].foursCount;
 
 			//update which player's turn it is
-			this.switchPlayerTurn();//playerTurn = 1 - playerTurn;
+			this.switchActivePlayer();
 		}
 	}
 }
@@ -513,7 +506,7 @@ function recordWin() {
 	let turn = gameInstance.getTurn();
 
 	//0 means player 2 won, 1 means player 1 won.  It's more like a true/false for "Did player 1 win?"
-	let winner = (gameInstance.getPlayerTurn()) ? 0 : 1;
+	let winner = (gameInstance.getActivePlayer()) ? 0 : 1;
 
 	//debug
 	//console.log(gameTime);

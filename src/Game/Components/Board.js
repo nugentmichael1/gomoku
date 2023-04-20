@@ -6,15 +6,14 @@ import { useState } from "react"
 import BoardRow from "./BoardRow"
 
 //CSS
-import "../CSS/Game/Board.css"
+import "../../CSS/Game/Board.css"
 
 //Assets
-import FSBulldog from "../Assets/FresnoStateBulldog.png"
-import options from "./controller/optionsC"
+import FSBulldog from "../../Assets/FresnoStateBulldog.png"
 
 
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
-const Board = ({ ctrl, optionsV, clicked, gameInstance }) => {
+const Board = ({ playCtrl, optionsV }) => {
 
 	//useState functions
 	//size
@@ -46,13 +45,11 @@ const Board = ({ ctrl, optionsV, clicked, gameInstance }) => {
 	for (let i = 0; i < size - 1; i++) {
 
 		const boardRowProps = {
+			"playCtrl": playCtrl,
 			"size": size,
 			"index": i,
-			"bgColor": bgColor,
 			"hoverColor": hoverColor,
 			"rowClassName": 'row' + i,
-			"onClickFx": clicked,
-			"gameInstance": gameInstance
 		}
 
 		//Array to hold table cell tags
@@ -61,13 +58,11 @@ const Board = ({ ctrl, optionsV, clicked, gameInstance }) => {
 
 	//create and push last row into array
 	const boardRowProps = {
+		"playCtrl": playCtrl,
 		"size": size,
 		"index": size - 1,
-		"bgColor": bgColor,
 		"hoverColor": hoverColor,
 		"rowClassName": 'rowLast',
-		"onClickFx": clicked,
-		"gameInstance": gameInstance
 	}
 	trArr.push(<BoardRow data={boardRowProps} key={size - 1} />)
 	// trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))
