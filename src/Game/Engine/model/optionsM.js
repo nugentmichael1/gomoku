@@ -46,7 +46,9 @@ class optionsM {
 
         //verify opponent is not already associated with desired color
         if (this.playerOptionsArr[1 - id].getColor() === color) {
+
             alert("Opponent already possess that color.  Please choose another or ask him to change first.")
+            
             return
         }
 

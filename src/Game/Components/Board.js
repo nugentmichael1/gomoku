@@ -1,6 +1,6 @@
 //Board view - React component
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 //Components
 import BoardRow from "./BoardRow"
@@ -13,7 +13,7 @@ import FSBulldog from "../../Assets/FresnoStateBulldog.png"
 
 
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
-const Board = ({ playCtrl, optionsV }) => {
+const Board = ({ playCtrl, optionsV, playV }) => {
 
 	//useState functions
 	//size
@@ -36,7 +36,17 @@ const Board = ({ playCtrl, optionsV }) => {
 	//Acquire react hook useState set fx
 	optionsV.getBgColor().setUseStateFxBoardHover(setHoverColor)
 
+	const matrixV = playV.getMatrix()
+	//matrix
+	// const [matrix, setMatrix] = useState()
+	// //Acquire react hook useState set fx
+	// playV.setUseStateFxMatrix(setMatrix)
 
+	// useEffect(() => {
+	// 	console.log("matrix", matrix)
+	// }, [matrix])
+
+	// console.log("render")
 
 	//array to hold table row tags
 	const trArr = []
@@ -50,6 +60,7 @@ const Board = ({ playCtrl, optionsV }) => {
 			"index": i,
 			"hoverColor": hoverColor,
 			"rowClassName": 'row' + i,
+			"matrixRowV": matrixV.getRow(i)
 		}
 
 		//Array to hold table cell tags
@@ -63,6 +74,7 @@ const Board = ({ playCtrl, optionsV }) => {
 		"index": size - 1,
 		"hoverColor": hoverColor,
 		"rowClassName": 'rowLast',
+		"matrixRowV": matrixV.getRow(size - 1)
 	}
 	trArr.push(<BoardRow data={boardRowProps} key={size - 1} />)
 	// trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))
@@ -81,6 +93,7 @@ const Board = ({ playCtrl, optionsV }) => {
 			style={stylePropObj}>
 			<tbody className={'size' + size}>
 				{trArr}
+				{console.log("render inside return")}
 			</tbody>
 		</ table >
 	);

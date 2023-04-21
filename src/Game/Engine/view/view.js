@@ -9,10 +9,13 @@ import playerV from "./playerV"
 class view {
     constructor() {
 
-        //Game Status Table
+        //Options view
         this.optionsV = new optionsV()
 
-        //Player Status Table array
+        //Play view: matrix update
+        this.playV = new playV()
+
+        //Player Options view array
         this.players = new Array(2)
         this.players[0] = new playerV()
         this.players[1] = new playerV()
@@ -25,9 +28,82 @@ class view {
     getPlayer(index) {
         return this.players[index]
     }
+
+    getPlay() {
+        return this.playV
+    }
 }
 
 class playV {
+
+    matrixV = null
+
+    // useStateFxMatrix = null
+
+    // setUseStateFxMatrix(fx) {
+    //     this.useStateFxMatrix = fx
+    // }
+
+    // setMatrix(matrix) {
+    //     console.log("set view - playV")
+    //     this.useStateFxMatrix(matrix)
+    // }
+
+    setMatrixV(size) {
+        this.matrixV = new matrixV(size)
+    }
+
+    getMatrix() {
+        return this.matrixV
+    }
+
+}
+
+class matrixV {
+
+    constructor(size) {
+        this.rows = []
+        for (let i = 0; i < size; i++) {
+            this.rows[i] = new matrixRowV(size)
+        }
+    }
+
+    getRow(i) {
+        return this.rows[i]
+    }
+
+    setCellColor(i, j, color) {
+        this.rows[i].getCellV(j).setColor(color)
+    }
+}
+
+class matrixRowV {
+    constructor(size) {
+        this.cells = []
+        for (let j = 0; j < size; j++) {
+            this.cells[j] = new matrixCellV(size)
+        }
+    }
+
+    getCellV(j) {
+        return this.cells[j]
+    }
+
+}
+
+class matrixCellV {
+    useStateFxColor = null
+    useStateFxText = null
+
+    setUseStateFxColor(fx) {
+        this.useStateFxColor = fx
+    }
+
+    setColor(color) {
+        this.useStateFxColor(color)
+    }
+
+
 
 }
 

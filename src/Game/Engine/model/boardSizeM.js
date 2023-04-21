@@ -21,19 +21,22 @@ class boardSizeM {
         //Case: Game in progress
         if (this.timer.active === true) {
 
-            //confirm board size change to avoid game progress loss
-            if (window.confirm("Are you sure?  A board size change will erase current game's data.")) {
+            // warning that board size change will void game progress
+            const warningMessage = "Are you sure?  A board size change will erase current game's data."
 
-                //set new size
-                this.size = size;
+            //Confirm guard
+            if (!window.confirm(warningMessage)) return
 
-                //set new size and update both views
-                this.updateView(size)
+            //set new size
+            this.size = size;
 
-                //call model's reset()
+            //set new size and update both views
+            this.updateView(size)
 
-            }
+            //call model's reset()
+
         }
+
         //case: No game in progress
         else {
 
@@ -42,6 +45,8 @@ class boardSizeM {
 
             //set new size and update both views
             this.updateView(size)
+
+            //model reset for matrix size change
         }
     }
 

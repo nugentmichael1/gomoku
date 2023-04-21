@@ -35,10 +35,6 @@ const ctrl = new controller(model)
 //Check if user is logged in.  Change P1 name to user's.
 const user = {}
 
-//Delete this once all references to it are gone
-//Game class (model) initialization
-const gameInstance = new game(15, viewInterface);
-
 function Game() {
 
   return (
@@ -61,6 +57,7 @@ function Game() {
         <Board
           playCtrl={ctrl.getPlay()}
           optionsV={viewInterface.getOptions()}
+          playV={viewInterface.getPlay()}
         />
       }
 

@@ -1,7 +1,5 @@
 
 
-import threes from "./threes"
-import fours from "./fours"
 
 class player {
 
@@ -19,18 +17,18 @@ class player {
 
 	name;
 	constructor(player, color, view) {
-		this.player = player;//integer 1 or 2
+		this.id = player;//integer 1 or 2
 		this.name = 'Player ' + player;
 		this.view = view
 	}
 
 	updateTurnDisplay(turn) {
-		this.view.getPlayer([this.player]).setTurnText(turn)
+		this.view.getPlayer([this.id]).setTurnText(turn)
 	}
 
-	
-	addThree(c0, c1, des) {
-		let three = (new threes(c0, c1, des));
+
+	addThree(three) {
+		// let three = (new threes(c0, c1, des));
 		this.threesCount++;
 
 		//if the first possible 4th exists
@@ -77,7 +75,7 @@ class player {
 		if (this.threesArr[cordStr] != undefined) {
 
 			//other player's turn
-			if (this.player != activePlayer) {
+			if (this.id != activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -145,9 +143,9 @@ class player {
 			delete this.threesArr[cordStr];
 		}
 	}
-	addFour(c0, c1, des) {
-		//console.log('addFour()');
-		let four = (new fours(c0, c1, des));
+	addFour(four) {
+
+		// let four = (new fours(c0, c1, des));
 		this.foursCount++;
 
 
@@ -206,7 +204,7 @@ class player {
 		if (this.foursArr[cordStr] != undefined) {
 
 			//other player's turn
-			if (this.player != activePlayer) {
+			if (this.id != activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -280,7 +278,7 @@ class player {
 	}
 	hints(activePlayer) {
 		this.hintState = 1 - this.hintState;
-		if (activePlayer == this.player - 1) {
+		if (activePlayer == this.id - 1) {
 			if (this.hintState) this.showHints();
 			else this.hideHints();
 		}
@@ -325,17 +323,17 @@ class player {
 	}
 	updateName(newName) {
 		this.name = newName;
-		document.getElementById('player' + this.player + 'NameDisplay').innerText = this.name;
+		document.getElementById('player' + this.id + 'NameDisplay').innerText = this.name;
 	}
 	flushStats() {
 		this.threesCount = 0;
 		this.foursCount = 0;
 		this.threesArr = new Array();
 		this.foursArr = new Array();
-		document.getElementById('p' + this.player + 'Hints').checked = false;
-		document.getElementById('p' + this.player + 'Threes').innerText = '';
-		document.getElementById('p' + this.player + 'Fours').innerText = '';
-		document.getElementById('p' + this.player + 'Hints').checked = this.hintState;
+		document.getElementById('p' + this.id + 'Hints').checked = false;
+		document.getElementById('p' + this.id + 'Threes').innerText = '';
+		document.getElementById('p' + this.id + 'Fours').innerText = '';
+		document.getElementById('p' + this.id + 'Hints').checked = this.hintState;
 
 	}
 }

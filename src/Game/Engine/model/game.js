@@ -1,13 +1,13 @@
 //game class (model)
 
-import player from "./player"
-import coordinates from "./coordinates";
-import matrix from "./matrix"
-
 //model sub-components
 import timerM from "./timerM"
 import optionsM from "./optionsM"
-
+import threes from "./threes"
+import fours from "./fours"
+import player from "./player"
+import coordinates from "./coordinates";
+import matrix from "./matrix"
 
 class game {
 
@@ -35,7 +35,7 @@ class game {
 
 		//2d array to track token pieces.  createMatrix()
 		//assists moveAnalyze(). 0: unplayed. 1: player1; 2: player2
-		this.matrix = new matrix(this.options.getBoardSize());
+		this.matrix = new matrix(this.options.getBoardSize(), view);
 
 		this.players = new Array(2)
 		this.players[0] = new player(0, "black", view)
@@ -50,6 +50,9 @@ class game {
 	}
 	getPlayer(index) {
 		return this.players[index]
+	}
+	getActivePlayer() {
+		return this.activePlayer
 	}
 
 
@@ -66,21 +69,14 @@ class game {
 	setCS(val) {
 		this.cS = val;
 	}
-	getMatrixValue(i, j) {
-		return this.matrix[i][j];
-	}
-	getActivePlayer() {
-		return this.activePlayer;
-	}
+
 	switchActivePlayer() {
 		this.activePlayer = 1 - this.activePlayer;
 	}
 	getBoardSize() {
 		return this.options.getBoardSize();
 	}
-	setMatrix(i, j, val) {
-		this.matrix[i][j] = val;
-	}
+
 
 	//checks if a move creates a three, four or five-long segment
 	moveAnalyze(clickedCoords) {
@@ -93,24 +89,43 @@ class game {
 		let x, x0, x1, y, y0, y1;
 		x = x0 = x1 = clickedCoords.x;
 		y = y0 = y1 = clickedCoords.y;
-		let pMark = gameInstance.getActivePlayer() + 1;
-		let pt = gameInstance.getActivePlayer();
-		let bSize = gameInstance.getBoardSize();
+		let pMark = this.getActivePlayer() + 1;
+		let pt = this.getActivePlayer();
+		let bSize = this.options.getBoardSize();
 
 		//check horizontal
-		for (let b = x - 1; b >= 0 && this.matrix[y][b] == pMark; b--) {
+		for (let b = x - 1; b >= 0 && this.matrix.getCellOwner(y, b) === this.getActivePlayer(); b--) {
 			x0 = b;
 		}
-		for (let b = x + 1; b < bSize && this.matrix[y][b] == pMark; b++) {
+		for (let b = x + 1; b < bSize && this.matrix.getCellOwner(y, b) === this.getActivePlayer(); b++) {
 			x1 = b;
 		}
 		//3s check
 		if (x1 - x0 == (firstCondition - 1)) {
-			p[pt].addThree(new coordinates(x0, y), new coordinates(x1, y), 'h');
+
+			p[pt].addThree(
+				new threes(
+					new coordinates(x0, y),
+					new coordinates(x1, y),
+					'h',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				)
+			);
 		}
 		//4s check
 		else if (x1 - x0 == secondCondition - 1) {
-			p[pt].addFour(new coordinates(x0, y), new coordinates(x1, y), 'h');
+			p[pt].addFour(
+				new fours(
+					new coordinates(x0, y),
+					new coordinates(x1, y),
+					'h',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				)
+			);
 		}
 		// 5s/Win Check.  This accomodates overlines since the for-loop above moves as far as possible (ie will go to 6 or more).
 		else if (x1 - x0 == winCondition - 1) {
@@ -120,21 +135,40 @@ class game {
 		//check diagonal: bottom left to top right
 		x0 = x1 = x;
 		y0 = y1 = y;
-		for (let a = y + 1, b = x - 1; a < bSize && b >= 0 && this.matrix[a][b] == pMark; a++, b--) {
+		for (let a = y + 1, b = x - 1; a < bSize && b >= 0 && this.matrix.getCellOwner(a, b) === this.getActivePlayer(); a++, b--) {
 			x0 = b;
 			y0 = a;
 		}
-		for (let a = y - 1, b = x + 1; a >= 0 && b < bSize && this.matrix[a][b] == pMark; a--, b++) {
+		for (let a = y - 1, b = x + 1; a >= 0 && b < bSize && this.matrix.getCellOwner(a, b) === this.getActivePlayer(); a--, b++) {
 			x1 = b;
 			y1 = a;
 		}
 
 		//could also check y0-y1
 		if (x1 - x0 == firstCondition - 1) {
-			p[pt].addThree(new coordinates(x0, y0), new coordinates(x1, y1), 'dUp');
+
+			p[pt].addThree(
+				new threes(
+					new coordinates(x0, y0),
+					new coordinates(x1, y1),
+					'dUp',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				)
+			);
 		}
 		else if (x1 - x0 == secondCondition - 1) {
-			p[pt].addFour(new coordinates(x0, y0), new coordinates(x1, y1), 'dUp');
+			p[pt].addFour(
+				new fours(
+					new coordinates(x0, y0),
+					new coordinates(x1, y1),
+					'dUp',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				)
+			);
 		}
 		else if (x1 - x0 == winCondition - 1) {
 			winStatus = p[pt].name;
@@ -145,21 +179,39 @@ class game {
 		//check diagonal: top left to bottom right
 		x0 = x1 = x;
 		y0 = y1 = y;
-		for (let a = y - 1, b = x - 1; a >= 0 && b >= 0 && this.matrix[a][b] == pMark; a--, b--) {
+		for (let a = y - 1, b = x - 1; a >= 0 && b >= 0 && this.matrix.getCellOwner(a, b) === this.getActivePlayer(); a--, b--) {
 			x0 = b;
 			y0 = a;
 		}
-		for (let a = y + 1, b = x + 1; a < bSize && b < bSize && this.matrix[a][b] == pMark; a++, b++) {
+		for (let a = y + 1, b = x + 1; a < bSize && b < bSize && this.matrix.getCellOwner(a, b) === this.getActivePlayer(); a++, b++) {
 			x1 = b;
 			y1 = a;
 		}
 		//could also check y1-y0
 		if (x1 - x0 == firstCondition - 1) {
-			p[pt].addThree(new coordinates(x0, y0), new coordinates(x1, y1), 'dDown');
+			p[pt].addThree(
+				new threes(
+					new coordinates(x0, y0),
+					new coordinates(x1, y1),
+					'dDown',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				)
+			);
 		}
 		else if (x1 - x0 == secondCondition - 1) {
 			console.log(x0, y0, x1, y1);
-			p[pt].addFour(new coordinates(x0, y0), new coordinates(x1, y1), 'dDown');
+			p[pt].addFour(
+				new fours(
+					new coordinates(x0, y0),
+					new coordinates(x1, y1),
+					'dDown',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				)
+			);
 		}
 		else if (x1 - x0 == winCondition - 1) {
 			winStatus = p[pt].name;
@@ -168,17 +220,34 @@ class game {
 		//check vertical
 		//x0 = x1 = x;//not used
 		y0 = y1 = y;
-		for (let a = y - 1; a >= 0 && this.matrix[a][x] == pMark; a--) {
+		for (let a = y - 1; a >= 0 && this.matrix.getCellOwner(a, x) === this.getActivePlayer(); a--) {
 			y0 = a;
 		}
-		for (let a = y + 1; a < bSize && this.matrix[a][x] == pMark; a++) {
+		for (let a = y + 1; a < bSize && this.matrix.getCellOwner(a, x) === this.getActivePlayer(); a++) {
 			y1 = a;
 		}
 		if (y1 - y0 == firstCondition - 1) {
-			p[pt].addThree(new coordinates(x, y0), new coordinates(x, y1), 'v');
+			p[pt].addThree(
+				new threes(
+					new coordinates(x, y0),
+					new coordinates(x, y1),
+					'v',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				)
+			);
 		}
 		else if (y1 - y0 == secondCondition - 1) {
-			p[pt].addFour(new coordinates(x, y0), new coordinates(x, y1), 'v');
+			p[pt].addFour(
+				new fours(
+					new coordinates(x, y0),
+					new coordinates(x, y1),
+					'v',
+					this.turn,
+					this.matrix,
+					this.getBoardSize()
+				));
 		}
 		else if (y1 - y0 == winCondition - 1) {
 			winStatus = p[pt].name;
@@ -187,39 +256,39 @@ class game {
 		return winStatus;
 	}
 
-	boardSizeChange(size) {
+	// boardSizeChange(size) {
 
-		//if game is in progress, confirm user understands it will be reset upon board size change.
-		if (this.timer != undefined) {
-			let question = "Change board size to " + size + "?  "
-			let warning = "All progress of current game will be lost."
-			if (!window.confirm(question + warning)) {
-				//put radio button back to where it was before user changed it
-				let radioId = "radio" + ((size == 15) ? 19 : 15);
-				document.getElementById(radioId).checked = true;
-				return;
-			}
-			this.size = size;
+	// 	//if game is in progress, confirm user understands it will be reset upon board size change.
+	// 	if (this.timer != undefined) {
+	// 		let question = "Change board size to " + size + "?  "
+	// 		let warning = "All progress of current game will be lost."
+	// 		if (!window.confirm(question + warning)) {
+	// 			//put radio button back to where it was before user changed it
+	// 			let radioId = "radio" + ((size == 15) ? 19 : 15);
+	// 			document.getElementById(radioId).checked = true;
+	// 			return;
+	// 		}
+	// 		this.size = size;
 
-			//resets the clock, board, matrix, and all game variables (except size).
-			this.restart();
-		}
-		else {
-			this.size = size;
-			//remove board's table through dom
-			let boardTbl = document.getElementById('board');
-			boardTbl.parentNode.removeChild(boardTbl);
-			//create new board
-			// this.board = new board(this.size);
-			//new matrix
-			this.matrix = new Array(this.size);
-			for (let i = 0; i < this.size; i++) {
-				this.matrix[i] = new Array(this.size);
-				this.matrix[i].fill(0);
-			}
-		}
+	// 		//resets the clock, board, matrix, and all game variables (except size).
+	// 		this.restart();
+	// 	}
+	// 	else {
+	// 		this.size = size;
+	// 		//remove board's table through dom
+	// 		let boardTbl = document.getElementById('board');
+	// 		boardTbl.parentNode.removeChild(boardTbl);
+	// 		//create new board
+	// 		// this.board = new board(this.size);
+	// 		//new matrix
+	// 		this.matrix = new Array(this.size);
+	// 		for (let i = 0; i < this.size; i++) {
+	// 			this.matrix[i] = new Array(this.size);
+	// 			this.matrix[i].fill(0);
+	// 		}
+	// 	}
+	// }
 
-	}
 	start() {
 
 		//game already in progress guard
@@ -238,34 +307,33 @@ class game {
 		this.activePlayer = 0;
 	}
 
-	restart() {
-		//something weird about setInterval required the specific object instead of the class (this) to hold its return value.
-		clearInterval(gameInstance.timer);
-		gameInstance.timer = undefined;
-		document.getElementById('timer').innerText = 'Timer';
-		let timeButton = document.getElementById('startBut');
-		timeButton.value = "Start";
-		timeButton.onclick = gameInstance.start;
+	// restart() {
+	// 	//something weird about setInterval required the specific object instead of the class (this) to hold its return value.
+	// 	clearInterval(gameInstance.timer);
+	// 	gameInstance.timer = undefined;
+	// 	document.getElementById('timer').innerText = 'Timer';
+	// 	let timeButton = document.getElementById('startBut');
+	// 	timeButton.value = "Start";
+	// 	timeButton.onclick = gameInstance.start;
 
-		//remove old board
-		//remove board's table through dom
-		let board = document.getElementById('board');
-		board.parentNode.removeChild(board);
+	// 	//remove old board
+	// 	//remove board's table through dom
+	// 	let board = document.getElementById('board');
+	// 	board.parentNode.removeChild(board);
 
 
-		// called as separate function to access "this" capabilities.
-		// "restart()" is occasionally called from the html's input button,
-		// and not this class, which makes the variables undefined or random.
-		this.reset();
-	}
+	// 	// called as separate function to access "this" capabilities.
+	// 	// "restart()" is occasionally called from the html's input button,
+	// 	// and not this class, which makes the variables undefined or random.
+	// 	this.reset();
+	// }
 
 	// reset all variables to default: start state, completion state, 
 	// Active Player, turn, timer.
 	reset() {
+
 		//Reset timer
 		this.getTimer().reset()
-
-
 
 		//current turn, can be used to track total turns so far (n-1).
 		this.turn = null;
@@ -281,13 +349,11 @@ class game {
 
 		//create board class object with default size of 15.
 		// this.board = new board(this.size);
-		//2d array to track token pieces.  createMatrix()
-		//assists moveAnalyze(). 0: unplayed. 1: player1; 2: player2
-		this.matrix = new Array(this.size);
-		for (let i = 0; i < this.size; i++) {
-			this.matrix[i] = new Array(this.size);
-			this.matrix[i].fill(0);
-		}
+
+
+
+		//clear matrix with new instantiation of current boardsize
+		this.matrix = new matrix(this.options.getBoardSize(), this.view)
 
 		//reset hints & player stats
 		/*
@@ -308,12 +374,8 @@ class game {
 
 	clicked(i, j) {
 
-		// console.log('clicked function');
-		//console.log(i, j);
-
 		//j and i are flipped to better align with x as horizontal and y as vertical
 		let clickedCoords = new coordinates(j, i);
-
 
 		//Verify game is in progress
 		if (this.getTurn() === null) {
@@ -321,89 +383,104 @@ class game {
 			return;
 		}
 
-		//check matrix for move clearance
-		if (this.getCS() == 0 && gameInstance.getMatrixValue(i, j) == 0) {
-			//get td to be changed
-			let td = document.getElementById(i + '-' + j);
-
-			//set td background to a circle.
-			//td.style.borderRadius = '50% 50%';
+		//Guard: Verify game is not over, and cell is still claimable
+		if (this.getCS() !== 0 || !this.matrix.isCellClaimed(i, j)) return
 
 
-			//reset hints for current player since he's already made a decision.
-			//need to remove hints before 3s and 4s are removed so we know where they
-			//are still.
-			if (p[this.getActivePlayer()].hintState) p[this.getActivePlayer()].hideHints();
+		//get td to be changed
+		let td = document.getElementById(i + '-' + j);
 
-			//mark the cell as taken 
-			td.className = 'claimed';
-
-			//check who's turn it is, set appropriately colored "Go" piece, 
-			//update player turn message status, and matrix index
-			if (this.getActivePlayer() == 1) {
-				let p1ColDisp = document.getElementById('p1ColDisp');
-				p1ColDisp.style.color = p[1].color;
-				p1ColDisp.innerText = this.getTurn() + 1;
-				document.getElementById('p2ColDisp').innerText = ' ';
-				td.style.backgroundColor = p[1].color;
-				td.style.color = p[0].color;//number color
-				td.children[0].style.backgroundColor = p[1].color;
-				td.children[0].style.opacity = "0";
-				td.children[1].style.backgroundColor = p[1].color;
-				td.children[1].style.opacity = "0";
-				this.setMatrix(i, j, 2);
-				td.appendChild(document.createTextNode(gameInstance.getTurn()));
-				td.className = td.className + " p2Color";
-			}
-			else {
-				let p2ColDisp = document.getElementById('p2ColDisp')
-				p2ColDisp.style.color = p[0].color;
-				p2ColDisp.innerText = this.getTurn() + 1;
-				document.getElementById('p1ColDisp').innerText = ' ';
-				td.style.backgroundColor = p[0].color;
-				td.style.color = p[1].color;//number color
-				td.children[0].style.backgroundColor = p[0].color;
-				td.children[0].style.opacity = "0";
-				td.children[1].style.backgroundColor = p[0].color;
-				td.children[1].style.opacity = "0";
-				this.setMatrix(i, j, 1);
-				td.appendChild(document.createTextNode(this.getTurn()));
-				td.className = td.className + " p1Color";
-			}
-
-			//returns true when a win is detected
-			if (this.moveAnalyze(clickedCoords)) {
-				alert(p[this.getActivePlayer()].name + ' won!');
-				recordWin();
-				this.setCS(1);
-				clearInterval(this.timer);
-			}
-			//tie check
-			else if (this.getTurn() == this.board.getSize() ** 2) {
-				//else if (turn++ == bSize ** 2) {
-				alert('Draw!');
-				clearInterval(this.timer);
-			}
-			this.incrementTurn();
+		//set td background to a circle.
+		//td.style.borderRadius = '50% 50%';
 
 
-			//sifts respective player objects' 3s and 4s arrays for any changes
-			// to hints
-			p[0].cleanStats(clickedCoords);
-			p[1].cleanStats(clickedCoords);
+		//reset hints for current player since he's already made a decision.
+		//need to remove hints before 3s and 4s are removed so we know where they
+		//are still.
+		if (p[this.getActivePlayer()].hintState) p[this.getActivePlayer()].hideHints();
 
-			//show hints for next player if it's enabled
-			if (p[1 - this.getActivePlayer()].hintState) p[1 - this.getActivePlayer()].showHints();
+		//mark the cell as taken 
+		td.className = 'claimed';
 
-			//update player displays
-			document.getElementById('p1Threes').innerText = p[0].threesCount;
-			document.getElementById('p2Threes').innerText = p[1].threesCount;
-			document.getElementById('p1Fours').innerText = p[0].foursCount;
-			document.getElementById('p2Fours').innerText = p[1].foursCount;
+		//check who's turn it is, set appropriately colored "Go" piece, 
+		//update player turn message status, and matrix index
 
-			//update which player's turn it is
-			this.switchActivePlayer();
+		//Update players turn message status
+		this.players[1 - this.getActivePlayer()].updateTurnDisplay(this.getTurn())
+		this.players[this.getActivePlayer()].updateTurnDisplay("")
+		//Claim matrix cell
+		this.matrix.setCell(i, j, this.players[this.getActivePlayer()], this.getTurn())
+
+		//debug
+		// this.matrix.print()
+
+		//update board view
+
+		// if (this.getActivePlayer() == 1) {
+		// 	let p1ColDisp = document.getElementById('p1ColDisp');
+		// 	p1ColDisp.style.color = p[1].color;
+		// 	p1ColDisp.innerText = this.getTurn() + 1;
+		// 	document.getElementById('p2ColDisp').innerText = ' ';
+		// 	td.style.backgroundColor = p[1].color;
+		// 	td.style.color = p[0].color;//number color
+		// 	td.children[0].style.backgroundColor = p[1].color;
+		// 	td.children[0].style.opacity = "0";
+		// 	td.children[1].style.backgroundColor = p[1].color;
+		// 	td.children[1].style.opacity = "0";
+		// 	this.matrix.setCell(i, j, 2, this.getTurn());
+		// 	td.appendChild(document.createTextNode(this.getTurn()));
+		// 	td.className = td.className + " p2Color";
+		// }
+		// else {
+		// 	let p2ColDisp = document.getElementById('p2ColDisp')
+		// 	p2ColDisp.style.color = p[0].color;
+		// 	p2ColDisp.innerText = this.getTurn() + 1;
+		// 	document.getElementById('p1ColDisp').innerText = ' ';
+		// 	td.style.backgroundColor = p[0].color;
+		// 	td.style.color = p[1].color;//number color
+		// 	td.children[0].style.backgroundColor = p[0].color;
+		// 	td.children[0].style.opacity = "0";
+		// 	td.children[1].style.backgroundColor = p[0].color;
+		// 	td.children[1].style.opacity = "0";
+		// 	this.matrix.setCell(i, j, 1, this.getTurn());
+		// 	td.appendChild(document.createTextNode(this.getTurn()));
+		// 	td.className = td.className + " p1Color";
+		// }
+
+		//Game completion checks
+		//returns true when a win is detected
+		if (this.moveAnalyze(clickedCoords)) {
+			alert(p[this.getActivePlayer()].name + ' won!');
+			recordWin();
+			this.setCS(1);
+			clearInterval(this.timer);
 		}
+		//tie check
+		else if (this.getTurn() == this.getBoardSize() ** 2) {
+			//else if (turn++ == bSize ** 2) {
+			alert('Draw!');
+			clearInterval(this.timer);
+		}
+
+		this.incrementTurn();
+
+
+		//sifts respective player objects' 3s and 4s arrays for any changes to hints
+		p[0].cleanStats(clickedCoords);
+		p[1].cleanStats(clickedCoords);
+
+		//show hints for next player if it's enabled
+		if (p[1 - this.getActivePlayer()].hintState) p[1 - this.getActivePlayer()].showHints();
+
+		//update player displays
+		document.getElementById('p1Threes').innerText = p[0].threesCount;
+		document.getElementById('p2Threes').innerText = p[1].threesCount;
+		document.getElementById('p1Fours').innerText = p[0].foursCount;
+		document.getElementById('p2Fours').innerText = p[1].foursCount;
+
+		//update which player's turn it is
+		this.switchActivePlayer();
+
 	}
 }
 
@@ -415,36 +492,31 @@ p[1] = new player(2, 'White');
 
 
 
-//game object defined in load().
-let gameInstance;
+// //initialize game board on body tag's load
+// function load() {
+
+// 	gameInstance = new game(15);
+
+// 	//check if user is logged in to update player 1 name.
+// 	let httpRequest = new XMLHttpRequest();
+// 	if (!httpRequest) {
+// 		//console.log('httpRequest instance failed');
+// 		return;
+// 	}
+// 	httpRequest.onreadystatechange = function () {
+// 		if (this.readyState == 4 && this.status == 200) {
+// 			//player 1 name or empty
+// 			let sessionInfo = JSON.parse(this.responseText);
+// 			if (sessionInfo.loggedIn) {
+// 				p[0].updateName(sessionInfo.username);
+// 			}
+// 		}
+// 	};
+// 	httpRequest.open('GET', '../php/loggedInCheck.php');
+// 	httpRequest.send();
 
 
-
-//initialize game board on body tag's load
-function load() {
-
-	gameInstance = new game(15);
-
-	//check if user is logged in to update player 1 name.
-	let httpRequest = new XMLHttpRequest();
-	if (!httpRequest) {
-		//console.log('httpRequest instance failed');
-		return;
-	}
-	httpRequest.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) {
-			//player 1 name or empty
-			let sessionInfo = JSON.parse(this.responseText);
-			if (sessionInfo.loggedIn) {
-				p[0].updateName(sessionInfo.username);
-			}
-		}
-	};
-	httpRequest.open('GET', '../php/loggedInCheck.php');
-	httpRequest.send();
-
-
-}
+// }
 
 //player color update
 function pColUpdate(player, val) {
@@ -503,10 +575,10 @@ function recordWin() {
 	//send game time, and turn count.  username will be taken from session variable
 	// because only logged in players will be recorded
 	let gameTime = document.getElementById('timer').innerText;
-	let turn = gameInstance.getTurn();
+	let turn = this.getTurn();
 
 	//0 means player 2 won, 1 means player 1 won.  It's more like a true/false for "Did player 1 win?"
-	let winner = (gameInstance.getActivePlayer()) ? 0 : 1;
+	let winner = (this.getActivePlayer()) ? 0 : 1;
 
 	//debug
 	//console.log(gameTime);
