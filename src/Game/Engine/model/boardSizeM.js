@@ -2,59 +2,38 @@
 
 
 class boardSizeM {
-    constructor(size, view, timer) {
+    constructor(view, playM, defaultSize) {
 
-        this.timer = timer
+        //use to check if game in progress
+        this.timer = playM.getTimer()
+
+        //used to call reset after size change
+        this.playM = playM
 
         this.view = view
 
         //default
-        this.size = size
+        this.size = defaultSize
 
         //Set board size view/controller component's default value
-        view.getOptions().getBoardSize().setDefault(size)
+        view.getOptions().getBoardSize().setDefault(defaultSize)
     }
 
     //set board size
     set(size) {
 
-        //Case: Game in progress
-        if (this.timer.active === true) {
+        //set new size
+        this.size = size;
 
-            // warning that board size change will void game progress
-            const warningMessage = "Are you sure?  A board size change will erase current game's data."
+        //model reset for matrix size change
+        this.playM.reset(size)
 
-            //Confirm guard
-            if (!window.confirm(warningMessage)) return
-
-            //set new size
-            this.size = size;
-
-            //set new size and update both views
-            this.updateView(size)
-
-            //call model's reset()
-
-        }
-
-        //case: No game in progress
-        else {
-
-            //set new size
-            this.size = size;
-
-            //set new size and update both views
-            this.updateView(size)
-
-            //model reset for matrix size change
-        }
-    }
-
-    //private
-    updateView() {
+        //update view
         this.view.getOptions().getBoardSize().set(this.size)
+
     }
 
+    //who uses this? can we delete it?
     get() {
         return this.size
     }

@@ -2,62 +2,72 @@
 
 
 package "Model"{
-    game "1" *-- "2" player: contains
-    game "1" *-- "1" matrix: contains
-    game "1" *-- "1" optionsM : contains
-    matrix "1" *-- "size" matrixRow: contains
-    matrixRow "1" *-- "size" matrixCell: contains
+    playM "1" *-- "2" player
+    playM "1" *-- "1" matrix
+    game "1" *-- "1" optionsM
+    matrix "1" *-- "size" matrixRow
+    matrixRow "1" *-- "size" matrixCell
     ' matrix "1" - "1" board:contains
     ' board "1" *-- "size" boardRow: contains
     ' boardRow "1" *-- "size" boardCell: contains
     ' matrixCell <. boardCell: Dependency
-    game "1" -- "1" timerM: contains
+    game "1" *-- "1" playM
+    playM "1" *-- "1" timerM
+    player "1" *-- "1" playerOptions
+    optionsM "1" .* "1" playM: dependency
+}
+
+class playM{
+    void moveAnalyze()
+    player activePlayer
+    void claimVertex(i, j)
+    Number turn
 }
 
 class game {
-    Number turn
-    player playerTurn
-    void setBoardSize()
-    void clicked(Number i, Number j)
-    void moveAnalyze()
 }
 
 class player{
-    String name
-    String color
-    Bool hints
     Number id
-    String getColor()
 }
 
 class optionsM{
-    Number size
+    Number boardSize
     Bool bgImage
     String bgColor
+    void setBoardSize()
+    void setBgImageOn()
+    void setBgColor()
 }
 
 class timerM{
     Number elapsed
-    Boolean running
+    Boolean active
 }
 
 class matrix{
-    Array[] cells
-    setCell()
+    matrixRow[] rows
+    setCell(i,j,player,turn)
 }
 
 class matrixRow{
-    matrixCell cell
-    getCell()
+    matrixCell[] cells
+    getCell(j)
 }
 
 class matrixCell{
-    Bool claimed
     player owner
     Number turnClaimed
     player getOwner()
 }
 
-
+class playerOptions{
+    String name
+    String color
+    Bool hints
+    void setHints()
+    void setColor()
+    String getColor()
+}
 
 @enduml

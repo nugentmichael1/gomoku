@@ -46,20 +46,14 @@ class timerM {
     }
 
     reset() {
+        //stop interval function, set "active" to false
+        this.stop()
 
-        //ask user to confirm reset of game
-        if (window.confirm("Are you sure?  Current game data will be lost.")) {
+        //update count text
+        this.view.getOptions().getTimer().setCounterText("Timer")
 
-            //stop interval function, set "active" to false
-            this.stop()
-
-            //update count text
-            this.view.getOptions().getTimer().setCounterText("Timer")
-
-            //update button text
-            this.view.getOptions().getTimer().setButtonText("Start")
-
-        }
+        //update button text
+        this.view.getOptions().getTimer().setButtonText("Start")
     }
 
     //used in this.reset() and for game page unmount

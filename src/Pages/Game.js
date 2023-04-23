@@ -27,7 +27,7 @@ import view from "../Game/Engine/view/view"
 const viewInterface = new view()
 
 //model - takes view as dependency injection
-const model = new game(1000, viewInterface)
+const model = new game(viewInterface)
 
 //controller - takes model as dependency
 const ctrl = new controller(model)

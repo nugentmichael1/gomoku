@@ -11,10 +11,14 @@ class playerOptionsM {
         //Set defaults
         this.view.getPlayer(id).setDefaultColor(this.color)
         this.view.getPlayer(1 - id).setDefaultOpponentColor(this.color)
+
+        //hints default
+        this.hints = false
     }
 
     //hints on/off
     setHints(value) {
+        this.hints = value
         this.view.getPlayer(this.id).setHints(value)
     }
 

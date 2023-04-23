@@ -16,10 +16,11 @@ class player {
 	foursCount = 0;
 
 	name;
-	constructor(player, color, view) {
+	constructor(player, view) {
 		this.id = player;//integer 1 or 2
 		this.name = 'Player ' + player;
 		this.view = view
+		console.log("player's view", view)
 	}
 
 	updateTurnDisplay(turn) {
@@ -326,14 +327,15 @@ class player {
 		document.getElementById('player' + this.id + 'NameDisplay').innerText = this.name;
 	}
 	flushStats() {
-		this.threesCount = 0;
-		this.foursCount = 0;
-		this.threesArr = new Array();
-		this.foursArr = new Array();
-		document.getElementById('p' + this.id + 'Hints').checked = false;
-		document.getElementById('p' + this.id + 'Threes').innerText = '';
-		document.getElementById('p' + this.id + 'Fours').innerText = '';
-		document.getElementById('p' + this.id + 'Hints').checked = this.hintState;
+
+		// this.threesCount = 0;
+		// this.foursCount = 0;
+		// this.threesArr = new Array();
+		// this.foursArr = new Array();
+		// document.getElementById('p' + this.id + 'Hints').checked = false;
+		// document.getElementById('p' + this.id + 'Threes').innerText = '';
+		// document.getElementById('p' + this.id + 'Fours').innerText = '';
+		// document.getElementById('p' + this.id + 'Hints').checked = this.hintState;
 
 	}
 }

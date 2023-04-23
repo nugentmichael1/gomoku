@@ -5,10 +5,9 @@ import playC from "./playC"
 
 class controller {
     constructor(model) {
-        this.model = model
 
         this.options = new optionsC(model)
-        this.play = new playC(model)
+        this.play = new playC(model.getPlay())
     }
 
     getPlay() {

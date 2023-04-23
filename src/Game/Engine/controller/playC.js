@@ -3,27 +3,28 @@
 
 class playC {
 
-    constructor(model) {
-        this.model = model
+    constructor(playM) {
+        this.playM = playM
     }
 
     //Affects timer among others
     start() {
-        this.model.start()
+        this.playM.start()
     }
 
     //reset (timer)
     reset() {
-        this.model.reset()
+        this.playM.reset()
     }
 
+    //stop timer.  used to clearInterval() on abrupt react component unmounts
     stop() {
-        this.model.getTimer().stop()
+        this.playM.getTimer().stop()
     }
 
     //click cell
     claimVertex(i, j) {
-        this.model.clicked(i, j)
+        this.playM.clicked(i, j)
     }
 }
 

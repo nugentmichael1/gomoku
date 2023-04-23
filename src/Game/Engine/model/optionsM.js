@@ -11,11 +11,11 @@ import defaults from "../../../Configurations/Defaults.json"
 
 class optionsM {
 
-    constructor(timer, view) {
+    constructor(playM, view) {
 
         this.view = view
 
-        this.boardSize = new boardSizeM(Number(defaults.boardSize), view, timer)
+        this.boardSize = new boardSizeM(view, playM, Number(defaults.boardSize))
 
         this.bgColor = new bgColorM(view, defaults.bgColor)
 
@@ -48,7 +48,7 @@ class optionsM {
         if (this.playerOptionsArr[1 - id].getColor() === color) {
 
             alert("Opponent already possess that color.  Please choose another or ask him to change first.")
-            
+
             return
         }
 
