@@ -6,6 +6,9 @@ import optionsV from "./optionsV"
 //Player Status Table view react-interface
 import playerV from "./playerV"
 
+//Matrix view - used by playV (not to be confused with playerV)
+import matrixV from "./matrixV"
+
 class view {
     constructor() {
 
@@ -59,52 +62,5 @@ class playV {
 
 }
 
-class matrixV {
-
-    constructor(size) {
-        this.rows = []
-        for (let i = 0; i < size; i++) {
-            this.rows[i] = new matrixRowV(size)
-        }
-    }
-
-    getRow(i) {
-        return this.rows[i]
-    }
-
-    setCellColor(i, j, color) {
-        this.rows[i].getCellV(j).setColor(color)
-    }
-}
-
-class matrixRowV {
-    constructor(size) {
-        this.cells = []
-        for (let j = 0; j < size; j++) {
-            this.cells[j] = new matrixCellV(size)
-        }
-    }
-
-    getCellV(j) {
-        return this.cells[j]
-    }
-
-}
-
-class matrixCellV {
-    useStateFxColor = null
-    useStateFxText = null
-
-    setUseStateFxColor(fx) {
-        this.useStateFxColor = fx
-    }
-
-    setColor(color) {
-        this.useStateFxColor(color)
-    }
-
-
-
-}
 
 export default view;

@@ -4,7 +4,6 @@
 import boardSizeM from "./boardSizeM"
 import bgColorM from "./boardBgColorM"
 import bgImageOn from "./bgImageOnM"
-import playerOptionsM from "./playerOptionsM"
 
 //configurations - defaults
 import defaults from "../../../Configurations/Defaults.json"
@@ -25,9 +24,6 @@ class optionsM {
 
         playM.getPlayer(0).getOptions().setDefaultColor(defaults.playerColor.player1)
         playM.getPlayer(1).getOptions().setDefaultColor(defaults.playerColor.player2)
-        // this.playerOptionsArr = []
-        // this.playerOptionsArr[0] = new playerOptionsM(view, defaults.playerColor.player1, 0)
-        // this.playerOptionsArr[1] = new playerOptionsM(view, defaults.playerColor.player2, 1)
     }
 
     setBoardSize(size) {
@@ -54,20 +50,14 @@ class optionsM {
             alert("Opponent already possess that color.  Please choose another or ask him to change first.")
 
             return
-            // if(this.playerOptionsArr[1 - id].getColor() === color) {
-
-            // alert("Opponent already possess that color.  Please choose another or ask him to change first.")
-
-            // return
         }
 
         //set new color
-        // this.playerOptionsArr[id].setColor(color)
         this.playM.getPlayer(id).getOptions().setColor(color)
     }
 
     setHints(playerId, value) {
-        this.playerOptionsArr[playerId].setHints(value)
+        this.playM.getPlayer(playerId).getOptions().setHints(value)
     }
 }
 

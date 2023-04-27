@@ -317,8 +317,6 @@ class playM {
             this.view
         )
 
-        console.log(this.matrix)
-
         if (this.timerM.getActive() === false) return
 
         //Reset timer

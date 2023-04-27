@@ -5,8 +5,10 @@ import React, { useState } from 'react'
 
 const BoardCell = ({ playCtrl, i, j, className, hoverColor, cellV }) => {
 
+    //Boolean used to set hover color
     const [hover, setHover] = useState(false)
 
+    //Background color for when claimed by player
     const [color, setColor] = useState(null)
     //Acquire useState fx
     cellV.setUseStateFxColor(setColor)
@@ -14,25 +16,13 @@ const BoardCell = ({ playCtrl, i, j, className, hoverColor, cellV }) => {
     //Set table cell to hover color or inherit color.
     const styleBGColor = { backgroundColor: (color !== null) ? color : hover ? hoverColor : "inherit" };
 
-    //Set div lines (cross) to hover color or grey.
-    const styleDivColor = { backgroundColor: (color !== null) ? color : hover ? hoverColor : "#ced1d4" }
+    //Set div lines (cross) to hidden, or hover color or grey.
+    const styleDivColor = (color !== null) ? { display: "none" } : { backgroundColor: hover ? hoverColor : "#ced1d4" }
 
+    //Turn-claimed text
     const [text, setText] = useState("")
-
-
-    const buildTd = () => {
-
-        return <td
-            className={className}
-            id={i + '-' + j}
-            onClick={playCtrl.claimVertex(i, j)}
-            key={i + '-' + j}
-            style={styleBGColor}
-
-        >
-        </td>
-    }
-
+    //Acquire useState Fx
+    cellV.setUseStateFxText(setText)
 
     return (
         <td
@@ -53,7 +43,7 @@ const BoardCell = ({ playCtrl, i, j, className, hoverColor, cellV }) => {
                 style={styleDivColor}
                 className='horizontal'>
             </div>
-        </td>
+        </td >
     )
 }
 

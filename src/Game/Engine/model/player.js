@@ -16,11 +16,8 @@ class player {
 	//keeps count of all 4-long segments;
 	foursCount = 0;
 
-	name;
-
-	color = "green"
 	getColor() {
-		return this.color
+		return this.options.getColor()
 	}
 	getOptions() {
 		return this.options

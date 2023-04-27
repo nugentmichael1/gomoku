@@ -39,6 +39,7 @@ class matrix {
 
         //set view
         this.view.getPlay().getMatrix().setCellColor(i, j, player.getColor())
+        this.view.getPlay().getMatrix().setCellText(i, j, turn)
 
     }
 
@@ -60,6 +61,7 @@ class matrix {
         for (let i = 0; i < this.size; i++) {
             for (let j = 0; j < this.size; j++) {
                 this.view.getPlay().getMatrix().setCellColor(i, j, null)
+                this.view.getPlay().getMatrix().setCellText(i, j, null)
             }
         }
     }
