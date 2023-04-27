@@ -2,47 +2,59 @@ import { fireEvent, render, waitFor, screen, within } from "@testing-library/rea
 import '@testing-library/jest-dom'
 import Game from "../Pages/Game"
 
-test("Timer text renders 'Timer' on Game page load", () => {
-    const { getByText } = render(<Game />);
 
-    const timer = getByText("Timer")
+describe("Timer component", () => {
 
-    expect(timer).toBeVisible()
-});
+    describe("Initialization", () => {
 
-test("Timer text renders '0' after 'Start' button clicked", async () => {
+        test("Timer text renders 'Timer' on Game page load", () => {
+            const { getByText } = render(<Game />);
 
-    const { getByText, getByRole } = render(<Game />)
+            const timer = getByText("Timer")
 
-    const startButton = getByText(/Start/)
+            expect(timer).toBeVisible()
+        });
+    })
 
-    fireEvent.click(startButton)
+    describe("Timer text counts up", () => {
 
-    await waitFor(() => {
+        test("Timer text sequentially renders '0', '1', and '2' after 'Start' button clicked", async () => {
 
-        const timer = getByRole("timer")
+            const { getByText, getByRole } = render(<Game />)
 
-        const timerText = within(timer).getByText(0)
+            const startButton = getByText(/Start/)
 
-        expect(timerText).toBeVisible()
-    }
-    )
-});
+            fireEvent.click(startButton)
 
-test("Timer text renders '1' after 'Start' button clicked", async () => {
-    const { getByText, getByRole } = render(<Game />)
+            await waitFor(() => {
 
-    const startButton = getByText(/Start/)
+                const timer = getByRole("timer")
 
-    fireEvent.click(startButton)
+                const timerText = within(timer).getByText(0)
 
-    await waitFor(() => {
+                expect(timerText).toBeVisible()
+            }
+            )
+            await waitFor(() => {
 
-        const timer = getByRole("timer")
+                const timer = getByRole("timer")
 
-        const timerText = within(timer).getByText(1)
+                const timerText = within(timer).getByText(1)
 
-        expect(timerText).toBeVisible()
-    }, { timeout: 2000 }
-    )
+                expect(timerText).toBeVisible()
+            }
+            )
+            await waitFor(() => {
+
+                const timer = getByRole("timer")
+
+                const timerText = within(timer).getByText(2)
+
+                expect(timerText).toBeVisible()
+            }
+            )
+        });
+    })
+
 })
+
