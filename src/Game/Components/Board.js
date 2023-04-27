@@ -93,7 +93,6 @@ const Board = ({ playCtrl, optionsV, playV }) => {
 			style={stylePropObj}>
 			<tbody className={'size' + size}>
 				{trArr}
-				{console.log("render inside return")}
 			</tbody>
 		</ table >
 	);

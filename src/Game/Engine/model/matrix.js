@@ -4,6 +4,8 @@
 class matrix {
     constructor(size, view) {
 
+        this.size = size
+
         this.view = view
 
         this.rows = []
@@ -20,7 +22,7 @@ class matrix {
 
 
         //set default matrix view
-        this.view.getPlay().setMatrixV(size)
+        // this.view.getPlay().setMatrixV(size)
     }
 
     //i=board row, which is like a y-axis, but counts down from top instead of up from bottom
@@ -36,7 +38,7 @@ class matrix {
         this.rows[i].getCell(j).setCell(player, turn)
 
         //set view
-        this.view.getPlay().getMatrix().setCellColor(i, j, "yellow")
+        this.view.getPlay().getMatrix().setCellColor(i, j, player.getColor())
 
     }
 
@@ -54,6 +56,17 @@ class matrix {
         })
     }
 
+    clearView() {
+        for (let i = 0; i < this.size; i++) {
+            for (let j = 0; j < this.size; j++) {
+                this.view.getPlay().getMatrix().setCellColor(i, j, null)
+            }
+        }
+    }
+
+    getSize() {
+        return this.size
+    }
 
 }
 

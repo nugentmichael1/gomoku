@@ -1,5 +1,6 @@
 
 
+import playerOptions from "./playerOptionsM"
 
 class player {
 
@@ -7,24 +8,35 @@ class player {
 	//hint state. 0: no hints; 1: hints.
 	hintState = 0;
 	//keeps track of all 3-long segments for player
-	threesArr = new Array();
+	threesArr = [];
 	//keeps track of all 4-long segments
-	foursArr = new Array();
+	foursArr = [];
 	//keeps count of all 3-long segments;
 	threesCount = 0;
 	//keeps count of all 4-long segments;
 	foursCount = 0;
 
 	name;
+
+	color = "green"
+	getColor() {
+		return this.color
+	}
+	getOptions() {
+		return this.options
+	}
+
 	constructor(player, view) {
 		this.id = player;//integer 1 or 2
 		this.name = 'Player ' + player;
 		this.view = view
-		console.log("player's view", view)
+
+		this.options = new playerOptions(view, null, this.id)
+
 	}
 
 	updateTurnDisplay(turn) {
-		this.view.getPlayer([this.id]).setTurnText(turn)
+		this.view.getPlayer(this.id).setTurnText(turn)
 	}
 
 

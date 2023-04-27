@@ -8,9 +8,7 @@ class playerOptionsM {
         this.color = defaultColor
         this.id = id
 
-        //Set defaults
-        this.view.getPlayer(id).setDefaultColor(this.color)
-        this.view.getPlayer(1 - id).setDefaultOpponentColor(this.color)
+
 
         //hints default
         this.hints = false
@@ -35,6 +33,18 @@ class playerOptionsM {
     getColor() {
         return this.color
     }
+
+    //Set defaults
+    setDefaultColor(color) {
+        this.color = color
+        this.view.getPlayer(this.id).setDefaultColor(this.color)
+    }
+
+    setDefaultTextColor(color) {
+        this.view.getPlayer(1 - this.id).setDefaultOpponentColor(color)
+    }
+
+
 
 }
 export default playerOptionsM;

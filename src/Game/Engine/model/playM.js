@@ -23,7 +23,10 @@ class playM {
         // this.players = new Array(2)
         // this.players[0] = new player(0, view)
         // this.players[1] = new player(1, view)
-
+        //Player who makes move
+        this.activePlayer = this.players[0];
+        //Player who is waiting
+        this.passivePlayer = this.players[1];
 
         //2d array to track token pieces.  createMatrix()
         //assists moveAnalyze(). 0: unplayed. 1: player1; 2: player2
@@ -39,10 +42,7 @@ class playM {
     // whether game has started (n>0), and
     turn = null;
 
-    //Player who makes move
-    activePlayer = null;
-    //Player who is waiting
-    passivePlayer = null;
+
 
     //connections win condition (connections needed to win)
     cWinC = 5;
@@ -309,11 +309,15 @@ class playM {
             !window.confirm("Are you sure?  Current game data will be lost.")) return
 
 
+        this.matrix.clearView()
+
         //clear matrix with new instantiation of current boardsize
         this.matrix = new matrix(
-            (size === null) ? this.matrix.size : size,
+            (size === undefined) ? this.matrix.getSize() : size,
             this.view
         )
+
+        console.log(this.matrix)
 
         if (this.timerM.getActive() === false) return
 
@@ -325,10 +329,6 @@ class playM {
 
         //reset player color display's text to nothing
         this.activePlayer.updateTurnDisplay("")
-
-        //tracks which player's turn: 0=player1, 1=player2. -1: game hasn't started yet.
-        this.activePlayer = null;
-        this.passivePlayer = null;
 
         //completion status
         this.cS = 0;
@@ -365,18 +365,18 @@ class playM {
         //j and i are flipped to better align with x as horizontal and y as vertical
         let clickedCoords = new coordinates(j, i);
 
-        //Verify game is in progress
+        //Guard: Verify game is in progress
         if (this.getTurn() === null) {
             alert('Click "Start" button next to timer to begin game.');
             return;
         }
 
-        //Guard: Verify game is not over, and cell is still claimable
+        //Guard: Verify game is not over, and clicked cell is still claimable
         if (this.getCS() !== 0 || !this.matrix.isCellClaimed(i, j)) return
 
 
         //get td to be changed
-        let td = document.getElementById(i + '-' + j);
+        // let td = document.getElementById(i + '-' + j);
 
         //set td background to a circle.
         //td.style.borderRadius = '50% 50%';
@@ -388,7 +388,7 @@ class playM {
         if (this.activePlayer.hintState) this.activePlayer.hideHints();
 
         //mark the cell as taken 
-        td.className = 'claimed';
+        // td.className = 'claimed';
 
         //check who's turn it is, set appropriately colored "Go" piece, 
         //update player turn message status, and matrix index
@@ -473,6 +473,39 @@ class playM {
 
         //update which player's turn it is
         this.switchActivePlayer();
+
+    }
+
+    recordWin() {
+        // let httpRequest = new XMLHttpRequest();
+        // if (!httpRequest) {
+        //     console.log('httpRequest instance failed in recordWin()');
+        //     return false;
+        // }
+
+        // httpRequest.onreadystatechange = function () {
+        //     if (this.readyState == 4 && this.status == 200) {
+        //         //console.log(this.responseText);
+        //     }
+        // }
+        // httpRequest.open('POST', '../php/recordGame.php');
+        // httpRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+        // //send game time, and turn count.  username will be taken from session variable
+        // // because only logged in players will be recorded
+        // let gameTime = document.getElementById('timer').innerText;
+        // let turn = this.getTurn();
+
+        // //0 means player 2 won, 1 means player 1 won.  It's more like a true/false for "Did player 1 win?"
+        // let winner = (this.getActivePlayer()) ? 0 : 1;
+
+        // //debug
+        // //console.log(gameTime);
+        // //console.log(turn);
+        // //console.log(winner);
+        // let postString = 'player1=' + p[0].name + '&time=' + gameTime + '&turn=' + turn;
+        // postString += '&winner=' + winner + '&player2=' + p[1].name;
+        // httpRequest.send(postString);
 
     }
 }

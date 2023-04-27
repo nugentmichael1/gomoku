@@ -33,7 +33,7 @@ function Timer({ play, timerV }) {
         <table>
             <tbody>
                 <tr>
-                    <th id="timer">
+                    <th id="timer" role="timer">
                         {timerCount}
                     </th>
                 </tr>

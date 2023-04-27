@@ -154,37 +154,6 @@ class game {
 // }
 
 
-// function recordWin() {
-// 	let httpRequest = new XMLHttpRequest();
-// 	if (!httpRequest) {
-// 		console.log('httpRequest instance failed in recordWin()');
-// 		return false;
-// 	}
 
-// 	httpRequest.onreadystatechange = function () {
-// 		if (this.readyState == 4 && this.status == 200) {
-// 			//console.log(this.responseText);
-// 		}
-// 	}
-// 	httpRequest.open('POST', '../php/recordGame.php');
-// 	httpRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-
-// 	//send game time, and turn count.  username will be taken from session variable
-// 	// because only logged in players will be recorded
-// 	let gameTime = document.getElementById('timer').innerText;
-// 	let turn = this.getTurn();
-
-// 	//0 means player 2 won, 1 means player 1 won.  It's more like a true/false for "Did player 1 win?"
-// 	let winner = (this.getActivePlayer()) ? 0 : 1;
-
-// 	//debug
-// 	//console.log(gameTime);
-// 	//console.log(turn);
-// 	//console.log(winner);
-// 	let postString = 'player1=' + p[0].name + '&time=' + gameTime + '&turn=' + turn;
-// 	postString += '&winner=' + winner + '&player2=' + p[1].name;
-// 	httpRequest.send(postString);
-
-// }
 
 export default game;

@@ -36,7 +36,7 @@ class view {
 
 class playV {
 
-    matrixV = null
+    matrixV = new matrixV(19)
 
     // useStateFxMatrix = null
 
