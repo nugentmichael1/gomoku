@@ -26,12 +26,17 @@ class playerOptionsM {
         //update view
         //Player color
         this.view.getPlayer(this.id).setColor(this.color)
-        //Opponent's turn text
-        this.view.getPlayer(1 - this.id).setOpponentColor(this.color)
+
+        // //Opponent's turn text
+        // this.view.getPlayer(1 - this.id).setOpponentColor(this.color)
     }
 
     getColor() {
         return this.color
+    }
+
+    setTextColor(color) {
+        this.textColor = color
     }
 
     //Set defaults

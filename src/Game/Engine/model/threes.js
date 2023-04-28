@@ -53,7 +53,7 @@ class threes {
             //debug
             //console.log(gameInstance.getMatrixValue(y0, x0));
 
-            if (matrix.getValue(y0, x0) == 0) {//coordinate availability check
+            if (matrix.getCellOwner(y0, x0) === null) {//coordinate availability check
                 this.c4th0 = new coordinates(x0, y0);
 
                 //debug
@@ -63,7 +63,7 @@ class threes {
         if (x1 >= 0 && y1 >= 0
             && x1 < boardSize &&
             y1 < boardSize) {//inside board boundaries check
-            if (matrix.getValue(y1, x1) == 0) {//coordinate availability check
+            if (matrix.getCellOwner(y1, x1) === null) {//coordinate availability check
                 this.c4th1 = new coordinates(x1, y1);
             }
         }

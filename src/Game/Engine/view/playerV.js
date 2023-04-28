@@ -3,6 +3,8 @@
 
 
 class playerV {
+
+    //Turn Text
     defaultTurnText = ""
 
     useStateFxTurnText = null
@@ -16,14 +18,32 @@ class playerV {
         this.useStateFxTurnText(text)
     }
 
+    //Player Status Table
     useStateFxColor = null
 
     setUseStateFxColor(fx) {
         this.useStateFxColor = fx
     }
 
+    //Board pieces
+    useStateFxColorBoard = null
+
+    setUseStateFxColorBoard(fx) {
+        this.useStateFxColorBoard = fx
+    }
+
+    //Opponent Text
+    useStateFxColorOpponentText = null
+
+    setUseStateFxColorOpponentText(fx) {
+        this.useStateFxColorOpponentText = fx
+    }
+
+    //Set Player Status Table, Board Pieces, and Opponent Text
     setColor(colorName) {
         this.useStateFxColor(colorName)
+        this.useStateFxColorBoard(colorName)
+        this.useStateFxColorOpponentText(colorName)
     }
 
     defaultColor = null
@@ -36,23 +56,23 @@ class playerV {
         return this.defaultColor
     }
 
-    defaultOpponentColor = null
+    // defaultOpponentColor = null
 
-    setUseStateFxOpponentColor(fx) {
-        this.useStateFxOpponentColor = fx
-    }
+    // setUseStateFxOpponentColor(fx) {
+    //     this.useStateFxOpponentColor = fx
+    // }
 
-    setOpponentColor(color) {
-        this.useStateFxOpponentColor(color)
-    }
+    // setOpponentColor(color) {
+    //     this.useStateFxOpponentColor(color)
+    // }
 
-    setDefaultOpponentColor(color) {
-        this.defaultOpponentColor = color
-    }
+    // setDefaultOpponentColor(color) {
+    //     this.defaultOpponentColor = color
+    // }
 
-    getDefaultOpponentColor() {
-        return this.defaultOpponentColor
-    }
+    // getDefaultOpponentColor() {
+    //     return this.defaultOpponentColor
+    // }
 
     useStateFxHints = null
 

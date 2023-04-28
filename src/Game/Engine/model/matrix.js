@@ -38,9 +38,10 @@ class matrix {
         this.rows[i].getCell(j).setCell(player, turn)
 
         //set view
-        this.view.getPlay().getMatrix().setCellColor(i, j, player.getColor())
+        // this.view.getPlay().getMatrix().setCellColor(i, j, player.getColor())
+        this.view.getPlay().getMatrix().setCellOwner(i, j, player.getId())
         this.view.getPlay().getMatrix().setCellText(i, j, turn)
-
+        // this.view.getPlay().getMatrix().setCellTextColor(i,j,)
     }
 
     isCellClaimed(i, j) {
@@ -60,7 +61,7 @@ class matrix {
     clearView() {
         for (let i = 0; i < this.size; i++) {
             for (let j = 0; j < this.size; j++) {
-                this.view.getPlay().getMatrix().setCellColor(i, j, null)
+                this.view.getPlay().getMatrix().setCellOwner(i, j, null)
                 this.view.getPlay().getMatrix().setCellText(i, j, null)
             }
         }

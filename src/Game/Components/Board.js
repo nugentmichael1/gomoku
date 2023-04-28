@@ -13,7 +13,14 @@ import FSBulldog from "../../Assets/FresnoStateBulldog.png"
 
 
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
-const Board = ({ playCtrl, optionsV, playV }) => {
+const Board = ({ playCtrl, view }) => {
+
+	//view destructure
+	const optionsV = view.getOptions()
+	const playV = view.getPlay()
+	const player1V = view.getPlayer(0)
+	const player2V = view.getPlayer(1)
+
 
 	//useState functions
 	//size
@@ -36,6 +43,23 @@ const Board = ({ playCtrl, optionsV, playV }) => {
 	//Acquire react hook useState set fx
 	optionsV.getBgColor().setUseStateFxBoardHover(setHoverColor)
 
+	//player 1 color
+	const [p1Color, setP1Color] = useState(player1V.getDefaultColor())
+	//Acquire react hook useState set fx
+	player1V.setUseStateFxColorBoard(setP1Color)
+
+	//player 2 color
+	const [p2Color, setP2Color] = useState(player2V.getDefaultColor())
+	//Acquire react hook useState set fx
+	player2V.setUseStateFxColorBoard(setP2Color)
+
+	const colors = {
+		hover: hoverColor,
+		p1: p1Color,
+		p2: p2Color
+	}
+
+	//Reference to matrix never changes
 	const matrixV = playV.getMatrix()
 	//matrix
 	// const [matrix, setMatrix] = useState()
@@ -58,9 +82,9 @@ const Board = ({ playCtrl, optionsV, playV }) => {
 			"playCtrl": playCtrl,
 			"size": size,
 			"index": i,
-			"hoverColor": hoverColor,
 			"rowClassName": 'row' + i,
-			"matrixRowV": matrixV.getRow(i)
+			"matrixRowV": matrixV.getRow(i),
+			"colors": colors
 		}
 
 		//Array to hold table cell tags
@@ -72,9 +96,9 @@ const Board = ({ playCtrl, optionsV, playV }) => {
 		"playCtrl": playCtrl,
 		"size": size,
 		"index": size - 1,
-		"hoverColor": hoverColor,
 		"rowClassName": 'rowLast',
-		"matrixRowV": matrixV.getRow(size - 1)
+		"matrixRowV": matrixV.getRow(size - 1),
+		"colors": colors
 	}
 	trArr.push(<BoardRow data={boardRowProps} key={size - 1} />)
 	// trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))

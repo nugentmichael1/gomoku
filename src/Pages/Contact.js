@@ -11,34 +11,37 @@ import "../CSS/contact.css"
 
 function Contact() {
   return (
-    <body className='contact'>
+    <div className='contact'>
       <h1>Contact</h1>
       <table>
-        <tr>
-          <td colspan="2">
-            <h2>Michael Nugent</h2>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img src={Headshot} height="300px" widht="300px" id="profilePic" alt="Headshot" />
-          </td>
-          <td>
-            <ul>
-              <li>
-                B.S. Computer Science
-              </li>
-              <li>
-                California State University, Fresno
-              </li>
-              <li>
-                <a href="mailto:nugentmichael@live.com">
-                  Email me
-                </a>
-              </li>
-            </ul>
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td colSpan="2">
+              <h2>Michael Nugent</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src={Headshot} height="300px" widht="300px" id="profilePic" alt="Headshot" />
+            </td>
+            <td>
+              <ul>
+                <li>
+                  B.S. Computer Science
+                </li>
+                <li>
+                  California State University, Fresno
+                </li>
+                <li>
+                  <a href="mailto:nugentmichael@live.com">
+                    Email me
+                  </a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+
       </table>
 
       <footer>
@@ -60,7 +63,7 @@ function Contact() {
         </ul>
 
       </footer>
-    </body>
+    </div>
 
   )
 }

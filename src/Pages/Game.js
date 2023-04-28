@@ -47,6 +47,7 @@ function Game() {
       {
         <PlayerStatusTable
           playerV={viewInterface.getPlayer(0)}
+          opponentV={viewInterface.getPlayer(1)}
           optionsC={ctrl.getOptions()}
           id={0}
           user={user}
@@ -56,14 +57,16 @@ function Game() {
       {
         <Board
           playCtrl={ctrl.getPlay()}
-          optionsV={viewInterface.getOptions()}
-          playV={viewInterface.getPlay()}
+          view={viewInterface}
+        // optionsV={viewInterface.getOptions()}
+        // playV={viewInterface.getPlay()}
         />
       }
 
       {
         <PlayerStatusTable
           playerV={viewInterface.getPlayer(1)}
+          opponentV={viewInterface.getPlayer(0)}
           optionsC={ctrl.getOptions()}
           id={1}
         />

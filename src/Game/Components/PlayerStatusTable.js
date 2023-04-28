@@ -6,7 +6,7 @@ import { React, useState } from "react";
 //Configurations
 import colors from "../../Configurations/PlayerColors.json"
 
-const PlayerStatusTable = ({ playerV, optionsC, id, user }) => {
+const PlayerStatusTable = ({ playerV, opponentV, optionsC, id, user }) => {
 
     //"id" variable refers to player identity: 0 or 1; and is used for id and class properties of tags, and text.
 
@@ -27,9 +27,9 @@ const PlayerStatusTable = ({ playerV, optionsC, id, user }) => {
     playerV.setUseStateFxTurnText(setTurnText)
 
     //Turn Text color (opponent's color)
-    const [turnTextColor, setTurnTextColor] = useState(playerV.getDefaultOpponentColor())
+    const [turnTextColor, setTurnTextColor] = useState(opponentV.getDefaultColor())
     //Acquire useState fx
-    playerV.setUseStateFxOpponentColor(setTurnTextColor)
+    opponentV.setUseStateFxColorOpponentText(setTurnTextColor)
 
 
     //Color Options - Dynamically built with configuration file.

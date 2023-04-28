@@ -47,7 +47,7 @@ class fours {
             && x0 < boardSize
             && y0 < boardSize) {
             //coordinate availability check
-            if (matrix.getValue(y0, x0) == 0) {
+            if (matrix.getCellOwner(y0, x0) === null) {
                 this.c5th0 = new coordinates(x0, y0);
             }
         }
@@ -56,7 +56,7 @@ class fours {
             && x1 < boardSize
             && y1 < boardSize) {
             //coordinate availability check
-            if (matrix.getValue(y1, x1) == 0) {
+            if (matrix.getCellOwner(y1, x1) === null) {
                 this.c5th1 = new coordinates(x1, y1);
             }
         }

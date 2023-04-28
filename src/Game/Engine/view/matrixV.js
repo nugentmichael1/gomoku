@@ -10,16 +10,20 @@ class matrixV {
         }
     }
 
+    //React Board Component uses
     getRow(i) {
         return this.rows[i]
     }
 
-    setCellColor(i, j, color) {
-        this.rows[i].getCellV(j).setColor(color)
-    }
+    // setCellColor(i, j, color) {
+    //     this.rows[i].getCellV(j).setColor(color)
+    // }
 
     setCellText(i, j, text) {
         this.rows[i].getCellV(j).setText(text)
+    }
+    setCellOwner(i, j, owner) {
+        this.rows[i].getCellV(j).setOwner(owner)
     }
 }
 
@@ -40,20 +44,36 @@ class matrixRowV {
 class matrixCellV {
     useStateFxColor = null
     useStateFxText = null
+    useStateFxTextColor = null
+    useStateFxOwner = null
 
-    setUseStateFxColor(fx) {
-        this.useStateFxColor = fx
-    }
+    // setUseStateFxColor(fx) {
+    //     this.useStateFxColor = fx
+    // }
 
-    setColor(color) {
-        this.useStateFxColor(color)
-    }
+    // setColor(color) {
+    //     this.useStateFxColor(color)
+    // }
 
     setUseStateFxText(fx) {
         this.useStateFxText = fx
     }
     setText(text) {
         this.useStateFxText(text)
+    }
+
+    // setUseStateFxTextColor(fx) {
+    //     this.useStateFxTextColor = fx
+    // }
+    // setTextColor(color) {
+    //     this.useStateFxTextColor(color)
+    // }
+
+    setUseStateFxOwner(fx) {
+        this.useStateFxOwner = fx
+    }
+    setOwner(owner) {
+        this.useStateFxOwner(owner)
     }
 }
 

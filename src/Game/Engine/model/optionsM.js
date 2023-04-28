@@ -24,14 +24,13 @@ class optionsM {
 
         playM.getPlayer(0).getOptions().setDefaultColor(defaults.playerColor.player1)
         playM.getPlayer(1).getOptions().setDefaultColor(defaults.playerColor.player2)
+
+        // playM.getPlayer(0).color.set(defaults.playerColor.player1)
+        // playM.getPlayer(1).color.set(defaults.playerColor.player2)
     }
 
     setBoardSize(size) {
         this.boardSize.set(size)
-    }
-
-    getBoardSize() {
-        return this.boardSize.get()
     }
 
     setBgColor(hexCode) {
@@ -47,7 +46,7 @@ class optionsM {
         //verify opponent is not already associated with desired color
         if (this.playM.getPlayer(1 - id).getOptions().getColor() === color) {
 
-            alert("Opponent already possess that color.  Please choose another or ask him to change first.")
+            alert("Opponent already possesses that color.  Please choose another or ask him to change first.")
 
             return
         }

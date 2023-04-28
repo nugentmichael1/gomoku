@@ -99,7 +99,7 @@ class playM {
     //     this.size = size
     // }
     getBoardSize() {
-        return this.matrix.length;
+        return this.matrix.getSize();
     }
 
 
@@ -114,13 +114,13 @@ class playM {
         let x, x0, x1, y, y0, y1;
         x = x0 = x1 = clickedCoords.x;
         y = y0 = y1 = clickedCoords.y;
-        // let bSize = this.matrix.length;
+        // let bSize = this.matrix.getSize();
 
         //check horizontal
         for (let b = x - 1; b >= 0 && this.matrix.getCellOwner(y, b) === this.activePlayer; b--) {
             x0 = b;
         }
-        for (let b = x + 1; b < this.matrix.length && this.matrix.getCellOwner(y, b) === this.activePlayer; b++) {
+        for (let b = x + 1; b < this.matrix.getSize() && this.matrix.getCellOwner(y, b) === this.activePlayer; b++) {
             x1 = b;
         }
         //3s check
@@ -158,11 +158,11 @@ class playM {
         //check diagonal: bottom left to top right
         x0 = x1 = x;
         y0 = y1 = y;
-        for (let a = y + 1, b = x - 1; a < this.matrix.length && b >= 0 && this.matrix.getCellOwner(a, b) === this.activePlayer; a++, b--) {
+        for (let a = y + 1, b = x - 1; a < this.matrix.getSize() && b >= 0 && this.matrix.getCellOwner(a, b) === this.activePlayer; a++, b--) {
             x0 = b;
             y0 = a;
         }
-        for (let a = y - 1, b = x + 1; a >= 0 && b < this.matrix.length && this.matrix.getCellOwner(a, b) === this.activePlayer; a--, b++) {
+        for (let a = y - 1, b = x + 1; a >= 0 && b < this.matrix.getSize() && this.matrix.getCellOwner(a, b) === this.activePlayer; a--, b++) {
             x1 = b;
             y1 = a;
         }
@@ -206,10 +206,12 @@ class playM {
             x0 = b;
             y0 = a;
         }
-        for (let a = y + 1, b = x + 1; a < this.matrix.length && b < this.matrix.length && this.matrix.getCellOwner(a, b) === this.activePlayer; a++, b++) {
+        for (let a = y + 1, b = x + 1; a < this.matrix.getSize() && b < this.matrix.getSize() && this.matrix.getCellOwner(a, b) === this.activePlayer; a++, b++) {
             x1 = b;
             y1 = a;
         }
+
+
         //could also check y1-y0
         if (x1 - x0 === firstCondition - 1) {
             this.activePlayer.addThree(
@@ -246,7 +248,7 @@ class playM {
         for (let a = y - 1; a >= 0 && this.matrix.getCellOwner(a, x) === this.activePlayer; a--) {
             y0 = a;
         }
-        for (let a = y + 1; a < this.matrix.length && this.matrix.getCellOwner(a, x) === this.activePlayer; a++) {
+        for (let a = y + 1; a < this.matrix.getSize() && this.matrix.getCellOwner(a, x) === this.activePlayer; a++) {
             y1 = a;
         }
         if (y1 - y0 === firstCondition - 1) {
@@ -391,9 +393,7 @@ class playM {
         //check who's turn it is, set appropriately colored "Go" piece, 
         //update player turn message status, and matrix index
 
-        //Update players turn message status
-        this.passivePlayer.updateTurnDisplay(this.getTurn())
-        this.activePlayer.updateTurnDisplay("")
+
         //Claim matrix cell
         this.matrix.setCell(i, j, this.activePlayer, this.getTurn())
 
@@ -444,13 +444,17 @@ class playM {
             clearInterval(this.timer);
         }
         //tie check
-        else if (this.getTurn() === this.matrix.length ** 2) {
-            //else if (turn++ == this.matrix.length ** 2) {
+        else if (this.getTurn() === this.matrix.getSize() ** 2) {
+            //else if (turn++ == this.matrix.getSize() ** 2) {
             alert('Draw!');
             clearInterval(this.timer);
         }
 
         this.incrementTurn();
+
+        //Update players turn message status
+        this.passivePlayer.updateTurnDisplay(this.getTurn())
+        this.activePlayer.updateTurnDisplay("")
 
 
         //sifts respective player objects' 3s and 4s arrays for any changes to hints

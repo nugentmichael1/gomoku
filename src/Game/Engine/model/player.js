@@ -1,6 +1,7 @@
 
 
 import playerOptions from "./playerOptionsM"
+import colorM from "./colorM"
 
 class player {
 
@@ -16,19 +17,25 @@ class player {
 	//keeps count of all 4-long segments;
 	foursCount = 0;
 
+
+
 	getColor() {
-		return this.options.getColor()
+		return this.color.get()
 	}
 	getOptions() {
 		return this.options
 	}
+	getId() {
+		return this.id
+	}
 
 	constructor(player, view) {
-		this.id = player;//integer 1 or 2
+		this.id = player;//integer 0 or 1
 		this.name = 'Player ' + player;
 		this.view = view
 
 		this.options = new playerOptions(view, null, this.id)
+		this.color = new colorM()
 
 	}
 

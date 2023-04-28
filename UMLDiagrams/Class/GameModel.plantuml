@@ -46,6 +46,7 @@ class timerM{
 }
 
 class matrix{
+    Number size
     matrixRow[] rows
     setCell(i,j,player,turn)
 }
