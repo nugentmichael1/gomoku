@@ -21,19 +21,19 @@ class threes {
     posFourCoords(matrix, boardSize) {
         let x0, x1 = -1;
         let y0, y1 = -1;
-        if (this.designation == 'h') {
+        if (this.designation === 'h') {
             x0 = this.c0.x - 1;
             x1 = this.c1.x + 1;
             y0 = y1 = this.c0.y;
         }
-        else if (this.designation == 'dUp') {
+        else if (this.designation === 'dUp') {
             x0 = this.c0.x - 1;
             y0 = this.c0.y + 1;
             x1 = this.c1.x + 1;
             y1 = this.c1.y - 1;
 
         }
-        else if (this.designation == 'dDown') {
+        else if (this.designation === 'dDown') {
             x0 = this.c0.x - 1;
             y0 = this.c0.y - 1;
             x1 = this.c1.x + 1;

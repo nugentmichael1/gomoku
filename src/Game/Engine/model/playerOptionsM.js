@@ -4,10 +4,16 @@
 class playerOptionsM {
 
     constructor(view, defaultColor, id) {
+
+
         this.view = view
+
         this.color = defaultColor
+        
         this.id = id
 
+        //set view's default color for initial load
+        this.view.getPlayer(this.id).setDefaultColor(this.color)
 
 
         //hints default
@@ -24,32 +30,12 @@ class playerOptionsM {
         this.color = color
 
         //update view
-        //Player color
         this.view.getPlayer(this.id).setColor(this.color)
-
-        // //Opponent's turn text
-        // this.view.getPlayer(1 - this.id).setOpponentColor(this.color)
     }
 
+    //To check if opponent has same color
     getColor() {
         return this.color
     }
-
-    setTextColor(color) {
-        this.textColor = color
-    }
-
-    //Set defaults
-    setDefaultColor(color) {
-        this.color = color
-        this.view.getPlayer(this.id).setDefaultColor(this.color)
-    }
-
-    setDefaultTextColor(color) {
-        this.view.getPlayer(1 - this.id).setDefaultOpponentColor(color)
-    }
-
-
-
 }
 export default playerOptionsM;

@@ -1,6 +1,6 @@
 //Board view - React component
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 //Components
 import BoardRow from "./BoardRow"

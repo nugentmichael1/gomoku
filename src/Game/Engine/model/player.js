@@ -1,7 +1,4 @@
-
-
-import playerOptions from "./playerOptionsM"
-import colorM from "./colorM"
+//Player class - 
 
 class player {
 
@@ -17,14 +14,6 @@ class player {
 	//keeps count of all 4-long segments;
 	foursCount = 0;
 
-
-
-	getColor() {
-		return this.color.get()
-	}
-	getOptions() {
-		return this.options
-	}
 	getId() {
 		return this.id
 	}
@@ -33,10 +22,6 @@ class player {
 		this.id = player;//integer 0 or 1
 		this.name = 'Player ' + player;
 		this.view = view
-
-		this.options = new playerOptions(view, null, this.id)
-		this.color = new colorM()
-
 	}
 
 	updateTurnDisplay(turn) {
@@ -49,10 +34,10 @@ class player {
 		this.threesCount++;
 
 		//if the first possible 4th exists
-		if (three.c4th0 != undefined) {
+		if (three.c4th0 !== undefined) {
 			//make string out of coordinates to access associative array
 			let key = JSON.stringify(three.c4th0);
-			if (this.threesArr[key] == undefined) {
+			if (this.threesArr[key] === undefined) {
 				this.threesArr[key] = three;
 			}
 			else {
@@ -65,15 +50,15 @@ class player {
 
 		}
 		//if the second possible 4th exists
-		if (three.c4th1 != undefined) {
+		if (three.c4th1 !== undefined) {
 			//make string out of coordinates to access associative array
 			let key = JSON.stringify(three.c4th1);
-			if (this.threesArr[key] == undefined) {
+			if (this.threesArr[key] === undefined) {
 				this.threesArr[key] = three;
 			}
 			else {
 				let tmpNode = this.threesArr[key];
-				while (tmpNode.next != null) {
+				while (tmpNode.next !== null) {
 					tmpNode = tmpNode.next;
 				}
 				tmpNode.next = three;
@@ -89,10 +74,10 @@ class player {
 		let cordStr = JSON.stringify(cClicked);
 
 		//possible partner existence check
-		if (this.threesArr[cordStr] != undefined) {
+		if (this.threesArr[cordStr] !== undefined) {
 
 			//other player's turn
-			if (this.id != activePlayer) {
+			if (this.id !== activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -108,24 +93,24 @@ class player {
 
 				//head of linked list
 				let threeToRemove = this.threesArr[cordStr];
-				while (threeToRemove != null) {
+				while (threeToRemove !== null) {
 					//console.log(threeToRemove);
 					let c4thStr =
-						(cordStr != JSON.stringify(threeToRemove.c4th0)) ?
+						(cordStr !== JSON.stringify(threeToRemove.c4th0)) ?
 							JSON.stringify(threeToRemove.c4th0) :
 							JSON.stringify(threeToRemove.c4th1);
 					//alert(c4thStr);
 					let tmpNode = this.threesArr[c4thStr];
 					let tmpNode2 = tmpNode;
-					if (tmpNode != undefined) {
-						while (tmpNode.id != threeToRemove.id
-							&& tmpNode.next != null) {
+					if (tmpNode !== undefined) {
+						while (tmpNode.id !== threeToRemove.id
+							&& tmpNode.next !== null) {
 							tmpNode2 = tmpNode;
 							tmpNode = tmpNode.next;
 						}
 						//target node is head
-						if (tmpNode == tmpNode2) {
-							if (tmpNode.next == null) {
+						if (tmpNode === tmpNode2) {
+							if (tmpNode.next === null) {
 								//target node is only node in linked list
 								//delete array reference
 								delete this.threesArr[c4thStr];
@@ -177,15 +162,15 @@ class player {
 		// remove hint coordinate
 
 		//if the first possible 5th exists
-		if (four.c5th0 != undefined) {
+		if (four.c5th0 !== undefined) {
 			//make string out of coordinates to access associative array
 			let key = JSON.stringify(four.c5th0);
-			if (this.foursArr[key] == undefined) {
+			if (this.foursArr[key] === undefined) {
 				this.foursArr[key] = four;
 			}
 			else {
 				let tmpNode = this.foursArr[key];
-				while (tmpNode.next != null) {
+				while (tmpNode.next !== null) {
 					tmpNode = tmpNode.next;
 				}
 				tmpNode.next = four;
@@ -193,15 +178,15 @@ class player {
 
 		}
 		//if the second possible 5th exists
-		if (four.c5th1 != undefined) {
+		if (four.c5th1 !== undefined) {
 			//make string out of coordinates to access associative array
 			let key = JSON.stringify(four.c5th1);
-			if (this.foursArr[key] == undefined) {
+			if (this.foursArr[key] === undefined) {
 				this.foursArr[key] = four;
 			}
 			else {
 				let tmpNode = this.foursArr[key];
-				while (tmpNode.next != null) {
+				while (tmpNode.next !== null) {
 					tmpNode = tmpNode.next;
 				}
 				tmpNode.next = four;
@@ -218,10 +203,10 @@ class player {
 		let cordStr = JSON.stringify(cClicked);
 
 		//possible partner existence check
-		if (this.foursArr[cordStr] != undefined) {
+		if (this.foursArr[cordStr] !== undefined) {
 
 			//other player's turn
-			if (this.id != activePlayer) {
+			if (this.id !== activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -237,24 +222,24 @@ class player {
 
 				//head of linked list
 				let fourToRemove = this.foursArr[cordStr];
-				while (fourToRemove != null) {
+				while (fourToRemove !== null) {
 
 					let c5thStr =
-						(cordStr != JSON.stringify(fourToRemove.c5th0)) ?
+						(cordStr !== JSON.stringify(fourToRemove.c5th0)) ?
 							JSON.stringify(fourToRemove.c5th0) :
 							JSON.stringify(fourToRemove.c5th1);
 
 					let tmpNode = this.foursArr[c5thStr];
 					let tmpNode2 = tmpNode;
-					if (tmpNode != undefined) {
-						while (tmpNode.id != fourToRemove.id
-							&& tmpNode.next != null) {
+					if (tmpNode !== undefined) {
+						while (tmpNode.id !== fourToRemove.id
+							&& tmpNode.next !== null) {
 							tmpNode2 = tmpNode;
 							tmpNode = tmpNode.next;
 						}
 						//target node is head
-						if (tmpNode == tmpNode2) {
-							if (tmpNode.next == null) {
+						if (tmpNode === tmpNode2) {
+							if (tmpNode.next === null) {
 								//target node is only node in linked list
 								//delete array reference
 								delete this.foursArr[c5thStr];
@@ -295,7 +280,7 @@ class player {
 	}
 	hints(activePlayer) {
 		this.hintState = 1 - this.hintState;
-		if (activePlayer == this.id - 1) {
+		if (activePlayer === this.id - 1) {
 			if (this.hintState) this.showHints();
 			else this.hideHints();
 		}
