@@ -26,18 +26,11 @@ class boardSizeM {
         this.size = size;
 
         //model reset for matrix size change
-        this.playM.reset(size)
-
-        //update view
-        this.view.getOptions().getBoardSize().set(this.size)
-
+        if (this.playM.reset(size)) {
+            //update view
+            this.view.getOptions().getBoardSize().set(this.size)
+        }
     }
-
-    //who uses this? can we delete it?
-    get() {
-        return this.size
-    }
-
 }
 
 export default boardSizeM;

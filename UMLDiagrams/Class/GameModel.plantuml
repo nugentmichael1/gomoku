@@ -13,7 +13,7 @@ package "Model"{
     ' matrixCell <. boardCell: Dependency
     game "1" *-- "1" playM
     playM "1" *-- "1" timerM
-    player "1" *-- "1" playerOptions
+    optionsM "1" *-- "1" playerOptions
     optionsM "1" .* "1" playM: dependency
 }
 

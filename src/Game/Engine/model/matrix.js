@@ -12,23 +12,11 @@ class matrix {
         for (let i = 0; i < size; i++) {
             this.rows[i] = new matrixRow(size)
         }
-
-        // this.rows = new Array(size).map(() => new matrixRow(size))
-
-        // this.rows = new Array(size)
-        // this.rows.forEach((row) => {
-        //     row = new matrixRow(size)
-        // })
-
-
-        //set default matrix view
-        // this.view.getPlay().setMatrixV(size)
     }
 
     //i=board row, which is like a y-axis, but counts down from top instead of up from bottom
     //j=cell column, which is like x-axis: counts normally - left to right
     getCellOwner(i, j) {
-        // console.log("i:", i, "j", j)
         return this.rows[i].getCell(j).getOwner()
     }
 
@@ -38,18 +26,13 @@ class matrix {
         this.rows[i].getCell(j).setCell(player, turn)
 
         //set view
-        // this.view.getPlay().getMatrix().setCellColor(i, j, player.getColor())
         this.view.getPlay().getMatrix().setCellOwner(i, j, player.getId())
         this.view.getPlay().getMatrix().setCellText(i, j, turn)
-        // this.view.getPlay().getMatrix().setCellTextColor(i,j,)
     }
 
     isCellClaimed(i, j) {
         return (this.rows[i].getCell(j).getOwner() === null)
     }
-    // getRow(i) {
-    //     return this.rows[i]
-    // }
 
     //debug
     print() {
@@ -80,13 +63,6 @@ class matrixRow {
         for (let j = 0; j < size; j++) {
             this.row[j] = new matrixCell()
         }
-
-        // this.row = new Array(size).map(() => new matrixCell)
-
-        // this.row = new Array(size)
-        // this.row.forEach((cell) => {
-        //     cell = new matrixCell
-        // })
     }
     getCell(j) {
         return this.row[j]

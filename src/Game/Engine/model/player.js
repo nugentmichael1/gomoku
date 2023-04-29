@@ -18,9 +18,9 @@ class player {
 		return this.id
 	}
 
-	constructor(player, view) {
-		this.id = player;//integer 0 or 1
-		this.name = 'Player ' + player;
+	constructor(id, view) {
+		this.id = id;//integer 0 or 1
+		this.name = 'Player ' + (id + 1);
 		this.view = view
 	}
 

@@ -304,11 +304,23 @@ class playM {
 
     }
 
+    // matrixSizeChange(size) {
+
+    //     //Guard: Game in progress && data loss confirmation
+    //     if (this.cS === 0 && this.timerM.getActive() === true &&
+    //         !window.confirm("Are you sure?  Current game progress will be lost.")) return
+
+
+    //     this.matrix.clearView()
+
+    //     this.matrix = new matrix(size, this.view)
+    // }
+
     reset(size) {
 
         //Guard: Game in progress && data loss confirmation
-        if (this.timerM.getActive() === true &&
-            !window.confirm("Are you sure?  Current game data will be lost.")) return
+        if (this.cS === 0 && this.timerM.getActive() === true &&
+            !window.confirm("Are you sure?  Current game progress will be lost.")) return false
 
 
         this.matrix.clearView()
@@ -319,7 +331,7 @@ class playM {
             this.view
         )
 
-        if (this.timerM.getActive() === false) return
+        if (this.timerM.getActive() === false) return true
 
         //Reset timer
         this.getTimer().reset()
@@ -357,7 +369,7 @@ class playM {
         // p[0].flushStats();
         // p[1].flushStats();
 
-
+        return true
     }
 
     clicked(i, j) {
@@ -441,7 +453,8 @@ class playM {
             this.setCS(1);
 
             //use stop instead?
-            clearInterval(this.timer);
+            this.timerM.stop()
+            // clearInterval(this.timer);
         }
         //tie check
         else if (this.getTurn() === this.matrix.getSize() ** 2) {

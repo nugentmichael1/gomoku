@@ -46,8 +46,11 @@ class timerM {
     }
 
     reset() {
-        //stop interval function, set "active" to false
+        //stop interval function
         this.stop()
+
+        //interval fx is stopped
+        this.active = false
 
         //update count text
         this.view.getOptions().getTimer().setCounterText("Timer")
@@ -56,14 +59,12 @@ class timerM {
         this.view.getOptions().getTimer().setButtonText("Start")
     }
 
-    //used in this.reset() and for game page unmount
+    //used in this.reset(), game completion, and for Game component unmount
     stop() {
 
         //clear interval fx with stored id
         clearInterval(this.intervalId)
 
-        //interval fx is stopped
-        this.active = false
     }
 
     getActive() {
