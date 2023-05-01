@@ -52,7 +52,6 @@ class optionsM {
 
     setHints(playerId, value) {
         this.playerOptions[playerId].setHints(value)
-        // this.playM.getPlayer(playerId).getOptions().setHints(value)
     }
 }
 

@@ -59,6 +59,16 @@ const Board = ({ playCtrl, view }) => {
 		p2: p2Color
 	}
 
+	const [hintToggleP1, setHintToggleP1] = useState(false)
+	//Acuire react hook useState set fx
+	player1V.setUseStateFxHintsBoard(setHintToggleP1)
+
+	const [hintToggleP2, setHintToggleP2] = useState(false)
+	//Acquire react hook useState set fx
+	player2V.setUseStateFxHintsBoard(setHintToggleP2)
+
+	const hintsToggle = [hintToggleP1, hintToggleP2]
+
 	//Reference to matrix never changes
 	const matrixV = playV.getMatrix()
 	//matrix
@@ -84,7 +94,8 @@ const Board = ({ playCtrl, view }) => {
 			"index": i,
 			"rowClassName": 'row' + i,
 			"matrixRowV": matrixV.getRow(i),
-			"colors": colors
+			"colors": colors,
+			"hintsToggle": hintsToggle
 		}
 
 		//Array to hold table cell tags
@@ -98,7 +109,8 @@ const Board = ({ playCtrl, view }) => {
 		"index": size - 1,
 		"rowClassName": 'rowLast',
 		"matrixRowV": matrixV.getRow(size - 1),
-		"colors": colors
+		"colors": colors,
+		"hintsToggle": hintsToggle
 	}
 	trArr.push(<BoardRow data={boardRowProps} key={size - 1} />)
 	// trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))

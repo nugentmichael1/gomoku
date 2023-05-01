@@ -6,12 +6,13 @@ import { React, useState } from "react";
 //Configurations
 import colors from "../../Configurations/PlayerColors.json"
 
-const PlayerStatusTable = ({ playerV, opponentV, optionsC, id, user }) => {
+const PlayerStatusTable = ({ playerV, opponentV, turn, optionsC, id, user }) => {
 
     //"id" variable refers to player identity: 0 or 1; and is used for id and class properties of tags, and text.
 
-    const pNum = 'p' + (id + 1);
 
+    //Holdover from HTML/CSS design.  Might delete later.
+    const pNum = 'p' + (id + 1);
     const tblID = pNum + 'StatusTbl';
     const displayText = 'Player ' + (id + 1);
     const colDispID = pNum + 'ColDisp';
@@ -21,18 +22,15 @@ const PlayerStatusTable = ({ playerV, opponentV, optionsC, id, user }) => {
     const threesID = pNum + 'Threes';
     const foursID = pNum + 'Fours';
 
-    //Turn Text
-    const [turnText, setTurnText] = useState("")
-    //Acquire useState fx
-    playerV.setUseStateFxTurnText(setTurnText)
+
+    const turnText = (turn % 2 === 1 - id) ? turn : ""
 
     //Turn Text color (opponent's color)
     const [turnTextColor, setTurnTextColor] = useState(opponentV.getDefaultColor())
     //Acquire useState fx
     opponentV.setUseStateFxColorOpponentText(setTurnTextColor)
 
-
-    //Color Options - Dynamically built with configuration file.
+    //Color Select Options - Dynamically built with configuration file.
     const colSelOptions = colors.map((color) => (
         <option value={color} key={color}>{color}</option>
     ))
@@ -47,6 +45,15 @@ const PlayerStatusTable = ({ playerV, opponentV, optionsC, id, user }) => {
     //Acquire useState fx
     playerV.setUseStateFxHints(setHints)
 
+    //Threes Count
+    const [threes, setThrees] = useState(0)
+    //Acquire useState fx
+    playerV.setUseStateFxThrees(setThrees)
+
+    //Fours Count
+    const [fours, setFours] = useState(0)
+    //Acquire useState fx
+    playerV.setUseStateFxFours(setFours)
 
 
     return <table id={tblID}>
@@ -79,13 +86,17 @@ const PlayerStatusTable = ({ playerV, opponentV, optionsC, id, user }) => {
                 <th>3s:</th>
             </tr>
             <tr>
-                <td id={threesID}></td>
+                <td id={threesID}>
+                    {threes}
+                </td>
             </tr>
             <tr>
                 <th>4s:</th>
             </tr>
             <tr>
-                <td id={foursID}></td>
+                <td id={foursID}>
+                    {fours}
+                </td>
             </tr>
         </tbody>
     </table >

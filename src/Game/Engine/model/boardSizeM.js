@@ -5,7 +5,7 @@ class boardSizeM {
     constructor(view, playM, defaultSize) {
 
         //use to check if game in progress
-        this.timer = playM.getTimer()
+        // this.timer = playM.getTimer()
 
         //used to call reset after size change
         this.playM = playM

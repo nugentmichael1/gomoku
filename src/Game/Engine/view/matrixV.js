@@ -15,15 +15,14 @@ class matrixV {
         return this.rows[i]
     }
 
-    // setCellColor(i, j, color) {
-    //     this.rows[i].getCellV(j).setColor(color)
-    // }
-
     setCellText(i, j, text) {
         this.rows[i].getCellV(j).setText(text)
     }
     setCellOwner(i, j, owner) {
         this.rows[i].getCellV(j).setOwner(owner)
+    }
+    setCellHints(i, j, hints) {
+        this.rows[i].getCellV(j).setHints(hints)
     }
 }
 
@@ -42,18 +41,9 @@ class matrixRowV {
 }
 
 class matrixCellV {
-    useStateFxColor = null
     useStateFxText = null
-    useStateFxTextColor = null
     useStateFxOwner = null
-
-    // setUseStateFxColor(fx) {
-    //     this.useStateFxColor = fx
-    // }
-
-    // setColor(color) {
-    //     this.useStateFxColor(color)
-    // }
+    useStateFxHints = null
 
     setUseStateFxText(fx) {
         this.useStateFxText = fx
@@ -74,6 +64,13 @@ class matrixCellV {
     }
     setOwner(owner) {
         this.useStateFxOwner(owner)
+    }
+
+    setUseStateFxHints(fx) {
+        this.useStateFxHints = fx
+    }
+    setHints(hints) {
+        this.useStateFxHints(hints)
     }
 }
 

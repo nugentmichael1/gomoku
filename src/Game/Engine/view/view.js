@@ -6,8 +6,8 @@ import optionsV from "./optionsV"
 //Player Status Table view react-interface
 import playerV from "./playerV"
 
-//Matrix view - used by playV (not to be confused with playerV)
-import matrixV from "./matrixV"
+//Play view - game mechanics
+import playV from "./playV"
 
 class view {
     constructor() {
@@ -36,31 +36,5 @@ class view {
         return this.playV
     }
 }
-
-class playV {
-
-    matrixV = new matrixV(19)
-
-    // useStateFxMatrix = null
-
-    // setUseStateFxMatrix(fx) {
-    //     this.useStateFxMatrix = fx
-    // }
-
-    // setMatrix(matrix) {
-    //     console.log("set view - playV")
-    //     this.useStateFxMatrix(matrix)
-    // }
-
-    setMatrixV(size) {
-        this.matrixV = new matrixV(size)
-    }
-
-    getMatrix() {
-        return this.matrixV
-    }
-
-}
-
 
 export default view;

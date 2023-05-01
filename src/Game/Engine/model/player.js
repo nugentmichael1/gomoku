@@ -24,10 +24,13 @@ class player {
 		this.view = view
 	}
 
-	updateTurnDisplay(turn) {
-		this.view.getPlayer(this.id).setTurnText(turn)
+	updateViewThrees() {
+		this.view.getPlayer(this.id).setThrees(this.threesCount)
 	}
 
+	updateViewFours() {
+		this.view.getPlayer(this.id).setFours(this.foursCount)
+	}
 
 	addThree(three) {
 		// let three = (new threes(c0, c1, des));
@@ -37,9 +40,12 @@ class player {
 		if (three.c4th0 !== undefined) {
 			//make string out of coordinates to access associative array
 			let key = JSON.stringify(three.c4th0);
+
+			//check to see if vertex has already been recorded as a hint
 			if (this.threesArr[key] === undefined) {
 				this.threesArr[key] = three;
 			}
+			//if it has, connect this three to it
 			else {
 				let tmpNode = this.threesArr[key];
 				while (tmpNode.next != null) {
@@ -66,10 +72,9 @@ class player {
 		}
 	}
 
-
 	remove3s(cClicked, activePlayer) {
 
-		//since js uses associative arrays, the coordinates object can be stringified
+		//since JS uses associative arrays, the coordinates object can be stringified
 		// and used as a unique key.  could manually create strings, too.
 		let cordStr = JSON.stringify(cClicked);
 
@@ -150,16 +155,7 @@ class player {
 		// let four = (new fours(c0, c1, des));
 		this.foursCount++;
 
-
-		//console.log(c0);
-		//console.log(c1);
-		//console.log(des);
-		//console.log(four);
-
-		//fours() identifies possible 5ths.  below their positions
-		// are added to the foursArr so the 4-chain count can be removed
-		// on overlines ('6+'-chain) or victory (5-chain), as well as
-		// remove hint coordinate
+		//fours() identifies possible 5ths.  below their positions are added to the foursArr so the 4-chain count can be removed on overlines ('6+'-chain) or victory (5-chain), as well as remove hint coordinate
 
 		//if the first possible 5th exists
 		if (four.c5th0 !== undefined) {
@@ -198,7 +194,7 @@ class player {
 	// need to add overlines possibility to both.
 	remove4s(cClicked, activePlayer) {
 
-		//since js uses associative arrays, the coordinates object can be stringified
+		//since JS uses associative arrays, the coordinates object can be stringified
 		// and used as a unique key.  could manually create strings, too.
 		let cordStr = JSON.stringify(cClicked);
 
@@ -329,15 +325,12 @@ class player {
 	}
 	flushStats() {
 
-		// this.threesCount = 0;
-		// this.foursCount = 0;
-		// this.threesArr = new Array();
-		// this.foursArr = new Array();
-		// document.getElementById('p' + this.id + 'Hints').checked = false;
-		// document.getElementById('p' + this.id + 'Threes').innerText = '';
-		// document.getElementById('p' + this.id + 'Fours').innerText = '';
-		// document.getElementById('p' + this.id + 'Hints').checked = this.hintState;
-
+		this.threesCount = 0;
+		this.foursCount = 0;
+		this.threesArr = [];
+		this.foursArr = [];
+		this.updateViewThrees()
+		this.updateViewFours()
 	}
 }
 

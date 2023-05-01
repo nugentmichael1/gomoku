@@ -1,7 +1,7 @@
 //Game Page
 
 //React
-import { React } from 'react'
+import { React, useState } from 'react'
 
 //Components
 import GameStatusTable from '../Game/Components/GameStatusTable'
@@ -37,6 +37,11 @@ const user = {}
 
 function Game() {
 
+  //Turn
+  const [turn, setTurn] = useState("")
+  //Acquire useState fx
+  viewInterface.getPlay().setUseStateFxTurn(setTurn)
+
   return (
     <div className='Game'>
 
@@ -51,6 +56,7 @@ function Game() {
           optionsC={ctrl.getOptions()}
           id={0}
           user={user}
+          turn={turn}
         />
       }
 
@@ -69,6 +75,7 @@ function Game() {
           opponentV={viewInterface.getPlayer(0)}
           optionsC={ctrl.getOptions()}
           id={1}
+          turn={turn}
         />
       }
 

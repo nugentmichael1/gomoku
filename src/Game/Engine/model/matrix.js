@@ -34,6 +34,11 @@ class matrix {
         return (this.rows[i].getCell(j).getOwner() === null)
     }
 
+    setCellHints(i, j, hints) {
+        this.rows[i].getCell(j).setHints(hints)
+        this.view.getPlay().getMatrix().setCellHints(i, j, hints)
+    }
+
     //debug
     print() {
         this.rows.forEach(row => {
@@ -77,17 +82,34 @@ class matrixRow {
 }
 
 class matrixCell {
+
+    //assists moveAnalyze(). null: unowned; 0: player1; 1: player2
     owner = null
+
     turnClaimed = null
+
+    //player 1 and 2 boolean values
+    hints = [null, null]
+
     getOwner() {
         return this.owner
     }
+
     getTurnClaimed() {
         return this.turnClaimed
     }
+
     setCell(player, turn) {
         this.owner = player;
         this.turnClaimed = turn
+    }
+
+    setHints(hints) {
+
+        //Hints cannot exist on claimed cells
+        if (this.owner !== null) return
+
+        this.hints = hints
     }
 
     //debug

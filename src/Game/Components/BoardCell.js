@@ -3,28 +3,23 @@
 import React, { useState } from 'react'
 
 
-const BoardCell = ({ playCtrl, i, j, className, cellV, colors }) => {
+const BoardCell = ({ playCtrl, i, j, className, cellV, colors, hintToggle, turn }) => {
 
     //Boolean used to set hover color
     const [hover, setHover] = useState(false)
-
-    // //Background color for when claimed by player
-    // const [color, setColor] = useState(null)
-    // //Acquire useState fx
-    // cellV.setUseStateFxColor(setColor)
 
     //Turn-claimed text
     const [text, setText] = useState("")
     //Acquire useState Fx
     cellV.setUseStateFxText(setText)
 
-    // const [textColor, setTextColor] = useState(null)
-    // //Acquire useState Fx
-    // cellV.setUseStateFxTextColor(setTextColor)
-
     const [owner, setOwner] = useState(null)
     //Acquire useState Fx
     cellV.setUseStateFxOwner(setOwner)
+
+    const [hint, setHint] = useState([false, false])
+    //Acquire useState Fx
+    cellV.setUseStateFxHints(setHint)
 
     //3 cases
     //1: no owner.  owner===null.  cellStyle = {backgroundColor: hover ? colors.hover : "inherit"}; divStyle = {backgroundColor:hover ? colors.hover:"#ced1d4"}
@@ -33,8 +28,23 @@ const BoardCell = ({ playCtrl, i, j, className, cellV, colors }) => {
 
     let cellStyle, divStyle;
     if (owner === null) {
-        cellStyle = { backgroundColor: hover ? colors.hover : "inherit" };
-        divStyle = { backgroundColor: hover ? colors.hover : "#ced1d4" }
+        if (turn % 2 === 1 && hintToggle[0] === true && hint[0] === true) {
+            // player 1
+            // mark cell with player 1's color, but at reduced opacity
+            cellStyle = { backgroundColor: colors.p1, opacity: .25 }
+            divStyle = { display: "none" }
+        }
+        else if (turn % 2 === 0 && hintToggle[1] === true && hint[1] === true) {
+            // player 2
+            // mark cell with player 2's color, but at reduced opacity
+            cellStyle = { backgroundColor: colors.p2, opacity: .25 }
+            divStyle = { display: "none" }
+        }
+        else {
+            // mark cell like normal
+            cellStyle = { backgroundColor: hover ? colors.hover : "inherit" };
+            divStyle = { backgroundColor: hover ? colors.hover : "#ced1d4" }
+        }
     }
     else if (owner === 0) {
         cellStyle = { backgroundColor: colors.p1, color: colors.p2 };
@@ -45,15 +55,6 @@ const BoardCell = ({ playCtrl, i, j, className, cellV, colors }) => {
         divStyle = { display: "none" };
     }
     else console.log(`owner not properly set for cell ${i}, ${j}`)
-
-    //Set table cell to hover color or inherit color.
-    // const cellStyle = { backgroundColor: (color !== null) ? color : hover ? colors.hover : "inherit" };
-    // cellStyle.color = textColor
-
-    //Set div lines (cross) to hidden, or hover color or grey.
-    // const divStyle = (color !== null) ? { display: "none" } : { backgroundColor: hover ? colors.hover : "#ced1d4" }
-
-
 
     return (
         <td

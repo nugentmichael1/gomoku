@@ -4,20 +4,6 @@
 
 class playerV {
 
-    //Turn Text
-    defaultTurnText = ""
-
-    useStateFxTurnText = null
-
-    setUseStateFxTurnText(fx) {
-        this.useStateFxTurnText = fx
-    }
-
-    setTurnText(text) {
-        this.defaultTurnText = text
-        this.useStateFxTurnText(text)
-    }
-
     //Player Status Table
     useStateFxColor = null
 
@@ -56,23 +42,8 @@ class playerV {
         return this.defaultColor
     }
 
-    // defaultOpponentColor = null
 
-    // setUseStateFxOpponentColor(fx) {
-    //     this.useStateFxOpponentColor = fx
-    // }
-
-    // setOpponentColor(color) {
-    //     this.useStateFxOpponentColor(color)
-    // }
-
-    // setDefaultOpponentColor(color) {
-    //     this.defaultOpponentColor = color
-    // }
-
-    // getDefaultOpponentColor() {
-    //     return this.defaultOpponentColor
-    // }
+    //hints toggle
 
     useStateFxHints = null
 
@@ -80,10 +51,39 @@ class playerV {
         this.useStateFxHints = fx
     }
 
+    useStateFxHintsBoard = null
+
+    setUseStateFxHintsBoard(fx) {
+        this.useStateFxHintsBoard = fx
+    }
+
     setHints(value) {
+
         //checkbox value
         this.useStateFxHints(value)
-        //board vertexes - changes transparency of cell i think
+
+        //board vertexes - changes transparency of hint cells
+        this.useStateFxHintsBoard(value)
+    }
+
+    useStateFxThrees = null
+
+    setUseStateFxThrees(fx) {
+        this.useStateFxThrees = fx
+    }
+
+    setThrees(value) {
+        this.useStateFxThrees(value)
+    }
+
+    useStateFxFours = null
+
+    setUseStateFxFours(fx) {
+        this.useStateFxFours = fx
+    }
+
+    setFours(value) {
+        this.useStateFxFours(value)
     }
 
 }
