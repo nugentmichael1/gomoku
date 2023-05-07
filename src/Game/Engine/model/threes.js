@@ -41,7 +41,7 @@ class threes {
             y1 = this.c1.y + 1;
         }
 
-        console.log(x0, x1, y0, y1);
+        // console.log(x0, x1, y0, y1);
         if (x0 >= 0 && y0 >= 0
             && x0 < matrix.getSize()
             && y0 < matrix.getSize()) { //inside board boundaries check

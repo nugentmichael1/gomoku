@@ -82,7 +82,7 @@ class player {
 		if (this.threesArr[cordStr] !== undefined) {
 
 			//other player's turn
-			if (this.id !== activePlayer) {
+			if (this !== activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -202,7 +202,7 @@ class player {
 		if (this.foursArr[cordStr] !== undefined) {
 
 			//other player's turn
-			if (this.id !== activePlayer) {
+			if (this !== activePlayer) {
 				//just remove single coordinate set at clicked
 				//keep threesCount the same
 
@@ -270,55 +270,11 @@ class player {
 			delete this.foursArr[cordStr];
 		}
 	}
-	cleanStats(clickedCoords) {
-		this.remove3s(clickedCoords);
-		this.remove4s(clickedCoords)
-	}
-	hints(activePlayer) {
-		this.hintState = 1 - this.hintState;
-		if (activePlayer === this.id - 1) {
-			if (this.hintState) this.showHints();
-			else this.hideHints();
-		}
-
+	cleanStats(clickedCoords, activePlayer) {
+		this.remove3s(clickedCoords, activePlayer);
+		this.remove4s(clickedCoords, activePlayer)
 	}
 
-	//is called outside class, too
-	showHints() {
-		//let hintColor = (bBGColor == "var(--FSBlue)") ? "var(--FSRed)" : "var(--FSBlue)";
-		for (let key in this.threesArr) {
-			let c = JSON.parse(key);
-			let td = document.getElementById(c.y + '-' + c.x);
-			td.style.backgroundColor = this.color;
-			td.style.opacity = '0.25';
-		}
-		//foursArr
-		//console.log(this.foursArr);
-		for (let key in this.foursArr) {
-			let c = JSON.parse(key);
-			let td = document.getElementById(c.y + '-' + c.x);
-			td.style.backgroundColor = this.color;
-			td.style.opacity = '0.25';
-		}
-	}
-
-	//is called outside class, too
-	hideHints() {
-		for (let key in this.threesArr) {
-			let c = JSON.parse(key);
-			let td = document.getElementById(c.y + '-' + c.x);
-			td.style.backgroundColor = "";
-			td.style.opacity = '1';
-		}
-
-		//foursArr
-		for (let key in this.foursArr) {
-			let c = JSON.parse(key);
-			let td = document.getElementById(c.y + '-' + c.x);
-			td.style.backgroundColor = "";
-			td.style.opacity = '1';
-		}
-	}
 	updateName(newName) {
 		this.name = newName;
 		document.getElementById('player' + this.id + 'NameDisplay').innerText = this.name;
@@ -335,3 +291,51 @@ class player {
 }
 
 export default player;
+
+
+
+// hints(activePlayer) {
+// 	this.hintState = 1 - this.hintState;
+// 	if (activePlayer === this.id - 1) {
+// 		if (this.hintState) this.showHints();
+// 		else this.hideHints();
+// 	}
+
+// }
+
+// //is called outside class, too
+// showHints() {
+// 	//let hintColor = (bBGColor == "var(--FSBlue)") ? "var(--FSRed)" : "var(--FSBlue)";
+// 	for (let key in this.threesArr) {
+// 		let c = JSON.parse(key);
+// 		let td = document.getElementById(c.y + '-' + c.x);
+// 		td.style.backgroundColor = this.color;
+// 		td.style.opacity = '0.25';
+// 	}
+// 	//foursArr
+// 	//console.log(this.foursArr);
+// 	for (let key in this.foursArr) {
+// 		let c = JSON.parse(key);
+// 		let td = document.getElementById(c.y + '-' + c.x);
+// 		td.style.backgroundColor = this.color;
+// 		td.style.opacity = '0.25';
+// 	}
+// }
+
+// //is called outside class, too
+// hideHints() {
+// 	for (let key in this.threesArr) {
+// 		let c = JSON.parse(key);
+// 		let td = document.getElementById(c.y + '-' + c.x);
+// 		td.style.backgroundColor = "";
+// 		td.style.opacity = '1';
+// 	}
+
+// 	//foursArr
+// 	for (let key in this.foursArr) {
+// 		let c = JSON.parse(key);
+// 		let td = document.getElementById(c.y + '-' + c.x);
+// 		td.style.backgroundColor = "";
+// 		td.style.opacity = '1';
+// 	}
+// }

@@ -268,7 +268,7 @@ class playM {
 
         //sifts respective player objects' 3s and 4s arrays for any changes to hints
         this.players.forEach(p => {
-            p.cleanStats(clickedCoords)
+            p.cleanStats(clickedCoords, this.activePlayer)
         })
 
         //show hints for next player if it's enabled
