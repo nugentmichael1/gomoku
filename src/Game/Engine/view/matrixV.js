@@ -21,8 +21,8 @@ class matrixV {
     setCellOwner(i, j, owner) {
         this.rows[i].getCellV(j).setOwner(owner)
     }
-    setCellHints(i, j, hints) {
-        this.rows[i].getCellV(j).setHints(hints)
+    setCellHint(playerId, coordinate, value) {
+        this.rows[coordinate.y].getCellV(coordinate.x).setHint(playerId, value)
     }
 }
 
@@ -66,12 +66,26 @@ class matrixCellV {
         this.useStateFxOwner(owner)
     }
 
-    setUseStateFxHints(fx) {
-        this.useStateFxHints = fx
+    //hints
+    hintsArr = [new hintsV(), new hintsV()]
+
+    getHintsV(playerId) {
+        return this.hintsArr[playerId]
     }
-    setHints(hints) {
-        this.useStateFxHints(hints)
+
+    setHint(playerId, value) {
+        this.hintsArr[playerId].setValue(value)
     }
 }
 
 export default matrixV;
+
+
+class hintsV {
+    setUseStateFx(fx) {
+        this.useStateFx = fx
+    }
+    setValue(hint) {
+        this.useStateFx(hint)
+    }
+}

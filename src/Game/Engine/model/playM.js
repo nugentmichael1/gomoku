@@ -227,14 +227,6 @@ class playM {
         //Guard: Verify game is not over, and clicked cell is still claimable
         if (this.winner !== null || !this.matrix.isCellClaimed(i, j)) return
 
-        //reset hints for current player since he's already made a decision.
-        //need to remove hints before 3s and 4s are removed so we know where they
-        //are still.
-        if (this.activePlayer.hintState) this.activePlayer.hideHints();
-
-        //update player turn message status, and matrix index
-
-
         //Claim matrix cell.  Updates view's board.
         this.matrix.setCell(i, j, this.activePlayer, this.turn.getValue())
 
@@ -262,17 +254,13 @@ class playM {
             this.timerM.stop()
         }
 
-        //increase turn count.  update view.
+        //increase turn count.  updates turn view.
         this.turn.increment();
 
-
-        //sifts respective player objects' 3s and 4s arrays for any changes to hints
+        //Sift players' 3s and 4s arrays for any changes
         this.players.forEach(p => {
             p.cleanStats(clickedCoords, this.activePlayer)
         })
-
-        //show hints for next player if it's enabled
-        if (this.passivePlayer.hintState) this.passivePlayer.showHints();
 
         //update player displays
         this.players.forEach(p => {

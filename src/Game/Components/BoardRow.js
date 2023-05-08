@@ -6,7 +6,7 @@ import BoardCell from "./BoardCell"
 
 function BoardRow(props) {
 
-    const { playCtrl, size, index, rowClassName, matrixRowV, colors, hintsToggle } = props.data;
+    const { playCtrl, size, index, rowClassName, matrixRowV, colors, hintsToggle, turn } = props.data;
 
     //Array to hold table cell tags
     const tdArr = [];
@@ -25,6 +25,7 @@ function BoardRow(props) {
                 cellV={matrixRowV.getCellV(j)}
                 colors={colors}
                 hintToggle={hintsToggle}
+                turn={turn}
             />
         )
     }
@@ -40,6 +41,7 @@ function BoardRow(props) {
             cellV={matrixRowV.getCellV(size - 1)}
             colors={colors}
             hintToggle={hintsToggle}
+            turn={turn}
         />
     )
 

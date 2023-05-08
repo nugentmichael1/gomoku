@@ -17,9 +17,13 @@ const BoardCell = ({ playCtrl, i, j, className, cellV, colors, hintToggle, turn 
     //Acquire useState Fx
     cellV.setUseStateFxOwner(setOwner)
 
-    const [hint, setHint] = useState([false, false])
+    const [p1Hint, setP1Hint] = useState(0)
     //Acquire useState Fx
-    cellV.setUseStateFxHints(setHint)
+    cellV.getHintsV(0).setUseStateFx(setP1Hint)
+
+    const [p2Hint, setP2Hint] = useState(0)
+    //Acquire useState Fx
+    cellV.getHintsV(1).setUseStateFx(setP2Hint)
 
     //3 cases
     //1: no owner.  owner===null.  cellStyle = {backgroundColor: hover ? colors.hover : "inherit"}; divStyle = {backgroundColor:hover ? colors.hover:"#ced1d4"}
@@ -28,13 +32,13 @@ const BoardCell = ({ playCtrl, i, j, className, cellV, colors, hintToggle, turn 
 
     let cellStyle, divStyle;
     if (owner === null) {
-        if (turn % 2 === 1 && hintToggle[0] === true && hint[0] === true) {
+        if (turn % 2 === 1 && hintToggle[0] === true && p1Hint >= 1) {
             // player 1
             // mark cell with player 1's color, but at reduced opacity
             cellStyle = { backgroundColor: colors.p1, opacity: .25 }
             divStyle = { display: "none" }
         }
-        else if (turn % 2 === 0 && hintToggle[1] === true && hint[1] === true) {
+        else if (turn % 2 === 0 && hintToggle[1] === true && p2Hint >= 1) {
             // player 2
             // mark cell with player 2's color, but at reduced opacity
             cellStyle = { backgroundColor: colors.p2, opacity: .25 }
@@ -44,6 +48,7 @@ const BoardCell = ({ playCtrl, i, j, className, cellV, colors, hintToggle, turn 
             // mark cell like normal
             cellStyle = { backgroundColor: hover ? colors.hover : "inherit" };
             divStyle = { backgroundColor: hover ? colors.hover : "#ced1d4" }
+            // console.log("noHint")
         }
     }
     else if (owner === 0) {

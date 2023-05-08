@@ -13,7 +13,7 @@ import FSBulldog from "../../Assets/FresnoStateBulldog.png"
 
 
 // create board in html with size x size dimension.  should only accept/expect n of 15 or 19.
-const Board = ({ playCtrl, view }) => {
+const Board = ({ playCtrl, view, turn }) => {
 
 	//view destructure
 	const optionsV = view.getOptions()
@@ -59,28 +59,18 @@ const Board = ({ playCtrl, view }) => {
 		p2: p2Color
 	}
 
+	//hint toggles
 	const [hintToggleP1, setHintToggleP1] = useState(false)
 	//Acuire react hook useState set fx
 	player1V.setUseStateFxHintsBoard(setHintToggleP1)
-
 	const [hintToggleP2, setHintToggleP2] = useState(false)
 	//Acquire react hook useState set fx
 	player2V.setUseStateFxHintsBoard(setHintToggleP2)
-
+	//Combine player 1 and player 2 hint toggles into one array
 	const hintsToggle = [hintToggleP1, hintToggleP2]
 
 	//Reference to matrix never changes
 	const matrixV = playV.getMatrix()
-	//matrix
-	// const [matrix, setMatrix] = useState()
-	// //Acquire react hook useState set fx
-	// playV.setUseStateFxMatrix(setMatrix)
-
-	// useEffect(() => {
-	// 	console.log("matrix", matrix)
-	// }, [matrix])
-
-	// console.log("render")
 
 	//array to hold table row tags
 	const trArr = []
@@ -95,7 +85,8 @@ const Board = ({ playCtrl, view }) => {
 			"rowClassName": 'row' + i,
 			"matrixRowV": matrixV.getRow(i),
 			"colors": colors,
-			"hintsToggle": hintsToggle
+			"hintsToggle": hintsToggle,
+			"turn": turn
 		}
 
 		//Array to hold table cell tags
@@ -110,7 +101,8 @@ const Board = ({ playCtrl, view }) => {
 		"rowClassName": 'rowLast',
 		"matrixRowV": matrixV.getRow(size - 1),
 		"colors": colors,
-		"hintsToggle": hintsToggle
+		"hintsToggle": hintsToggle,
+		"turn": turn
 	}
 	trArr.push(<BoardRow data={boardRowProps} key={size - 1} />)
 	// trArr.push(createBoardRow(size, size - 1, bgColor, hoverColor, 'rowLast', clicked, gameInstance))

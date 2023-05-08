@@ -64,8 +64,7 @@ function Game() {
         <Board
           playCtrl={ctrl.getPlay()}
           view={viewInterface}
-        // optionsV={viewInterface.getOptions()}
-        // playV={viewInterface.getPlay()}
+          turn={turn}
         />
       }
 
