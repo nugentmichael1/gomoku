@@ -2,9 +2,6 @@
 
 class player {
 
-
-	//hint state. 0: no hints; 1: hints.
-	hintState = 0;
 	//keeps track of all 3-long segments for player
 	threesArr = [];
 	//keeps track of all 4-long segments
@@ -14,22 +11,26 @@ class player {
 	//keeps count of all 4-long segments;
 	foursCount = 0;
 
-	getId() {
-		return this.id
-	}
-
 	constructor(id, view) {
 		this.id = id;//integer 0 or 1
 		this.name = 'Player ' + (id + 1);
 		this.view = view
 	}
 
+	getId() {
+		return this.id
+	}
+
+	//view updates
 	updateViewThrees() {
 		this.view.getPlayer(this.id).setThrees(this.threesCount)
 	}
-
 	updateViewFours() {
 		this.view.getPlayer(this.id).setFours(this.foursCount)
+	}
+	updateName(newName) {
+		this.name = newName;
+		document.getElementById('player' + this.id + 'NameDisplay').innerText = this.name;
 	}
 
 	addThree(three) {
@@ -43,6 +44,7 @@ class player {
 
 			//check to see if vertex has already been recorded as a hint
 			if (this.threesArr[key] === undefined) {
+				// it it has not, update view
 				this.threesArr[key] = three;
 			}
 			//if it has, connect this three to it
@@ -74,8 +76,7 @@ class player {
 
 	remove3s(cClicked, activePlayer) {
 
-		//since JS uses associative arrays, the coordinates object can be stringified
-		// and used as a unique key.  could manually create strings, too.
+		//since JS uses associative arrays, the coordinates object can be stringified and used as a unique key.  could manually create strings, too.
 		let cordStr = JSON.stringify(cClicked);
 
 		//possible partner existence check
@@ -83,11 +84,9 @@ class player {
 
 			//other player's turn
 			if (this !== activePlayer) {
-				//just remove single coordinate set at clicked
-				//keep threesCount the same
+				//Remove all threes associated with coordinate at clicked vertex.  keep threesCount the same
 
-				//removes head of linked list, which through garbage collection will
-				//remove entire linked list (theoretically)
+				//removes head of linked list, which through garbage collection will remove entire linked list (theoretically)
 				delete this.threesArr[cordStr];
 			}
 
@@ -146,6 +145,7 @@ class player {
 					threeToRemove = threeToRemove.next;
 				}
 			}
+			
 			//delete array index entirely.  linked list is empty at this point.
 			delete this.threesArr[cordStr];
 		}
@@ -275,10 +275,6 @@ class player {
 		this.remove4s(clickedCoords, activePlayer)
 	}
 
-	updateName(newName) {
-		this.name = newName;
-		document.getElementById('player' + this.id + 'NameDisplay').innerText = this.name;
-	}
 	flushStats() {
 
 		this.threesCount = 0;

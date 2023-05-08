@@ -74,7 +74,7 @@ class playM {
             x1 = b;
         }
         //Checks for 3, 4, and 5 line, and records in player object
-        this.conditionsCheck(x1 - x0, this.activePlayer, 'dUp', this.turn.getValue(), this.matrix, new coordinates(x0, y), new coordinates(x1, y))
+        this.conditionsCheck(x1 - x0, this.activePlayer, 'h', this.turn.getValue(), this.matrix, new coordinates(x0, y), new coordinates(x1, y))
 
 
         //check diagonal: bottom left to top right
