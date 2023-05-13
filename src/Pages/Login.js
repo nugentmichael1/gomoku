@@ -3,6 +3,9 @@
 //React
 import { useState } from "react"
 
+//JWT
+import { decodeToken } from 'react-jwt'
+
 //CSS
 import "../CSS/login.css"
 
@@ -12,19 +15,19 @@ import { Link } from "react-router-dom";
 //Axios - http requests
 import http from "../http-common"
 
-const verifyUserCredentials = async (username, password) => {
+// queries backend to: 
+// (1) verify username and password combination are correct, 
+// (2) acquire user's statistics like games won and personal settings
+// (3) acquire JWT to securely record game wins
+const loginRequest = async (username, password) => {
 
-    const result = await http.get("userLogin", {
-        params:
+    const result = await http.post("userLogin",
         {
             username: username,
             password: password
         }
-    })
+    )
         .then((res) => {
-
-            // console.log(res)
-
             return res.data
         })
         .catch((error) => {
@@ -32,27 +35,31 @@ const verifyUserCredentials = async (username, password) => {
             return null
         })
 
-    // console.log(data)
-
     return result
 }
 
-// queries backend to: 
-// (1) verify username and password combination are correct, 
-// (2) acquire user's statistics like games won and personal settings
-// (3) acquire JWT to securely record game wins
+
 const logIn = async (username, password, setUser) => {
 
-    if (await verifyUserCredentials(username, password)) setUser(username)
+    const result = await loginRequest(username, password)
 
-    // console.log(result)
+    //Guard: Failure to validate credentials on backend
+    if (!result.jwt) {
+        //case 1: user provided invalid credentials
 
+        //case 2: server error
 
-    //set session storage variables
-    //store JWT
+        return
+    }
 
-    //debug
-    // console.log("username:", username, "password:", password)
+    //decode and destructure jwt
+    const { games } = decodeToken(result.jwt)
+
+    //set state of user for entire app
+    setUser({ "username": username, "games": games })
+
+    //store jwt in session storage variable
+    sessionStorage.setItem("userJWT", result.jwt)
 }
 
 const LogInForm = ({ setUser }) => {
@@ -76,10 +83,6 @@ const LogInForm = ({ setUser }) => {
                 <li>
                     <input type="button" value="Log In" onClick={() => logIn(username, password, setUser)} />
                 </li>
-                {/*  Debug
-            <input type='button' value='Log in as random user to demo'
-                onclick='logInRandDebug()'>
-        */}
             </ul>
             No account? <Link to={"/Register"}>Register here.</Link>
         </fieldset>
@@ -102,7 +105,7 @@ const Login = ({ user, setUser }) => {
         // logOutView (currently logged-in)
         return <>
             {heading}
-            <p>You are logged-in, {user}</p>
+            <p id="loggedInMessage">User {user.username} is logged-in.</p>
             <input
                 type='button'
                 value="Log Out"
