@@ -7500,3 +7500,229 @@ Require stack:
 [info] i  functions: Finished "us-central1-userLogin" in 156.923857ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 156.923857ms"}}
 [debug] [2023-05-13T17:56:37.631Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE"}}
 [debug] [2023-05-13T17:56:37.631Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:12:04.321Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:12:04.321Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:12:04.321Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:12:04.321Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:12:04.322Z] Accepted request OPTIONS /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:12:04.326Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:12:04.327Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:12:04.327Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:12:04.327Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY"}}
+[info] i  functions: Finished "us-central1-userLogin" in 2.669479ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 2.669479ms"}}
+[debug] [2023-05-13T18:12:04.330Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE"}}
+[debug] [2023-05-13T18:12:04.331Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:12:04.335Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:12:04.335Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:12:04.335Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:12:04.335Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:12:04.335Z] Accepted request POST /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:12:04.341Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:12:04.341Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:12:04.341Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:12:04.342Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY"}}
+[info] i  functions: Finished "us-central1-userLogin" in 203.605368ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 203.605368ms"}}
+[debug] [2023-05-13T18:12:04.546Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE"}}
+[debug] [2023-05-13T18:12:04.546Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:15:39.439Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:15:39.439Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:15:39.439Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:15:39.439Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:15:39.439Z] Accepted request OPTIONS /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:15:39.445Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:15:39.445Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:15:39.445Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:15:39.446Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY"}}
+[info] i  functions: Finished "us-central1-userLogin" in 2.902471ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 2.902471ms"}}
+[debug] [2023-05-13T18:15:39.449Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE"}}
+[debug] [2023-05-13T18:15:39.449Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:15:39.454Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:15:39.454Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:15:39.454Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:15:39.454Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:15:39.454Z] Accepted request POST /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:15:39.459Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:15:39.460Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:15:39.460Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:15:39.460Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY"}}
+[info] i  functions: Finished "us-central1-userLogin" in 135.577749ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 135.577749ms"}}
+[debug] [2023-05-13T18:15:39.596Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE"}}
+[debug] [2023-05-13T18:15:39.596Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:16:28.053Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:16:28.053Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:16:28.053Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:16:28.053Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:16:28.053Z] Accepted request OPTIONS /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:16:28.056Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:16:28.056Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:16:28.056Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:16:28.056Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY"}}
+[info] i  functions: Finished "us-central1-userLogin" in 2.206647ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 2.206647ms"}}
+[debug] [2023-05-13T18:16:28.059Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE"}}
+[debug] [2023-05-13T18:16:28.059Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:16:28.062Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:16:28.062Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:16:28.062Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:16:28.062Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:16:28.062Z] Accepted request POST /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:16:28.066Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:16:28.066Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:16:28.066Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:16:28.067Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: BUSY"}}
+[info] i  functions: Finished "us-central1-userLogin" in 142.155415ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 142.155415ms"}}
+[debug] [2023-05-13T18:16:28.209Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: IDLE"}}
+[debug] [2023-05-13T18:16:28.209Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:20:55.312Z] File /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/login.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/login.js changed, reloading triggers"}}
+[debug] [2023-05-13T18:20:56.313Z] Validating nodejs source
+[debug] [2023-05-13T18:20:57.016Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.4.0",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-05-13T18:20:57.016Z] Building nodejs source
+[debug] [2023-05-13T18:20:57.016Z] Failed to find version of module node: reached end of search path /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "16" doesn't match your global version "18". Using node@18 from host. 
+[debug] [2023-05-13T18:20:57.017Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-05-13T18:20:57.018Z] Found firebase-functions binary at '/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-05-13T18:20:57.189Z] Serving at port 8858
+
+[debug] [2023-05-13T18:20:57.411Z] Got response from /__/functions.yaml {"endpoints":{"userLogin":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"userLogin"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-05-13T18:20:57.414Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: userLogin. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: userLogin."}}
+[debug] [2023-05-13T18:20:57.420Z] [worker-pool] Shutting down IDLE worker (us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-userLogin)"}}
+[debug] [2023-05-13T18:20:57.420Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: FINISHING"}}
+[debug] [2023-05-13T18:20:57.432Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: exited"}}
+[debug] [2023-05-13T18:20:57.432Z] [worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-b9bbf93a-83fa-4b3b-b9dd-b1c76f711781]: FINISHED"}}
+[debug] [2023-05-13T18:21:08.340Z] File /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/login.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/login.js changed, reloading triggers"}}
+[debug] [2023-05-13T18:21:09.342Z] Validating nodejs source
+[debug] [2023-05-13T18:21:09.908Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.4.0",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-05-13T18:21:09.909Z] Building nodejs source
+[debug] [2023-05-13T18:21:09.909Z] Failed to find version of module node: reached end of search path /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "16" doesn't match your global version "18". Using node@18 from host. 
+[debug] [2023-05-13T18:21:09.910Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-05-13T18:21:09.913Z] Found firebase-functions binary at '/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-05-13T18:21:10.063Z] Serving at port 8620
+
+[debug] [2023-05-13T18:21:10.085Z] Got response from /__/functions.yaml Failed to generate manifest from function source: SyntaxError: missing ) after argument list
+[debug] [2023-05-13T18:21:10.086Z] Failed to parse functions.yamlincomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line at line 1, column 62:
+     ... rom function source: SyntaxError: missing ) after argument list
+                                         ^ {"name":"YAMLException","reason":"incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line","mark":{"name":null,"buffer":"Failed to generate manifest from function source: SyntaxError: missing ) after argument list\n\u0000","position":61,"line":0,"column":61},"message":"incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line at line 1, column 62:\n     ... rom function source: SyntaxError: missing ) after argument list\n                                         ^"}
+[debug] [2023-05-13T18:21:10.089Z] shutdown requested via /__/quitquitquit
+
+[error] ⬢  functions: Failed to load function definition from source: FirebaseError: Failed to load function definition from source: Failed to generate manifest from function source: SyntaxError: missing ) after argument list {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: Failed to load function definition from source: Failed to generate manifest from function source: SyntaxError: missing ) after argument list"}}
+[debug] [2023-05-13T18:21:11.667Z] File /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/login.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/login.js changed, reloading triggers"}}
+[debug] [2023-05-13T18:21:12.668Z] Validating nodejs source
+[debug] [2023-05-13T18:21:13.233Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.4.0",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-05-13T18:21:13.233Z] Building nodejs source
+[debug] [2023-05-13T18:21:13.233Z] Failed to find version of module node: reached end of search path /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "16" doesn't match your global version "18". Using node@18 from host. 
+[debug] [2023-05-13T18:21:13.234Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-05-13T18:21:13.235Z] Found firebase-functions binary at '/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-05-13T18:21:13.397Z] Serving at port 8398
+
+[debug] [2023-05-13T18:21:13.623Z] Got response from /__/functions.yaml {"endpoints":{"userLogin":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"userLogin"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-05-13T18:21:13.626Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: userLogin. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: userLogin."}}
+[debug] [2023-05-13T18:21:15.358Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:21:15.358Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:21:15.358Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:21:15.358Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:21:15.359Z] Accepted request OPTIONS /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:21:15.365Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:21:15.366Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:21:15.366Z] [worker-pool] Cleaned up workers for us-central1-userLogin: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-userLogin: 1 --> 0"}}
+[debug] [2023-05-13T18:21:15.377Z] [worker-pool] addWorker(us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-userLogin)"}}
+[debug] [2023-05-13T18:21:15.378Z] [worker-pool] Adding worker with key us-central1-userLogin, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-userLogin, total=1"}}
+[debug] [2023-05-13T18:21:16.020Z] [runtime-status] [28218] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.5.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.5.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2023-05-13T18:21:16.021Z] [runtime-status] [28218] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-05-13T18:21:16.022Z] [runtime-status] [28218] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-05-13T18:21:16.022Z] [runtime-status] [28218] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-05-13T18:21:16.229Z] [runtime-status] [28218] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-05-13T18:21:16.229Z] [runtime-status] [28218] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.4.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.4.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js\"}}"}}
+[debug] [2023-05-13T18:21:16.229Z] [runtime-status] [28218] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-05-13T18:21:16.231Z] [runtime-status] [28218] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.5.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.5.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2023-05-13T18:21:16.232Z] [runtime-status] [28218] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-functions/lib/v1/index.js\"}"}}
+[debug] [2023-05-13T18:21:16.233Z] [runtime-status] [28218] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"11.5.0","resolution":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"11.5.0\",\"resolution\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2023-05-13T18:21:16.234Z] [runtime-status] [28218] initializeApp(DEFAULT) {"storageBucket":"gomoku-77118.appspot.com","projectId":"gomoku-77118"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] initializeApp(DEFAULT) {\"storageBucket\":\"gomoku-77118.appspot.com\",\"projectId\":\"gomoku-77118\"}"}}
+[debug] [2023-05-13T18:21:16.243Z] [runtime-status] [28218] Functions runtime initialized. {"cwd":"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions","node_version":"18.15.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Functions runtime initialized. {\"cwd\":\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions\",\"node_version\":\"18.15.0\"}"}}
+[debug] [2023-05-13T18:21:16.243Z] [runtime-status] [28218] Listening to port: /tmp/fire_emu_0fc710decd9d700f.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[runtime-status] [28218] Listening to port: /tmp/fire_emu_0fc710decd9d700f.sock"}}
+[debug] [2023-05-13T18:21:16.289Z] [worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: IDLE"}}
+[debug] [2023-05-13T18:21:16.289Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:21:16.290Z] [worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: BUSY"}}
+[info] i  functions: Finished "us-central1-userLogin" in 3.294071ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 3.294071ms"}}
+[debug] [2023-05-13T18:21:16.293Z] [worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: IDLE"}}
+[debug] [2023-05-13T18:21:16.294Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:21:16.296Z] [work-queue] {"queuedWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:21:16.296Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-05-13T18:21:16.296Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/gomoku-77118/us-central1/userLogin-2023-05-13T18:21:16.296Z"],"workRunningCount":1}
+[debug] [2023-05-13T18:21:16.296Z] Accepted request POST /gomoku-77118/us-central1/userLogin --> us-central1-userLogin
+[debug] [2023-05-13T18:21:16.302Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-05-13T18:21:16.302Z] [functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/gomoku-77118/us-central1/userLogin, mapping to path=/"}}
+[debug] [2023-05-13T18:21:16.302Z] [worker-pool] submitRequest(triggerId=us-central1-userLogin) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-userLogin)"}}
+[info] i  functions: Beginning execution of "us-central1-userLogin" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Beginning execution of \"us-central1-userLogin\""}}
+[debug] [2023-05-13T18:21:16.303Z] [worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: BUSY"}}
+[warn] ⚠  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[info] i  functions: Finished "us-central1-userLogin" in 716.344993ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"Finished \"us-central1-userLogin\" in 716.344993ms"}}
+[debug] [2023-05-13T18:21:17.020Z] [worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-userLogin"},"extension":{},"message":"[worker-us-central1-userLogin-5001cc24-4721-4946-b889-03f403b8d689]: IDLE"}}
+[debug] [2023-05-13T18:21:17.020Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}

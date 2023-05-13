@@ -59,7 +59,7 @@ const PlayerStatusTable = ({ playerV, opponentV, turn, optionsC, id, user }) => 
     return <table id={tblID}>
         <tbody>
             <tr>
-                <th>{displayText}</th>
+                <th>{(user === null) ? displayText : user.username}</th>
             </tr>
             <tr>
                 <td id={colDispID} className={colorClass} style={{ backgroundColor: pColor, color: turnTextColor }}>
@@ -75,7 +75,6 @@ const PlayerStatusTable = ({ playerV, opponentV, turn, optionsC, id, user }) => 
             </tr>
             <tr>
                 <th>
-                    {/* <!--<input type="button" value="3 check" onClick="threeCheck()">--> */}
                     <label htmlFor={hintsID} name={hintsID}>
                         Hints
                     </label>

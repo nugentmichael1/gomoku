@@ -72,6 +72,7 @@ function Game({ user }) {
           optionsC={ctrl.getOptions()}
           id={1}
           turn={turn}
+          user={null}
         />
       }
 

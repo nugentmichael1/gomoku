@@ -19,7 +19,9 @@ const createJWT = (username, games) => {
 
     const secret = "gomokuJWTSecret"
 
-    const token = jwt.sign(payload, secret)
+    const expiration = 60 * 60
+
+    const token = jwt.sign(payload, secret, { expiresIn: expiration })
 
     return token
 }

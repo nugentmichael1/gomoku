@@ -59,7 +59,7 @@ const logIn = async (username, password, setUser) => {
     setUser({ "username": username, "games": games })
 
     //store jwt in session storage variable
-    sessionStorage.setItem("userJWT", result.jwt)
+    sessionStorage.setItem("jwt", result.jwt)
 }
 
 const LogInForm = ({ setUser }) => {
@@ -105,7 +105,7 @@ const Login = ({ user, setUser }) => {
         // logOutView (currently logged-in)
         return <>
             {heading}
-            <p id="loggedInMessage">User {user.username} is logged-in.</p>
+            <p id="loggedInMessage">Logged in as: {user.username}</p>
             <input
                 type='button'
                 value="Log Out"

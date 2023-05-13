@@ -1,6 +1,10 @@
 //Gomoku
 
+//React
 import { useState } from "react"
+
+//JWT
+import { useJwt } from 'react-jwt'
 
 //Components
 import Nav from "./Components/Nav"
@@ -20,12 +24,21 @@ import { Route, Routes } from "react-router-dom";
 //CSS
 import "./CSS/CSUF_Style.css"
 
+
 //check session storage for existence of JWT.
-//If true, set user to it.
+const jwt = sessionStorage.getItem("jwt")
+
 
 function App() {
 
   const [user, setUser] = useState(null)
+
+  const { decodedToken, isExpired } = useJwt(jwt)
+
+  //If true, set user to it.
+  if (user === null && decodedToken !== null && !isExpired) {
+    setUser(decodedToken)
+  }
 
   return (
     <>
