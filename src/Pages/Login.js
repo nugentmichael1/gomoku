@@ -1,7 +1,7 @@
 //Login
 
 //React
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 //CSS
 import "../CSS/login.css"
@@ -9,86 +9,109 @@ import "../CSS/login.css"
 //Navigation
 import { Link } from "react-router-dom";
 
+//Axios - http requests
+import http from "../http-common"
 
-//Check logged-in status
-const checkLoggedInStatus = () => {
+const verifyUserCredentials = async (username, password) => {
 
-    const token = sessionStorage.getItem("token");
+    const result = await http.get("userLogin", {
+        params:
+        {
+            username: username,
+            password: password
+        }
+    })
+        .then((res) => {
 
-    //debug
-    // console.log(token)
+            // console.log(res)
 
-    if (token !== null) {
-        //Inform user he is already logged in, and provide option to log-out.
+            return res.data
+        })
+        .catch((error) => {
+            console.error(error)
+            return null
+        })
 
-        //debug
-        console.log("Logged in")
-        return true;
-    }
-    else {
-        //Provide form to log-in.
+    // console.log(data)
 
-        //debug
-        console.log("Logged out")
-        return false;
-    }
+    return result
 }
 
-const logIn = () => {
+// queries backend to: 
+// (1) verify username and password combination are correct, 
+// (2) acquire user's statistics like games won and personal settings
+// (3) acquire JWT to securely record game wins
+const logIn = async (username, password, setUser) => {
+
+    if (await verifyUserCredentials(username, password)) setUser(username)
+
+    // console.log(result)
+
 
     //set session storage variables
     //store JWT
+
+    //debug
+    // console.log("username:", username, "password:", password)
 }
 
-const logOut = () => {
+const LogInForm = ({ setUser }) => {
 
-    //clear session storage
-}
+    const [username, setUsername] = useState("")
 
-const logInForm = <form id='logInForm'>
-    <fieldset>
-        <legend>Credentials</legend>
-        <ul>
-            <li>
-                <label htmlFor="username">Username:</label>
-                <input type="text" name="username" id="username" />
-            </li>
-            <li>
-                <label htmlFor="password">Password:</label>
-                <input type='password' name="password" id="password" />
-            </li>
-            <li>
-                <input type="button" value="Log In" onClick={logIn()} />
-            </li>
-            {/*  Debug
+    const [password, setPassword] = useState("")
+
+    return < form id='logInForm' >
+        <fieldset>
+            <legend>Credentials</legend>
+            <ul>
+                <li>
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" name="username" id="username" value={username} onChange={(e) => { setUsername(e.target.value) }} />
+                </li>
+                <li>
+                    <label htmlFor="password">Password:</label>
+                    <input type='password' name="password" id="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                </li>
+                <li>
+                    <input type="button" value="Log In" onClick={() => logIn(username, password, setUser)} />
+                </li>
+                {/*  Debug
             <input type='button' value='Log in as random user to demo'
                 onclick='logInRandDebug()'>
         */}
-        </ul>
-        No account? <Link to={"/Register"}>Register here.</Link>
-    </fieldset>
-</form>
+            </ul>
+            No account? <Link to={"/Register"}>Register here.</Link>
+        </fieldset>
+    </form >
+}
 
-const logOutContent = <input type='button'
-    value="Log Out"
-    onClick={logOut()}
-    id='logOutButton' />
+const heading = <h1>Log-In</h1>
 
-const Login = () => {
+const Login = ({ user, setUser }) => {
 
-    const [content, setContent] = useState(logInForm);
+    if (user === null) {
+        // logInView (currently logged-out)
+        return <>
+            {heading}
+            <LogInForm setUser={setUser} />
+        </>
+    }
 
-    useEffect(() => {
-        if (checkLoggedInStatus()) {
-            setContent(logOutContent);
-        }
-    }, [])
+    else {
+        // logOutView (currently logged-in)
+        return <>
+            {heading}
+            <p>You are logged-in, {user}</p>
+            <input
+                type='button'
+                value="Log Out"
+                onClick={() => setUser(null)}
+                id='logOutButton'
+            />
+        </>
+    }
 
-    return <>
-        <h1>Log-in</h1>
-        {content}
-        <p id='loggedInMessage'></p>
-    </>
 };
 
 export default Login;

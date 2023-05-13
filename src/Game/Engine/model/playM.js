@@ -18,7 +18,6 @@ class playM {
 
         this.turn = new turn(view)
 
-
         this.players = [
             new player(0, view),
             new player(1, view)

@@ -32,10 +32,7 @@ const model = new game(viewInterface)
 //controller - takes model as dependency
 const ctrl = new controller(model)
 
-//Check if user is logged in.  Change P1 name to user's.
-const user = {}
-
-function Game() {
+function Game({ user }) {
 
   //Turn
   const [turn, setTurn] = useState("")

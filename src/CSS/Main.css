@@ -4,7 +4,6 @@
 }
 
 .mmenu li {
-    float: center;
     background-color: var(--FSRed);
     margin: 0 0;
     font-size: 200%;

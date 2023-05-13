@@ -25,7 +25,7 @@ function Timer({ play, timerV }) {
 
     //Ensures interval function is cleared upon component dismount
     useEffect(() => {
-        return () => { play.stop() }
+        return () => { play.reset() }
 
     }, [play])
 

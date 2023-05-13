@@ -12,7 +12,6 @@ class playC {
         this.playM.start()
     }
 
-    //reset (timer)
     reset() {
         this.playM.reset()
     }

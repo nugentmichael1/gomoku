@@ -1,6 +1,17 @@
 //Matrix View
 
 
+
+class hintsV {
+    setUseStateFx(fx) {
+        this.useStateFx = fx
+    }
+    setValue(hint) {
+        this.useStateFx(hint)
+    }
+}
+
+
 class matrixV {
 
     constructor(size) {
@@ -79,13 +90,3 @@ class matrixCellV {
 }
 
 export default matrixV;
-
-
-class hintsV {
-    setUseStateFx(fx) {
-        this.useStateFx = fx
-    }
-    setValue(hint) {
-        this.useStateFx(hint)
-    }
-}
