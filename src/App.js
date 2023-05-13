@@ -25,15 +25,12 @@ import { Route, Routes } from "react-router-dom";
 import "./CSS/CSUF_Style.css"
 
 
-//check session storage for existence of JWT.
-const jwt = sessionStorage.getItem("jwt")
-
-
 function App() {
 
   const [user, setUser] = useState(null)
 
-  const { decodedToken, isExpired } = useJwt(jwt)
+  //check session storage for existence of JWT.
+  const { decodedToken, isExpired, reEvaluateToken } = useJwt(sessionStorage.getItem("jwt"))
 
   //If true, set user to it.
   if (user === null && decodedToken !== null && !isExpired) {
@@ -50,7 +47,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         {/* <Route path='/Home' element={<Home />} /> */}
-        <Route path='/Login' element={<Login user={user} setUser={setUser} />} />
+        <Route path='/Login' element={<Login user={user} setUser={setUser} setJWT={reEvaluateToken} />} />
         <Route path='/Register' element={<Register user={user} setUser={setUser} />} />
         <Route path='/Game' element={<Game user={user} />} />
         <Route path='/Leaderboard' element={<Leaderboard user={user} />} />

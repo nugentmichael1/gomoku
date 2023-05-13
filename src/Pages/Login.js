@@ -38,7 +38,6 @@ const loginRequest = async (username, password) => {
     return result
 }
 
-
 const logIn = async (username, password, setUser) => {
 
     const result = await loginRequest(username, password)
@@ -91,8 +90,15 @@ const LogInForm = ({ setUser }) => {
 
 const heading = <h1>Log-In</h1>
 
-const Login = ({ user, setUser }) => {
+const Login = ({ user, setUser, setJWT }) => {
 
+    const logOut = () => {
+        setJWT(null);
+        setUser(null);
+        sessionStorage.setItem("jwt", null)
+    }
+
+    //View Decision
     if (user === null) {
         // logInView (currently logged-out)
         return <>
@@ -109,7 +115,7 @@ const Login = ({ user, setUser }) => {
             <input
                 type='button'
                 value="Log Out"
-                onClick={() => setUser(null)}
+                onClick={logOut}
                 id='logOutButton'
             />
         </>

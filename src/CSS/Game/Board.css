@@ -75,7 +75,7 @@ div.horizontal {
     margin-right: auto;
 
     background-repeat: no-repeat;
-    background-size: 90%;
+    background-size: contain;
     background-position: center center;
 }
 

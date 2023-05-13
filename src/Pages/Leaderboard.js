@@ -3,10 +3,10 @@ import React from 'react'
 //check session storage for leaderboard data
 //if false, download from backend
 
-//if user exists check session storage for its leaderboard data
-//if false, download.  this should be a rare event since login should acquire it.
+function Leaderboard({ user }) {
 
-function Leaderboard() {
+  //use user object to fill in user table
+
   return (<>
     <div>Leaderboard</div>
     <p>Please pardon my mess while this project's codebase undergoes a translation from LAMP to MERN. (April 27, 2023)</p>
