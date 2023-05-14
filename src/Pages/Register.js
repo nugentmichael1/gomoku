@@ -4,147 +4,178 @@
 //React
 import { useState } from "react";
 
+//Axios
+import http from "../http-common"
+
 //CSS
 import "../CSS/register.css"
 
+const postNewRegistration = async (formValues) => {
 
-//Check for logged-in status
-//Present appropriate content
+    //use axios to trigger backend registration route
+    const result = await http.post("/userRegister", formValues)
 
-const sendRegistrationHelper = (formValues) => {
+        .then(res => {
 
-    //use axios to communicate with backend
-    console.log(formValues)
+            //debug
+            // console.log(res.data)
+
+            return res.data
+        })
+
+        .catch(error => {
+            console.log("error in postNewRegistration():", error)
+            return error
+        })
+
+    return result
 }
 
-const Register = () => {
+const heading = <h1>Register</h1>
 
+const Register = ({ user, setUser, setJWT }) => {
+
+    //Form values
     const [fName, setFName] = useState("");
     const [lName, setLName] = useState("");
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    // const formValuesDefault = {
-    //     fname: "",
-    //     lName: "",
-    //     email: "",
-    //     username: "",
-    //     password: ""
-    // }
+    const [message, setMessage] = useState("")
 
-    // const [formValues, setFormValues] = useState(formValuesDefault)
-
-    const sendRegistration = () => {
-
-        //debug
-        console.log("sendRegistration()")
+    const sendRegistration = async () => {
 
         const formValues = {
-            "fname": fName,
+            "fName": fName,
             "lName": lName,
             "email": email,
             "username": username,
             "password": password
         }
 
-        sendRegistrationHelper(formValues);
+        const result = await postNewRegistration(formValues);
+
+        //Guard: registration failure
+        if (!result.jwt) {
+
+            setMessage(result.message)
+
+            return
+        }
+
+        //if successful
+        setUser({ "username": username, "games": [] });
+        setJWT(result.jwt)
+        sessionStorage.setItem("jwt", result.jwt)
     }
 
-
-    return <div className="register">
-        <h1>Register</h1>
-        <form>
+    const registrationForm = <form>
+        <fieldset>
             <fieldset>
-                <fieldset>
-                    <legend>Contact</legend>
-                    <ul>
-                        <li>
-                            <label htmlFor="fname">
-                                First Name:
-                            </label>
-                            <input
-                                type="text"
-                                id="fname"
-                                name="fname"
-                                value={fName}
-                                onChange={
-                                    (e) => setFName(e.target.value)
-                                }
-                            />
-                        </li>
-                        <li>
-                            <label htmlFor="lname">
-                                Last Name:
-                            </label>
-                            <input
-                                type="text"
-                                id="lname"
-                                name="lname"
-                                value={lName}
-                                onChange={
-                                    (e) => setLName(e.target.value)
-                                }
-                            />
-                        </li>
-                        <li>
-                            <label htmlFor="email">
-                                Email (Optional):
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={email}
-                                onChange={
-                                    (e) => setEmail(e.target.value)
-                                }
-                            />
-                        </li>
-                    </ul>
-                </fieldset>
-                <fieldset>
-                    <legend>Credentials</legend>
-                    <ul>
-                        <li>
-                            <label htmlFor="uname">
-                                User Namer:
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="GomokuGuy37"
-                                id="username"
-                                name='username'
-                                value={username}
-                                onChange={
-                                    (e) => setUsername(e.target.value)
-                                }
-                            />
-                        </li>
-                        <li>
-                            <label htmlFor="pass">
-                                Password:
-                            </label>
-                            <input
-                                type="password"
-                                id="pass"
-                                name='password'
-                                value={password}
-                                onChange={
-                                    (e) => setPassword(e.target.value)
-                                }
-                            />
-                        </li>
-                    </ul>
-                </fieldset>
-                <input
-                    onClick={sendRegistration}
-                    type="button"
-                    value="Register"
-                />
+                <legend>Contact</legend>
+                <ul>
+                    <li>
+                        <label htmlFor="fname">
+                            First Name:
+                        </label>
+                        <input
+                            type="text"
+                            id="fname"
+                            name="fname"
+                            value={fName}
+                            onChange={
+                                (e) => setFName(e.target.value)
+                            }
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="lname">
+                            Last Name:
+                        </label>
+                        <input
+                            type="text"
+                            id="lname"
+                            name="lname"
+                            value={lName}
+                            onChange={
+                                (e) => setLName(e.target.value)
+                            }
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="email">
+                            Email (Optional):
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={
+                                (e) => setEmail(e.target.value)
+                            }
+                        />
+                    </li>
+                </ul>
             </fieldset>
-        </form>
-    </div >
+            <fieldset>
+                <legend>Credentials</legend>
+                <ul>
+                    <li>
+                        <label htmlFor="uname">
+                            User Name:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="GomokuGuy37"
+                            id="username"
+                            name='username'
+                            value={username}
+                            onChange={
+                                (e) => setUsername(e.target.value)
+                            }
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="pass">
+                            Password:
+                        </label>
+                        <input
+                            type="password"
+                            id="pass"
+                            name='password'
+                            value={password}
+                            onChange={
+                                (e) => setPassword(e.target.value)
+                            }
+                        />
+                    </li>
+                </ul>
+            </fieldset>
+            <input
+                onClick={sendRegistration}
+                type="button"
+                value="Register"
+            />
+            <p>{message}</p>
+        </fieldset>
+    </form>
+
+    //View Decision
+    const view =
+        (user !== null) ?
+            //Logged-in view
+            <p>You are logged in as {user.username}.</p>
+            :
+            //Logged-out view 
+            registrationForm
+
+    //render
+    return <div className="register">
+        {heading}
+        {view}
+    </div>
 };
 
 export default Register;

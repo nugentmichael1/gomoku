@@ -11,10 +11,15 @@ admin.initializeApp();
 //Login controller
 const login = require('./login')
 
+//Register controller
+const register = require('./register')
+
 // ----------- Routes -------------
 
 //user routes
 exports.userLogin = login.ctrl
+
+exports.userRegister = register.ctrl
 
 
 //route to download leaderboard data

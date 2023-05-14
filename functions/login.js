@@ -8,23 +8,9 @@ const cors = require('cors')({ origin: true });
 //Firebase Admin SDK to access Firestore.
 const admin = require('firebase-admin')
 
-//JWT
-const jwt = require('jsonwebtoken')
+const jwtUtility = require('./jwtUtility')
 
 //Firebase is initialized on main exports page (index.js)
-
-const createJWT = (username, games) => {
-
-    const payload = { "username": username, "games": games }
-
-    const secret = "gomokuJWTSecret"
-
-    const expiration = 60 * 60
-
-    const token = jwt.sign(payload, secret, { expiresIn: expiration })
-
-    return token
-}
 
 //validate username and password
 const verifyUserCredentials = async (username, password) => {
@@ -55,8 +41,6 @@ const login = functions.https.onRequest(
     (req, res) => {
         cors(req, res, async () => {
 
-            // console.log(req)
-
             //Verify username and password combination are present in database
             const verificationResult = await verifyUserCredentials(req.body.username, req.body.password)
 
@@ -74,7 +58,7 @@ const login = functions.https.onRequest(
 
 
             //create jwt
-            const jwt = createJWT(req.body.username, games)
+            const jwt = jwtUtility.createJWT(req.body.username, games)
 
 
             //Guard: JWT creation failed
