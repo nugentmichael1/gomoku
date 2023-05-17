@@ -9,6 +9,8 @@ import { isExpired, decodeToken } from 'react-jwt'
 //Components
 import Nav from "./Components/Nav"
 
+import firebase from 'firebase/compat/app'
+
 //Pages
 import Home from "./Pages/Home"
 import Login from "./Pages/Login"
@@ -26,6 +28,12 @@ import "./CSS/CSUF_Style.css"
 
 function App() {
 
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      setUser(user)
+    }
+  })
+
   //user state, used by Login, Register (want to combine those 2 one day), Game, and Leaderboard.
   const [user, setUser] = useState(null)
 
@@ -42,7 +50,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Nav />} />
+        <Route path='/' element={""} />
         <Route path='/:page' element={<Nav />} />
       </Routes>
       <Routes>
@@ -50,7 +58,7 @@ function App() {
         <Route path='/Login' element={<Login user={user} setUser={setUser} setJWT={setJWT} />} />
         <Route path='/Register' element={<Register user={user} setUser={setUser} setJWT={setJWT} />} />
         <Route path='/Game' element={<Game user={user} updateLeaderboard={setLeaderboardData} />} />
-        <Route path='/Leaderboard' element={<Leaderboard user={user} data={leaderboardData} />} />
+        <Route path='/Leaderboard' element={<Leaderboard user={user} bestPlayersData={leaderboardData} />} />
         <Route path='/Help' element={<Help />} />
         <Route path='/Contact' element={<Contact />} />
       </Routes>

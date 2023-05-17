@@ -71,8 +71,8 @@ function Game({ user }) {
           opponentV={viewInterface.getPlayer(0)}
           optionsC={ctrl.getOptions()}
           id={1}
-          turn={turn}
           user={null}
+          turn={turn}
         />
       }
 

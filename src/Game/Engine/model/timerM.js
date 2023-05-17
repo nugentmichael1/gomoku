@@ -67,6 +67,10 @@ class timerM {
 
     }
 
+    getCountText() {
+        return this.countText
+    }
+
     getActive() {
         return this.active
     }

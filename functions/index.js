@@ -14,12 +14,17 @@ const login = require('./login')
 //Register controller
 const register = require('./register')
 
+//Record Game controller
+const recordGame = require('./recordGame')
+
 // ----------- Routes -------------
 
 //user routes
 exports.userLogin = login.ctrl
 
 exports.userRegister = register.ctrl
+
+exports.recordGame = recordGame.ctrl
 
 
 //route to download leaderboard data

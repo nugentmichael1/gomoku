@@ -10,6 +10,8 @@ import http from "../http-common"
 //CSS
 import "../CSS/register.css"
 
+import firebase from 'firebase/compat/app'
+
 const postNewRegistration = async (formValues) => {
 
     //use axios to trigger backend registration route
@@ -26,6 +28,22 @@ const postNewRegistration = async (formValues) => {
         .catch(error => {
             console.log("error in postNewRegistration():", error)
             return error
+        })
+
+    return result
+}
+
+const firebaseSignUp = (email, password) => {
+    const result = firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user
+            return user
+        })
+        .catch((error) => {
+            const errorCode = error.code
+            const errorMessage = error.message
+            console.log(error)
+            return null
         })
 
     return result
@@ -166,7 +184,7 @@ const Register = ({ user, setUser, setJWT }) => {
     const view =
         (user !== null) ?
             //Logged-in view
-            <p>You are logged in as {user.username}.</p>
+            <p>You are logged in as {user.displayName}.</p>
             :
             //Logged-out view 
             registrationForm

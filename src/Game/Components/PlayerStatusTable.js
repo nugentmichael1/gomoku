@@ -59,7 +59,7 @@ const PlayerStatusTable = ({ playerV, opponentV, turn, optionsC, id, user }) => 
     return <table id={tblID}>
         <tbody>
             <tr>
-                <th>{(user === null) ? displayText : user.username}</th>
+                <th>{(user === null) ? displayText : user.displayName}</th>
             </tr>
             <tr>
                 <td id={colDispID} className={colorClass} style={{ backgroundColor: pColor, color: turnTextColor }}>

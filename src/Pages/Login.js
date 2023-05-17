@@ -15,6 +15,11 @@ import { Link } from "react-router-dom";
 //Axios - http requests
 import http from "../http-common"
 
+//My wrapper for firebase auth ui
+import FirebaseAuthUI from "../FirebaseAuthUI";
+
+import firebase from 'firebase/compat/app'
+
 // queries backend to: 
 // (1) verify username and password combination are correct, 
 // (2) acquire user's statistics like games won and personal settings
@@ -51,7 +56,6 @@ const LogInForm = ({ setUser }) => {
     //function to query backend, set state of user, and set session storage of jwt
     const logIn = async () => {
 
-
         const result = await loginRequest(username, password)
 
         //Guard: Failure to validate credentials on backend
@@ -74,26 +78,44 @@ const LogInForm = ({ setUser }) => {
         sessionStorage.setItem("jwt", result.jwt)
     }
 
-    return < form id='logInForm' >
-        <fieldset>
-            <legend>Credentials</legend>
+    const firebaseAuth = async () => {
+
+        const result = await firebase.auth().signInWithEmailAndPassword(username, password)
+            .then((userCredential) => {
+                return userCredential
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error(errorCode, errorMessage)
+                setMessage(errorMessage)
+                return null
+            })
+
+        return result
+    }
+
+    return <div>
+        < form id='logInForm' >
+            {/* <fieldset>
+            // <legend>Traditional</legend> */}
             <ul>
                 <li>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" name="username" id="username" value={username} onChange={(e) => { setUsername(e.target.value) }} />
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" name="email" id="email" value={username} onChange={(e) => { setUsername(e.target.value) }} />
                 </li>
                 <li>
                     <label htmlFor="password">Password:</label>
                     <input type='password' name="password" id="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                 </li>
                 <li>
-                    <input type="button" value="Log In" onClick={logIn} />
+                    <input type="button" value="Log In" onClick={firebaseAuth} />
                 </li>
             </ul>
-            No account? <Link to={"/Register"}>Register here.</Link>
-            <p>{message}</p>
-        </fieldset>
-    </form >
+            {/* </fieldset> */}
+        </form >
+        <p className="loginResponse">{message}</p>
+    </div>
 }
 
 const heading = <h1>Log-In</h1>
@@ -101,9 +123,18 @@ const heading = <h1>Log-In</h1>
 const Login = ({ user, setUser, setJWT }) => {
 
     const logOut = () => {
-        setJWT(null);
-        setUser(null);
-        sessionStorage.setItem("jwt", null)
+        firebase.auth().signOut()
+            .then(() => {
+                //success
+                setUser(null);
+
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        // setJWT(null);
+        // sessionStorage.setItem("jwt", null)
     }
 
     //View Decision
@@ -111,7 +142,9 @@ const Login = ({ user, setUser, setJWT }) => {
         // logInView (currently logged-out)
         return <>
             {heading}
+            <FirebaseAuthUI />
             <LogInForm setUser={setUser} />
+            <p className="loginRegisterSwitchP">No account? <Link to={"/Register"}>Register here.</Link></p>
         </>
     }
 
@@ -119,7 +152,8 @@ const Login = ({ user, setUser, setJWT }) => {
         // logOutView (currently logged-in)
         return <>
             {heading}
-            <p id="loggedInMessage">Logged in as: {user.username}</p>
+            <p id="loggedInMessage">Logged in as: {user.email}</p>
+            {/* {console.log(user.displayName)} */}
             <input
                 type='button'
                 value="Log Out"

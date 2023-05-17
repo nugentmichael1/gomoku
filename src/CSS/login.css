@@ -2,3 +2,35 @@ p#loggedInMessage {
     margin: 2vh 2vw;
     text-align: center;
 }
+
+div#firebaseuiAuthUI {
+    width: fit-content;
+    margin: 5vh auto;
+}
+
+div#firebaseui-auth-container {
+    margin: 8vh auto;
+}
+
+form#logInForm {
+    margin: 5vh auto 3vh;
+    width: fit-content;
+}
+
+form#logInForm label {
+    margin: 0 1vw;
+}
+
+#logInForm ul {
+    text-align: right;
+}
+
+p.loginResponse {
+    width: fit-content;
+    color: var(--FSRed)
+}
+
+p.loginRegisterSwitchP {
+    margin: 3vh auto;
+    text-align: center;
+}
