@@ -33,8 +33,8 @@ const postNewRegistration = async (formValues) => {
     return result
 }
 
-const firebaseSignUp = (email, password) => {
-    const result = firebase.auth().createUserWithEmailAndPassword(email, password)
+const firebaseSignUp = async (email, password, setMessage) => {
+    const result = await firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             const user = userCredential.user
             return user
@@ -42,7 +42,8 @@ const firebaseSignUp = (email, password) => {
         .catch((error) => {
             const errorCode = error.code
             const errorMessage = error.message
-            console.log(error)
+            console.error(errorCode, errorMessage)
+            setMessage(errorMessage)
             return null
         })
 
@@ -72,25 +73,26 @@ const Register = ({ user, setUser, setJWT }) => {
             "password": password
         }
 
-        const result = await postNewRegistration(formValues);
+        // const result = await postNewRegistration(formValues);
+        const result = await firebaseSignUp(email, password, setMessage)
 
         //Guard: registration failure
-        if (!result.jwt) {
+        if (result === null) {
 
-            setMessage(result.message)
+            // setMessage(result.message)
 
             return
         }
 
         //if successful
-        setUser({ "username": username, "games": [] });
-        setJWT(result.jwt)
-        sessionStorage.setItem("jwt", result.jwt)
+        // setUser({ "user": username, "games": [] });
+        // setJWT(result.jwt)
+        // sessionStorage.setItem("jwt", result.jwt)
     }
 
     const registrationForm = <form>
         <fieldset>
-            <fieldset>
+            {/* <fieldset>
                 <legend>Contact</legend>
                 <ul>
                     <li>
@@ -121,26 +123,13 @@ const Register = ({ user, setUser, setJWT }) => {
                             }
                         />
                     </li>
-                    <li>
-                        <label htmlFor="email">
-                            Email (Optional):
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={
-                                (e) => setEmail(e.target.value)
-                            }
-                        />
-                    </li>
+                    
                 </ul>
-            </fieldset>
+            </fieldset> */}
             <fieldset>
                 <legend>Credentials</legend>
                 <ul>
-                    <li>
+                    {/* <li>
                         <label htmlFor="uname">
                             User Name:
                         </label>
@@ -152,6 +141,20 @@ const Register = ({ user, setUser, setJWT }) => {
                             value={username}
                             onChange={
                                 (e) => setUsername(e.target.value)
+                            }
+                        />
+                    </li> */}
+                    <li>
+                        <label htmlFor="email">
+                            Email:
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={
+                                (e) => setEmail(e.target.value)
                             }
                         />
                     </li>
@@ -180,14 +183,19 @@ const Register = ({ user, setUser, setJWT }) => {
         </fieldset>
     </form>
 
+
+
+
     //View Decision
     const view =
         (user !== null) ?
             //Logged-in view
-            <p>You are logged in as {user.displayName}.</p>
+            < p > Logged in as : {(user.displayName === null) ? user.email : user.displayName}.</p>
             :
             //Logged-out view 
             registrationForm
+
+
 
     //render
     return <div className="register">

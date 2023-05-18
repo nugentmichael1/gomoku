@@ -24,24 +24,24 @@ import firebase from 'firebase/compat/app'
 // (1) verify username and password combination are correct, 
 // (2) acquire user's statistics like games won and personal settings
 // (3) acquire JWT to securely record game wins
-const loginRequest = async (username, password) => {
+// const loginRequest = async (username, password) => {
 
-    const result = await http.post("userLogin",
-        {
-            username: username,
-            password: password
-        }
-    )
-        .then((res) => {
-            return res.data
-        })
-        .catch((error) => {
-            console.error("error in loginRequest()", error)
-            return { "message": "Failed to reach backend." }
-        })
+//     const result = await http.post("userLogin",
+//         {
+//             username: username,
+//             password: password
+//         }
+//     )
+//         .then((res) => {
+//             return res.data
+//         })
+//         .catch((error) => {
+//             console.error("error in loginRequest()", error)
+//             return { "message": "Failed to reach backend." }
+//         })
 
-    return result
-}
+//     return result
+// }
 
 
 
@@ -54,29 +54,29 @@ const LogInForm = ({ setUser }) => {
     const [message, setMessage] = useState("")
 
     //function to query backend, set state of user, and set session storage of jwt
-    const logIn = async () => {
+    // const logInWithAxios = async () => {
 
-        const result = await loginRequest(username, password)
+    //     const result = await loginRequest(username, password)
 
-        //Guard: Failure to validate credentials on backend
-        if (!result.jwt) {
+    //     //Guard: Failure to validate credentials on backend
+    //     if (!result.jwt) {
 
-            //case 1: user provided invalid credentials
-            //case 2: server error
-            setMessage(result.message)
+    //         //case 1: user provided invalid credentials
+    //         //case 2: server error
+    //         setMessage(result.message)
 
-            return
-        }
+    //         return
+    //     }
 
-        //decode and destructure jwt
-        const { games } = decodeToken(result.jwt)
+    //     //decode and destructure jwt
+    //     const { games } = decodeToken(result.jwt)
 
-        //set state of user for entire app
-        setUser({ "username": username, "games": games })
+    //     //set state of user for entire app
+    //     setUser({ "username": username, "games": games })
 
-        //store jwt in session storage variable
-        sessionStorage.setItem("jwt", result.jwt)
-    }
+    //     //store jwt in session storage variable
+    //     sessionStorage.setItem("jwt", result.jwt)
+    // }
 
     const firebaseAuth = async () => {
 

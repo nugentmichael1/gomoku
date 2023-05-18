@@ -59,7 +59,8 @@ const PlayerStatusTable = ({ playerV, opponentV, turn, optionsC, id, user }) => 
     return <table id={tblID}>
         <tbody>
             <tr>
-                <th>{(user === null) ? displayText : user.displayName}</th>
+                {/* if no user is logged in, use "Player X", else if player is logged in, use displayName if set, if not set, use his email. */}
+                <th>{(user === null) ? displayText : (user.displayName === null) ? user.email : user.displayName}</th>
             </tr>
             <tr>
                 <td id={colDispID} className={colorClass} style={{ backgroundColor: pColor, color: turnTextColor }}>
