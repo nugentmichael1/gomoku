@@ -1,10 +1,10 @@
 //Gomoku
 
 //React
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 //JWT
-import { isExpired, decodeToken } from 'react-jwt'
+// import { isExpired, decodeToken } from 'react-jwt'
 
 //Components
 import Nav from "./Components/Nav"
@@ -28,23 +28,29 @@ import "./CSS/CSUF_Style.css"
 
 function App() {
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      setUser(user)
-    }
-  })
-
   //user state, used by Login, Register (want to combine those 2 one day), Game, and Leaderboard.
   const [user, setUser] = useState(null)
 
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      setUser(user)
+      console.log("user logged in")
+    }
+    else {
+      setUser(null)
+      console.log("no user logged in")
+    }
+  })
+
+
   //check session storage for existence of JWT.
-  const [jwt, setJWT] = useState(sessionStorage.getItem("jwt"))
+  // const [jwt, setJWT] = useState(sessionStorage.getItem("jwt"))
 
   //If no user is set, and non-expired JSON web token (JWT) exists in session storage, use JWT payload to set user.
-  if (user === null && jwt !== null && !isExpired(jwt)) setUser(decodeToken(jwt))
+  // if (user === null && jwt !== null && !isExpired(jwt)) setUser(decodeToken(jwt))
 
   //Mainly for Leaderboard to not redownload data, but also used by Game to update data on game completions.
-  const [leaderboardData, setLeaderboardData] = useState([])
+  // const [leaderboardData, setLeaderboardData] = useState([])
 
 
   return (
@@ -55,10 +61,10 @@ function App() {
       </Routes>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/Login' element={<Login user={user} setUser={setUser} setJWT={setJWT} />} />
-        <Route path='/Register' element={<Register user={user} setUser={setUser} setJWT={setJWT} />} />
-        <Route path='/Game' element={<Game user={user} updateLeaderboard={setLeaderboardData} />} />
-        <Route path='/Leaderboard' element={<Leaderboard user={user} bestPlayersData={leaderboardData} />} />
+        <Route path='/Login' element={<Login user={user} />} />
+        <Route path='/Register' element={<Register user={user} />} />
+        <Route path='/Game' element={<Game user={user} />} />
+        <Route path='/Leaderboard' element={<Leaderboard user={user} />} />
         <Route path='/Help' element={<Help />} />
         <Route path='/Contact' element={<Contact />} />
       </Routes>

@@ -45,7 +45,7 @@ import firebase from 'firebase/compat/app'
 
 
 
-const LogInForm = ({ setUser }) => {
+const LogInForm = ({ }) => {
 
     const [username, setUsername] = useState("")
 
@@ -126,7 +126,7 @@ const Login = ({ user, setUser, setJWT }) => {
         firebase.auth().signOut()
             .then(() => {
                 //success
-                setUser(null);
+                // setUser(null);
 
             })
             .catch((error) => {

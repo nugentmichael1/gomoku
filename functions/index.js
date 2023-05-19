@@ -9,10 +9,10 @@ const admin = require('firebase-admin')
 admin.initializeApp();
 
 //Login controller
-const login = require('./login')
+// const login = require('./login')
 
 //Register controller
-const register = require('./register')
+// const register = require('./register')
 
 //Record Game controller
 const recordGame = require('./recordGame')
@@ -20,9 +20,9 @@ const recordGame = require('./recordGame')
 // ----------- Routes -------------
 
 //user routes
-exports.userLogin = login.ctrl
+// exports.userLogin = login.ctrl
 
-exports.userRegister = register.ctrl
+// exports.userRegister = register.ctrl
 
 exports.recordGame = recordGame.ctrl
 

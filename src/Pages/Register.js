@@ -190,7 +190,7 @@ const Register = ({ user, setUser, setJWT }) => {
     const view =
         (user !== null) ?
             //Logged-in view
-            < p > Logged in as : {(user.displayName === null) ? user.email : user.displayName}.</p>
+            < p > Logged in as: {(user.displayName === null) ? user.email : user.displayName}.</p>
             :
             //Logged-out view 
             registrationForm
