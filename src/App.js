@@ -21,26 +21,35 @@ import Help from "./Pages/Help"
 import Contact from "./Pages/Contact"
 
 //Navigation
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 //CSS
 import "./CSS/CSUF_Style.css"
 
 function App() {
 
+  // const navigate = useNavigate();
+
   //user state, used by Login, Register (want to combine those 2 one day), Game, and Leaderboard.
   const [user, setUser] = useState(null)
+
+  console.log("app render")
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       setUser(user)
-      console.log("user logged in")
     }
     else {
       setUser(null)
-      console.log("no user logged in")
     }
   })
+
+  // useEffect(() => {
+  //   if (user !== null && user.displayName === null) {
+  //     console.log("no user display name")
+  //     // navigate("/Register")
+  //   }
+  // }, [user])
 
 
   //check session storage for existence of JWT.

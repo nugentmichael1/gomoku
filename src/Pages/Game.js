@@ -1,7 +1,7 @@
 //Game Page
 
 //React
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 
 //Components
 import GameStatusTable from '../Game/Components/GameStatusTable'
@@ -38,6 +38,12 @@ function Game({ user }) {
   const [turn, setTurn] = useState("")
   //Acquire useState fx
   viewInterface.getPlay().setUseStateFxTurn(setTurn)
+
+  useEffect(() => {
+    //load user into game model on mount
+    // if(user) ctrl.getPlay().loadUser(user.)
+    console.log("game loaded.  will load user here.")
+  }, [])
 
   return (
     <div className='Game'>

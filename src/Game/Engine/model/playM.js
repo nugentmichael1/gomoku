@@ -243,6 +243,7 @@ class playM {
 
             //Send game stats to backend for leader board table
             //only call if user is logged in
+
             if (this.winner.username !== null) {
 
                 this.recordUserWin(this.winner.username)
@@ -283,6 +284,11 @@ class playM {
 
         //update which player's turn it is
         this.switchActivePlayer();
+    }
+
+
+    loadUser(username) {
+        this.username = username;
     }
 
     //update user record of users database collection:

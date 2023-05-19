@@ -142,7 +142,7 @@ const Login = ({ user, setUser, setJWT }) => {
         // logInView (currently logged-out)
         return <>
             {heading}
-            <FirebaseAuthUI />
+            {/* <FirebaseAuthUI /> */}
             <LogInForm setUser={setUser} />
             <p className="loginRegisterSwitchP">No account? <Link to={"/Register"}>Register here.</Link></p>
         </>
@@ -153,7 +153,6 @@ const Login = ({ user, setUser, setJWT }) => {
         return <>
             {heading}
             <p id="loggedInMessage">Logged in as: {user.email}</p>
-            {/* {console.log(user.displayName)} */}
             <input
                 type='button'
                 value="Log Out"

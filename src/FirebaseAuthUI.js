@@ -22,8 +22,8 @@ const uiConfig = {
         // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
         // firebase.auth.GithubAuthProvider.PROVIDER_ID,
         {
-            // provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            // requireDisplayName: true
+            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            requireDisplayName: true
         }
         // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
         // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID

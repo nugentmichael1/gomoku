@@ -25,6 +25,10 @@ class playC {
     claimVertex(i, j) {
         this.playM.clicked(i, j)
     }
+
+    loadUser(user) {
+        this.playM.loadUser(user)
+    }
 }
 
 export default playC;
