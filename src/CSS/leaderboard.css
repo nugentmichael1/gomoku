@@ -1,4 +1,4 @@
-.leaderboard table {
+#leaderboard table {
 	margin: auto;
 	width: 80vw;
 
@@ -13,7 +13,7 @@
 	/* Standard */
 }
 
-.leaderboard table caption {
+#leaderboard table caption {
 	text-align: center;
 	font-size: 150%;
 	margin: 3vh auto;
