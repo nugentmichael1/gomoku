@@ -19,6 +19,12 @@ import firebaseSignUpWithUsername from "../FirebaseAuth/signUpWithUsername";
 import LoggedInView from "../Components/LoggedInView";
 
 
+const passwordsMatchCheck = (pass1, pass2) => {
+    // console.log((pass1 === pass2))
+    // console.log(typeof (pass1), typeof (pass2))
+    return (pass1 === pass2)
+}
+
 const Register = ({ user }) => {
 
     //Form values
@@ -35,6 +41,10 @@ const Register = ({ user }) => {
     const registerUser = async () => {
 
         //Guard: verify passwords match
+        if (!passwordsMatchCheck(password, password2)) {
+            setMessage("Passwords do not match")
+            return;
+        }
 
         //Guard: Duplicate username
         if (!validateUsername(username)) {
@@ -46,10 +56,12 @@ const Register = ({ user }) => {
         const fakeEmail = username + "@NugentMichael.com"
 
         //Register user through Firebase's auth service.
-        const user = await firebaseSignUpWithUsername(fakeEmail, password, setMessage)
+        const result = await firebaseSignUpWithUsername(fakeEmail, password)
+
+        setMessage(result.message)
 
         //create user profile if Firebase auth service is successful
-        if (user !== null)
+        if (result.error === false)
             createUserInFirestore({
                 fName: fName,
                 lName: lName,
@@ -59,21 +71,6 @@ const Register = ({ user }) => {
                 time_played: 0,
                 games_played: 0
             })
-
-
-        // if (user !== null) {
-
-        //     const displayNameStr = (fName !== "" && lName !== "") ? fName + " " + lName : undefined
-
-        //     const emailStr = (email !== "") ? email : undefined
-
-        //     //Using photoURL to hold email because we use original email to hold username, now, to accomodate Firebase email sign-up/log-in
-        //     user.updateProfile({
-        //         displayName: displayNameStr,
-        //         photoURL: emailStr
-        //     })
-        // }
-
     }
 
     const registrationForm = <form>
@@ -178,33 +175,3 @@ const Register = ({ user }) => {
 };
 
 export default Register;
-
-
-
-// //Axios
-// import http from "../http-common"
-
- // const sendRegistration = async () => {
-
-    //     const formValues = {
-    //         "email": email,
-    //         "username": username,
-    //         "password": password
-    //     }
-
-    //     // const result = await postNewRegistration(formValues);
-    //     // const result = await firebaseSignUp(email, password, setMessage)
-
-    //     //Guard: registration failure
-    //     if (result === null) {
-
-    //         // setMessage(result.message)
-
-    //         return
-    //     }
-
-    //     //if successful
-    //     // setUser({ "user": username, "games": [] });
-    //     // setJWT(result.jwt)
-    //     // sessionStorage.setItem("jwt", result.jwt)
-    // }

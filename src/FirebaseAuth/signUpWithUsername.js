@@ -5,16 +5,15 @@ import firebase from 'firebase/compat/app'
 //Mis-use Firebase's auth service to implement username instead of email for user sign-up
 const firebaseSignUpWithUsername = async (username, password, setMessage) => {
     const result = await firebase.auth().createUserWithEmailAndPassword(username, password)
-        .then((userCredential) => {
-            const user = userCredential.user
-            return user
+        .then(() => {
+
+            return { error: false, message: "Successfully logged in." }
         })
         .catch((error) => {
             const errorCode = error.code
             const errorMessage = error.message
             console.error(errorCode, errorMessage)
-            setMessage(errorMessage)
-            return null
+            return { error: true, message: errorMessage }
         })
 
     // if (result !== null) {

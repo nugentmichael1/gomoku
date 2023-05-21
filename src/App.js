@@ -1,7 +1,7 @@
 //Gomoku
 
 //React
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 //JWT
 // import { isExpired, decodeToken } from 'react-jwt'
