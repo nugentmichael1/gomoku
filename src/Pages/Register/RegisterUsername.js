@@ -36,3 +36,17 @@ function RegisterUsername({ username, setUsername }) {
 }
 
 export default RegisterUsername;
+
+
+//View Decision
+    // const view =
+    //     (user !== null && user.displayName !== null) ?
+    //         //Logged-in view
+    //         < p > Logged in as: {user.displayName}.</p>
+    //         :
+    //         (user !== null && user.displayName === null) ?
+    //             //Register Username view
+    //             <RegisterUsername username={username} setUsername={setUsername} />
+    //             :
+    //             //Logged-out view 
+    //             registrationForm

@@ -9,7 +9,10 @@ import { useState, useEffect } from "react"
 //Components
 import Nav from "./Components/Nav"
 
+//User Authentication
 import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+
 
 //Pages
 import Home from "./Pages/Home"
@@ -21,14 +24,12 @@ import Help from "./Pages/Help"
 import Contact from "./Pages/Contact"
 
 //Navigation
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 //CSS
 import "./CSS/CSUF_Style.css"
 
 function App() {
-
-  // const navigate = useNavigate();
 
   //user state, used by Login, Register (want to combine those 2 one day), Game, and Leaderboard.
   const [user, setUser] = useState(null)
@@ -37,30 +38,16 @@ function App() {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      setUser(user)
+
+      //get username from Firebase's auth "email"
+      const username = user.email.split('@')[0]
+
+      setUser(username)
     }
     else {
       setUser(null)
     }
   })
-
-  // useEffect(() => {
-  //   if (user !== null && user.displayName === null) {
-  //     console.log("no user display name")
-  //     // navigate("/Register")
-  //   }
-  // }, [user])
-
-
-  //check session storage for existence of JWT.
-  // const [jwt, setJWT] = useState(sessionStorage.getItem("jwt"))
-
-  //If no user is set, and non-expired JSON web token (JWT) exists in session storage, use JWT payload to set user.
-  // if (user === null && jwt !== null && !isExpired(jwt)) setUser(decodeToken(jwt))
-
-  //Mainly for Leaderboard to not redownload data, but also used by Game to update data on game completions.
-  // const [leaderboardData, setLeaderboardData] = useState([])
-
 
   return (
     <>
@@ -82,3 +69,15 @@ function App() {
 }
 
 export default App;
+
+
+
+
+  //check session storage for existence of JWT.
+  // const [jwt, setJWT] = useState(sessionStorage.getItem("jwt"))
+
+  //If no user is set, and non-expired JSON web token (JWT) exists in session storage, use JWT payload to set user.
+  // if (user === null && jwt !== null && !isExpired(jwt)) setUser(decodeToken(jwt))
+
+  //Mainly for Leaderboard to not redownload data, but also used by Game to update data on game completions.
+  // const [leaderboardData, setLeaderboardData] = useState([])

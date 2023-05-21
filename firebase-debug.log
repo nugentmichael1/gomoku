@@ -1,0 +1,449 @@
+[debug] [2023-05-21T00:08:57.329Z] ----------------------------------------------------------------------
+[debug] [2023-05-21T00:08:57.331Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start --import Emulators/2023-05-13T20:07:14_38895/
+[debug] [2023-05-21T00:08:57.331Z] CLI Version:   12.0.0
+[debug] [2023-05-21T00:08:57.331Z] Platform:      linux
+[debug] [2023-05-21T00:08:57.331Z] Node Version:  v18.15.0
+[debug] [2023-05-21T00:08:57.342Z] Time:          Sat May 20 2023 17:08:57 GMT-0700 (Pacific Daylight Time)
+[debug] [2023-05-21T00:08:57.342Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-21T00:08:57.608Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-21T00:08:57.609Z] > authorizing via signed-in user (nugentmichael@live.com)
+[debug] [2023-05-21T00:08:57.878Z] openjdk version "17.0.7" 2023-04-18
+
+[debug] [2023-05-21T00:08:57.879Z] OpenJDK Runtime Environment (build 17.0.7+7-Ubuntu-0ubuntu122.04.2)
+OpenJDK 64-Bit Server VM (build 17.0.7+7-Ubuntu-0ubuntu122.04.2, mixed mode, sharing)
+
+[debug] [2023-05-21T00:08:57.885Z] Parsed Java major version: 17
+[info] i  emulators: Starting emulators: auth, functions, firestore, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore, hosting"}}
+[debug] [2023-05-21T00:08:57.896Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-21T00:08:57.897Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-21T00:08:57.897Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-21T00:08:57.897Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-21T00:08:57.897Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-21T00:08:57.898Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-05-21T00:08:57.930Z] [hub] writing locator at /tmp/hub-gomoku-77118.json
+[info] i  firestore: Detected non-emulator Firestore export at /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/Emulators/2023-05-13T20:07:14_38895 {"metadata":{"emulator":{"name":"firestore"},"message":"Detected non-emulator Firestore export at /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/Emulators/2023-05-13T20:07:14_38895"}}
+[debug] [2023-05-21T00:08:57.950Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-21T00:08:57.950Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-21T00:08:57.950Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, pubsub, storage\u001b[22m"}}
+[debug] [2023-05-21T00:08:57.962Z] defaultcredentials: writing to file /home/nugentmichael/.config/firebase/nugentmichael_live_com_application_default_credentials.json
+[debug] [2023-05-21T00:08:57.967Z] Setting GAC to /home/nugentmichael/.config/firebase/nugentmichael_live_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /home/nugentmichael/.config/firebase/nugentmichael_live_com_application_default_credentials.json"}}
+[debug] [2023-05-21T00:08:57.969Z] > refreshing access token with scopes: []
+[debug] [2023-05-21T00:08:57.973Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-21T00:08:57.973Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-21T00:08:58.103Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-05-21T00:08:58.103Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-21T00:08:58.110Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118/adminSdkConfig [none]
+[debug] [2023-05-21T00:08:58.501Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118/adminSdkConfig 200
+[debug] [2023-05-21T00:08:58.501Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118/adminSdkConfig {"projectId":"gomoku-77118","storageBucket":"gomoku-77118.appspot.com"}
+[info] i  firestore: Importing data from /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/Emulators/2023-05-13T20:07:14_38895/2023-05-13T20:07:14_38895.overall_export_metadata {"metadata":{"emulator":{"name":"firestore"},"message":"Importing data from /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/Emulators/2023-05-13T20:07:14_38895/2023-05-13T20:07:14_38895.overall_export_metadata"}}
+[warn] ⚠  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
+[warn] ⚠  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
+[warn] ⚠  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2023-05-21T00:08:58.536Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-05-21T00:08:58.537Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-05-21T00:08:58.537Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/home/nugentmichael/.cache/firebase/emulators/cloud-firestore-emulator-v1.17.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","gomoku-77118","--seed_from_export","/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/Emulators/2023-05-13T20:07:14_38895/2023-05-13T20:07:14_38895.overall_export_metadata","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/home/nugentmichael/.cache/firebase/emulators/cloud-firestore-emulator-v1.17.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"gomoku-77118\",\"--seed_from_export\",\"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/Emulators/2023-05-13T20:07:14_38895/2023-05-13T20:07:14_38895.overall_export_metadata\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2023-05-21T00:08:59.952Z] May 20, 2023 5:08:59 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:08:59 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://127.0.0.1:9150\n"}}
+[debug] [2023-05-21T00:08:59.992Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2023-05-21T00:08:59.992Z] 127.0.0.1:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nDev App Server is now running.\n\n"}}
+[info] ✔  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2023-05-21T00:09:06.965Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/gomoku-77118/sites 
+[debug] [2023-05-21T00:09:07.526Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/gomoku-77118/sites 200
+[debug] [2023-05-21T00:09:07.526Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/gomoku-77118/sites {"sites":[{"name":"projects/gomoku-77118/sites/gomoku-77118","defaultUrl":"https://gomoku-77118.web.app","appId":"1:1044424100807:web:b3ad5889afe884a39467e2","type":"DEFAULT_SITE"}]}
+[debug] [2023-05-21T00:09:07.527Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118/webApps/1:1044424100807:web:b3ad5889afe884a39467e2/config [none]
+[debug] [2023-05-21T00:09:08.169Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118/webApps/1:1044424100807:web:b3ad5889afe884a39467e2/config 200
+[debug] [2023-05-21T00:09:08.169Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118/webApps/1:1044424100807:web:b3ad5889afe884a39467e2/config {"projectId":"gomoku-77118","appId":"1:1044424100807:web:b3ad5889afe884a39467e2","storageBucket":"gomoku-77118.appspot.com","apiKey":"AIzaSyCgV_kr1zJ9WTPrQN6qBZMCNCl0yFSS7_s","authDomain":"gomoku-77118.firebaseapp.com","messagingSenderId":"1044424100807","measurementId":"G-40VZ5WTK9L"}
+[debug] [2023-05-21T00:09:08.173Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118 [none]
+[debug] [2023-05-21T00:09:08.536Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118 200
+[debug] [2023-05-21T00:09:08.537Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gomoku-77118 {"projectId":"gomoku-77118","projectNumber":"1044424100807","displayName":"Gomoku","name":"projects/gomoku-77118","resources":{"hostingSite":"gomoku-77118"},"state":"ACTIVE","etag":"1_cd1a7be1-6fbb-45e6-8da4-8b4a22a72bb2"}
+[info] i  hosting[gomoku-77118]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting[gomoku-77118]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2023-05-21T00:09:08.677Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-05-21T00:09:08.677Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-05-21T00:09:08.677Z] Starting Emulator UI with command {"binary":"node","args":["/home/nugentmichael/.cache/firebase/emulators/ui-v1.11.6/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/home/nugentmichael/.cache/firebase/emulators/ui-v1.11.6/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-05-21T00:09:08.818Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-05-21T00:09:08.818Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions\" for Cloud Functions..."}}
+[debug] [2023-05-21T00:09:09.037Z] Validating nodejs source
+[debug] [2023-05-21T00:09:10.032Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.4.0",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-05-21T00:09:10.048Z] Building nodejs source
+[debug] [2023-05-21T00:09:10.050Z] Failed to find version of module node: reached end of search path /mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "16" doesn't match your global version "18". Using node@18 from host. 
+[debug] [2023-05-21T00:09:10.070Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-05-21T00:09:10.130Z] Found firebase-functions binary at '/mnt/B4DA3DA6DA3D65B0/Career/Portfolio Projects/gomoku/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-05-21T00:09:17.986Z] Serving at port 8627
+
+[debug] [2023-05-21T00:09:28.400Z] May 20, 2023 5:09:28 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:09:28 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T00:09:37.333Z] shutdown requested via /__/quitquitquit
+
+[error] ⬢  functions: Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Functions      │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Hosting        │ 127.0.0.1:5000 │ n/a                             │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-05-21T00:09:42.074Z] May 20, 2023 5:09:42 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:09:42 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2023-05-21T00:09:42.074Z] May 20, 2023 5:09:42 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:09:42 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T00:24:22.003Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:24:22.004Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"55dde72a-34bb-4063-a62e-8f3730b12a8f","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:24:22.001Z","data":{"uid":"KlFXLAd66C92tDoFFmycviznesBf","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:24:21.998Z","lastSignInTime":"2023-05-21T00:24:21.998Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:24:22.022Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:24:22.022Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:28:12.707Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:28:12.707Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"7bfab624-18c0-4ba3-ab15-c953fb04f6f0","eventType":"providers/firebase.auth/eventTypes/user.delete","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:28:12.707Z","data":{"uid":"KlFXLAd66C92tDoFFmycviznesBf","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:24:21.998Z","lastSignInTime":"2023-05-21T00:24:21.998Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:28:12.712Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:28:12.713Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:28:20.127Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:28:20.127Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"1277b8c6-ee87-4feb-9b04-ed700af0f6a7","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:28:20.126Z","data":{"uid":"ap2pso2mSo5KfmFmvTNMqglNo8Ax","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:28:20.126Z","lastSignInTime":"2023-05-21T00:28:20.126Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:28:20.131Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:28:20.131Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:29:06.937Z] May 20, 2023 5:29:06 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:29:06 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2023-05-21T00:29:07.195Z] May 20, 2023 5:29:07 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:29:07 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T00:29:11.294Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:29:11.294Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"41cbe910-4e74-4be0-8ce4-6d9c056afbaf","eventType":"providers/firebase.auth/eventTypes/user.delete","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:29:11.293Z","data":{"uid":"ap2pso2mSo5KfmFmvTNMqglNo8Ax","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"displayName":"nugentmichael@mail.fresnostate.edu","metadata":{"creationTime":"2023-05-21T00:28:20.126Z","lastSignInTime":"2023-05-21T00:28:20.126Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu","displayName":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:29:11.298Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:29:11.298Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:29:21.421Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:29:21.421Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"0a74099d-4bc6-48c5-a76a-ef723ec5311a","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:29:21.421Z","data":{"uid":"9plAMhMthCexW0NeujHBiQro2pYE","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:29:21.420Z","lastSignInTime":"2023-05-21T00:29:21.420Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:29:21.434Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:29:21.435Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:45:08.066Z] May 20, 2023 5:45:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:45:08.947Z] May 20, 2023 5:45:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:45:08.967Z] May 20, 2023 5:45:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:45:19.176Z] May 20, 2023 5:45:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2023-05-21T00:45:19.395Z] May 20, 2023 5:45:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T00:45:22.326Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:45:22.326Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"4783e1be-7100-4e9b-bd72-55aee9118a44","eventType":"providers/firebase.auth/eventTypes/user.delete","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:45:22.325Z","data":{"uid":"9plAMhMthCexW0NeujHBiQro2pYE","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"displayName":"nugentmichael@mail.fresnostate.edu","metadata":{"creationTime":"2023-05-21T00:29:21.420Z","lastSignInTime":"2023-05-21T00:29:21.420Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu","displayName":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:45:22.331Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:45:22.331Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:45:24.517Z] May 20, 2023 5:45:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:45:24.550Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:45:24.550Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"a734a0ac-7ce4-4174-8b68-c601d925a602","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:45:24.550Z","data":{"uid":"RxgsyfHlqO7gYqRKZZba1qxV2aOr","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:45:24.550Z","lastSignInTime":"2023-05-21T00:45:24.550Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:45:24.557Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:45:24.557Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:45:24.571Z] May 20, 2023 5:45:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:45:24.600Z] May 20, 2023 5:45:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:45:24.610Z] May 20, 2023 5:45:24 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:45:24 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T00:52:09.289Z] May 20, 2023 5:52:09 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:09 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2023-05-21T00:52:09.505Z] May 20, 2023 5:52:09 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:09 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T00:52:12.551Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:52:12.552Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"907f2287-5df5-4b85-9d5a-5c3d0b086030","eventType":"providers/firebase.auth/eventTypes/user.delete","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:52:12.551Z","data":{"uid":"RxgsyfHlqO7gYqRKZZba1qxV2aOr","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:45:24.550Z","lastSignInTime":"2023-05-21T00:45:24.550Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:52:12.556Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:52:12.556Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:52:23.686Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T00:52:23.686Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"e983021a-5f04-4f0c-a6e2-e46f22fb747e","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T00:52:23.684Z","data":{"uid":"iqoklCUnFF47iKUlMBDiXPeutnKP","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:52:23.683Z","lastSignInTime":"2023-05-21T00:52:23.683Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T00:52:23.693Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T00:52:23.693Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T00:52:23.694Z] May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:52:23.751Z] May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:52:23.757Z] May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:52:23.765Z] May 20, 2023 5:52:23 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:23 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T00:52:23.777Z] May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:52:23.803Z] May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:52:23.832Z] May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:53:23.827Z] May 20, 2023 5:53:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:53:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T00:53:23.834Z] May 20, 2023 5:53:23 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 5:53:23 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:01:21.998Z] May 20, 2023 6:01:21 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:01:21 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2023-05-21T01:01:22.233Z] May 20, 2023 6:01:22 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:01:22 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T01:01:24.895Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T01:01:24.896Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"e4a04d78-42cd-42cd-94f0-08bf37dd25c6","eventType":"providers/firebase.auth/eventTypes/user.delete","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T01:01:24.895Z","data":{"uid":"iqoklCUnFF47iKUlMBDiXPeutnKP","email":"nugentmichael@mail.fresnostate.edu","emailVerified":false,"metadata":{"creationTime":"2023-05-21T00:52:23.683Z","lastSignInTime":"2023-05-21T00:52:23.683Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@mail.fresnostate.edu","federatedId":"nugentmichael@mail.fresnostate.edu","rawId":"nugentmichael@mail.fresnostate.edu"}]}}
+[debug] [2023-05-21T01:01:24.900Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T01:01:24.900Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T01:03:06.450Z] May 20, 2023 6:03:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:03:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:03:06.492Z] May 20, 2023 6:03:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:03:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:03:06.512Z] May 20, 2023 6:03:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:03:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:06.517Z] May 20, 2023 6:04:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:06.524Z] May 20, 2023 6:04:06 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:06 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:04:09.205Z] May 20, 2023 6:04:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:09.255Z] May 20, 2023 6:04:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:09.275Z] May 20, 2023 6:04:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:25.019Z] May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:25.045Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T01:04:25.046Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"ae405680-9867-4f0f-896b-7a2367dd0cad","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T01:04:25.045Z","data":{"uid":"zRBP7C60FscnM8w7nN1RTOFSxnVh","email":"nugentmichael@nugentmichael.com","emailVerified":false,"metadata":{"creationTime":"2023-05-21T01:04:25.045Z","lastSignInTime":"2023-05-21T01:04:25.045Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@nugentmichael.com","federatedId":"nugentmichael@nugentmichael.com","rawId":"nugentmichael@nugentmichael.com"}]}}
+[debug] [2023-05-21T01:04:25.052Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T01:04:25.052Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T01:04:25.059Z] May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:25.092Z] May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:25.097Z] May 20, 2023 6:04:25 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:25 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:04:25.217Z] May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:25.250Z] May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:25.273Z] May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:31.534Z] May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:31.635Z] May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:31.765Z] May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:31.791Z] May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:31.949Z] May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:33.715Z] May 20, 2023 6:04:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:34.191Z] May 20, 2023 6:04:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:39.395Z] May 20, 2023 6:04:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:04:39.398Z] May 20, 2023 6:04:39 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:04:39 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:05:25.344Z] May 20, 2023 6:05:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:05:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:05:25.349Z] May 20, 2023 6:05:25 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:05:25 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:27:38.655Z] May 20, 2023 6:27:38 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:27:38 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2023-05-21T01:27:38.898Z] May 20, 2023 6:27:38 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:27:38 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T01:27:48.607Z] May 20, 2023 6:27:48 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:27:48 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2023-05-21T01:27:48.858Z] May 20, 2023 6:27:48 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:27:48 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-21T01:28:17.224Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast [none]
+[debug] [2023-05-21T01:28:17.224Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"eventId":"dcc2f330-2b63-43e0-a8dc-51cc1bb3dc07","eventType":"providers/firebase.auth/eventTypes/user.delete","resource":{"name":"projects/gomoku-77118","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2023-05-21T01:28:17.224Z","data":{"uid":"zRBP7C60FscnM8w7nN1RTOFSxnVh","email":"nugentmichael@nugentmichael.com","emailVerified":false,"metadata":{"creationTime":"2023-05-21T01:04:25.045Z","lastSignInTime":"2023-05-21T01:23:06.647Z"},"customClaims":{},"providerData":[{"providerId":"password","email":"nugentmichael@nugentmichael.com","federatedId":"nugentmichael@nugentmichael.com","rawId":"nugentmichael@nugentmichael.com"}]}}
+[debug] [2023-05-21T01:28:17.227Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast 200
+[debug] [2023-05-21T01:28:17.227Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/gomoku-77118/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2023-05-21T01:28:19.240Z] May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:19.311Z] May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:19.331Z] May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:19.511Z] May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:21.765Z] May 20, 2023 6:28:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:22.262Z] May 20, 2023 6:28:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:47.971Z] May 20, 2023 6:28:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:48.011Z] May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:48.028Z] May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:48.575Z] May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:48.580Z] May 20, 2023 6:28:48 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:28:48.687Z] May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:48.693Z] May 20, 2023 6:28:48 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2023-05-21T01:28:48.710Z] May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:48.739Z] May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:48 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:53.316Z] May 20, 2023 6:28:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:28:53.321Z] May 20, 2023 6:28:53 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:28:53 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:29:01.967Z] May 20, 2023 6:29:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:29:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:29:01.974Z] May 20, 2023 6:29:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:29:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:29:03.464Z] May 20, 2023 6:29:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:29:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:29:17.049Z] May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:29:17.066Z] May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:29:17.079Z] May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:29:17.099Z] May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:30:03.519Z] May 20, 2023 6:30:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:30:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:30:17.519Z] May 20, 2023 6:30:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:30:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:30:17.524Z] May 20, 2023 6:30:17 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:30:17 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose\nINFO: channel closed\n"}}
+[debug] [2023-05-21T01:30:50.525Z] May 20, 2023 6:30:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:30:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:32:06.541Z] May 20, 2023 6:32:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:32:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:33:23.554Z] May 20, 2023 6:33:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:33:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-21T01:34:39.575Z] May 20, 2023 6:34:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 20, 2023 6:34:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}

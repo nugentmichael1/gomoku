@@ -42,7 +42,7 @@ function Game({ user }) {
   useEffect(() => {
     //load user into game model on mount
     // if(user) ctrl.getPlay().loadUser(user.)
-    console.log("game loaded.  will load user here.")
+    console.log("game loaded.  will load user data here.")
   }, [])
 
   return (

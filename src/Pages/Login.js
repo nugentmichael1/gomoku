@@ -16,9 +16,11 @@ import { Link } from "react-router-dom";
 import http from "../http-common"
 
 //My wrapper for firebase auth ui
-import FirebaseAuthUI from "../FirebaseAuthUI";
+// import FirebaseAuthUI from "../FirebaseAuthUI";
 
 import firebase from 'firebase/compat/app'
+
+import LoggedInView from "../Components/LoggedInView";
 
 // queries backend to: 
 // (1) verify username and password combination are correct, 
@@ -80,7 +82,10 @@ const LogInForm = ({ }) => {
 
     const firebaseAuth = async () => {
 
-        const result = await firebase.auth().signInWithEmailAndPassword(username, password)
+        //append @nugentmichael.com to username
+        const fakeEmail = username + "@NugentMichael.com"
+
+        const result = await firebase.auth().signInWithEmailAndPassword(fakeEmail, password)
             .then((userCredential) => {
                 return userCredential
             })
@@ -101,12 +106,12 @@ const LogInForm = ({ }) => {
             // <legend>Traditional</legend> */}
             <ul>
                 <li>
-                    <label htmlFor="email">Email:</label>
-                    <input type="text" name="email" id="email" value={username} onChange={(e) => { setUsername(e.target.value) }} />
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" name="credentials" id="username" value={username} onChange={(e) => { setUsername(e.target.value) }} />
                 </li>
                 <li>
                     <label htmlFor="password">Password:</label>
-                    <input type='password' name="password" id="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                    <input type='password' name="credentials" id="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                 </li>
                 <li>
                     <input type="button" value="Log In" onClick={firebaseAuth} />
@@ -122,20 +127,6 @@ const heading = <h1>Log-In</h1>
 
 const Login = ({ user, setUser, setJWT }) => {
 
-    const logOut = () => {
-        firebase.auth().signOut()
-            .then(() => {
-                //success
-                // setUser(null);
-
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-
-        // setJWT(null);
-        // sessionStorage.setItem("jwt", null)
-    }
 
     //View Decision
     if (user === null) {
@@ -152,13 +143,7 @@ const Login = ({ user, setUser, setJWT }) => {
         // logOutView (currently logged-in)
         return <>
             {heading}
-            <p id="loggedInMessage">Logged in as: {user.email}</p>
-            <input
-                type='button'
-                value="Log Out"
-                onClick={logOut}
-                id='logOutButton'
-            />
+            <LoggedInView username={user} />
         </>
     }
 

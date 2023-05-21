@@ -11,7 +11,7 @@ import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
 //Firebase app is initialized app configuration settings in this file
-import './FirebaseConfig'
+import '../FirebaseConfig'
 
 const uiConfig = {
     signInFlow: 'popup',

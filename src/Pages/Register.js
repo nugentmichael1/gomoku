@@ -4,91 +4,94 @@
 //React
 import { useState } from "react";
 
-//Axios
-import http from "../http-common"
-
 //CSS
 import "../CSS/register.css"
 
-import firebase from 'firebase/compat/app'
+//Ensure username is unique to database, and has length of at least 1
+import validateUsername from "../AuxilaryFunctions/ValidateUsername"
 
-import RegisterUsername from "./Register/RegisterUsername";
+//Store user info in firestore database
+import createUserInFirestore from "../Firestore/createUser"
+
+//Firebase Authentication - my custom function to modify their api
+import firebaseSignUpWithUsername from "../FirebaseAuth/signUpWithUsername";
+
+import LoggedInView from "../Components/LoggedInView";
 
 
-
-const firebaseSignUp = async (email, password, setMessage) => {
-    const result = await firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            const user = userCredential.user
-            return user
-        })
-        .catch((error) => {
-            const errorCode = error.code
-            const errorMessage = error.message
-            console.error(errorCode, errorMessage)
-            setMessage(errorMessage)
-            return null
-        })
-
-    return result
-}
-
-const heading = <h1>Register</h1>
-
-const Register = ({ user, setUser, setJWT }) => {
+const Register = ({ user }) => {
 
     //Form values
+    const [fName, setFName] = useState("");
+    const [lName, setLName] = useState("");
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
 
     const [message, setMessage] = useState("")
 
-    const sendRegistration = async () => {
 
-        const formValues = {
-            "email": email,
-            "username": username,
-            "password": password
+    const registerUser = async () => {
+
+        //Guard: verify passwords match
+
+        //Guard: Duplicate username
+        if (!validateUsername(username)) {
+            setMessage("Username is taken already.")
+            return;
         }
 
-        // const result = await postNewRegistration(formValues);
-        const result = await firebaseSignUp(email, password, setMessage)
+        //append @nugentMichael.com domain to username, and treat as email for sake of Firebase's auth service.
+        const fakeEmail = username + "@NugentMichael.com"
 
-        //Guard: registration failure
-        if (result === null) {
+        //Register user through Firebase's auth service.
+        const user = await firebaseSignUpWithUsername(fakeEmail, password, setMessage)
 
-            // setMessage(result.message)
+        //update user profile if Firebase auth service is successful
+        if (user !== null)
+            createUserInFirestore({
+                fName: fName,
+                lName: lName,
+                email: email,
+                username: username
+            })
 
-            return
-        }
 
-        //if successful
-        // setUser({ "user": username, "games": [] });
-        // setJWT(result.jwt)
-        // sessionStorage.setItem("jwt", result.jwt)
+        // if (user !== null) {
+
+        //     const displayNameStr = (fName !== "" && lName !== "") ? fName + " " + lName : undefined
+
+        //     const emailStr = (email !== "") ? email : undefined
+
+        //     //Using photoURL to hold email because we use original email to hold username, now, to accomodate Firebase email sign-up/log-in
+        //     user.updateProfile({
+        //         displayName: displayNameStr,
+        //         photoURL: emailStr
+        //     })
+        // }
+
     }
 
     const registrationForm = <form>
         <fieldset>
             <fieldset>
-                <legend>Credentials</legend>
+                <legend>
+                    Contact (Optional)
+                </legend>
                 <ul>
-                    {/* <li>
-                        <label htmlFor="uname">
-                            User Name:
+                    <li>
+                        <label htmlFor="fName">
+                            First Name:
                         </label>
-                        <input
-                            type="text"
-                            placeholder="GomokuGuy37"
-                            id="username"
-                            name='username'
-                            value={username}
-                            onChange={
-                                (e) => setUsername(e.target.value)
-                            }
-                        />
-                    </li> */}
+                        <input type="text" id="fName" name="contact" value={fName} onChange={(e) => setFName(e.target.value)} />
+                    </li>
+                    <li>
+                        <label htmlFor="lName">
+                            Last Name:
+                        </label>
+                        <input type="text" id="lName" name="contact" value={lName} onChange={(e) => setLName(e.target.value)} />
+                    </li>
                     <li>
                         <label htmlFor="email">
                             Email:
@@ -96,10 +99,31 @@ const Register = ({ user, setUser, setJWT }) => {
                         <input
                             type="email"
                             id="email"
-                            name="email"
+                            name="contact"
                             value={email}
                             onChange={
                                 (e) => setEmail(e.target.value)
+                            }
+                        />
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>Credentials</legend>
+                <ul>
+
+                    <li>
+                        <label htmlFor="username">
+                            Username:
+                        </label>
+                        <input
+                            type="text"
+                            // placeholder="GomokuGuy37"
+                            id="username"
+                            name='username'
+                            value={username}
+                            onChange={
+                                (e) => setUsername(e.target.value)
                             }
                         />
                     </li>
@@ -117,10 +141,16 @@ const Register = ({ user, setUser, setJWT }) => {
                             }
                         />
                     </li>
+                    <li>
+                        <label htmlFor="pass2">
+                            Password (again):
+                        </label>
+                        <input type="password" id="pass2" name="credentials" value={password2} onChange={(e) => setPassword2(e.target.value)} />
+                    </li>
                 </ul>
             </fieldset>
             <input
-                onClick={sendRegistration}
+                onClick={registerUser}
                 type="button"
                 value="Register"
             />
@@ -129,23 +159,49 @@ const Register = ({ user, setUser, setJWT }) => {
     </form>
 
     //View Decision
-    const view =
-        (user !== null && user.displayName !== null) ?
-            //Logged-in view
-            < p > Logged in as: {user.displayName}.</p>
-            :
-            (user !== null && user.displayName === null) ?
-                //Register Username view
-                <RegisterUsername username={username} setUsername={setUsername} />
-                :
-                //Logged-out view 
-                registrationForm
+    const view = (user !== null) ?
+        //Logged-in view
+        <LoggedInView username={user} />
+        :
+        registrationForm
+
+
 
     //render
     return <div className="register">
-        {heading}
+        <h1>Register</h1>
         {view}
     </div>
 };
 
 export default Register;
+
+
+
+// //Axios
+// import http from "../http-common"
+
+ // const sendRegistration = async () => {
+
+    //     const formValues = {
+    //         "email": email,
+    //         "username": username,
+    //         "password": password
+    //     }
+
+    //     // const result = await postNewRegistration(formValues);
+    //     // const result = await firebaseSignUp(email, password, setMessage)
+
+    //     //Guard: registration failure
+    //     if (result === null) {
+
+    //         // setMessage(result.message)
+
+    //         return
+    //     }
+
+    //     //if successful
+    //     // setUser({ "user": username, "games": [] });
+    //     // setJWT(result.jwt)
+    //     // sessionStorage.setItem("jwt", result.jwt)
+    // }
