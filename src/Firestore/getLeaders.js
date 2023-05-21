@@ -28,7 +28,8 @@ const getLeaders = async (field, direction) => {
             return null
         })
 
-    console.log(leadersResult)
+    //debug
+    // console.log(leadersResult)
 
     return leadersResult
 

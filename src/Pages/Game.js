@@ -36,13 +36,18 @@ function Game({ user }) {
 
   //Turn
   const [turn, setTurn] = useState("")
-  //Acquire useState fx
-  viewInterface.getPlay().setUseStateFxTurn(setTurn)
 
   useEffect(() => {
     //load user into game model on mount and user updates
     if (user !== null) ctrl.getPlay().loadUser(user.username, 0)
+
+
   }, [user])
+
+  useEffect(() => {
+    //Acquire useState fx
+    viewInterface.getPlay().setUseStateFxTurn(setTurn)
+  }, [])
 
   return (
     <div className='Game'>

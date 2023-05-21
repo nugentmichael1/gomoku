@@ -36,8 +36,7 @@ function App() {
   //user state, used by Login, Register (want to combine those 2 one day), Game, and Leaderboard.
   const [user, setUser] = useState(null)
 
-  console.log("app render")
-
+  //Observer of authentication service.  Is called when user is logged in or logs out.
   firebase.auth().onAuthStateChanged(async (firebaseAuthUser) => {
     if (firebaseAuthUser) {
 
@@ -54,6 +53,7 @@ function App() {
     }
   })
 
+  //Set user's displayName: a case-sensitive version of username
   useEffect(() => {
     const updateViewsUserDisplayName = async (username) => {
 
@@ -64,8 +64,9 @@ function App() {
 
       setUser(userCopy)
     }
-    if (user !== null && user.displayName === undefined)
-      updateViewsUserDisplayName(user.username)
+
+    if (user !== null && user.displayName === undefined) updateViewsUserDisplayName(user.username)
+
   }, [user])
 
   return (
