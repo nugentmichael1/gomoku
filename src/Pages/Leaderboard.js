@@ -25,12 +25,12 @@ const buildLeadersTable = (data) => {
 
   const tbody = []
 
-  data.forEach(({ username, won_games, time_played, games_played }) => {
+  data.forEach(({ displayName, won_games, time_played, games_played }) => {
 
     const tr = []
 
     //username
-    tr.push(<td key={"username"}>{username}</td>)
+    tr.push(<td key={"displayName"}>{displayName}</td>)
 
     //won_games
     tr.push(<td key={"won_games"}>{won_games}</td>)
@@ -43,7 +43,7 @@ const buildLeadersTable = (data) => {
     //games_played
     tr.push(<td key={"games_played"}>{games_played}</td>)
 
-    tbody.push(<tr key={username}>{tr}</tr>)
+    tbody.push(<tr key={displayName}>{tr}</tr>)
   })
 
   return <tbody>{tbody}</tbody>
@@ -56,18 +56,21 @@ function Leaderboard({ user }) {
   const [leadersTableBody, setLeadersTableBody] = useState(null)
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchLeadersData() {
       const leaders = await getLeaders("won_games", "desc")
       setLeadersTableBody(buildLeadersTable(leaders))
 
       return leaders
     }
-    fetchData()
+    fetchLeadersData()
   }, [])
 
   return (<div id="leaderboard">
     <h1>Leaderboard</h1>
     <table id="leaders">
+      <caption>
+        Leaders
+      </caption>
       <thead>
         <tr>
           <th>User</th>
@@ -77,6 +80,21 @@ function Leaderboard({ user }) {
         </tr>
       </thead>
       {leadersTableBody}
+    </table>
+    <table id="userGamesTable">
+      <caption>
+        User Games
+      </caption>
+      <thead>
+        <tr>
+          <th>Opponent</th>
+          <th>Outcome</th>
+          <th>Length</th>
+          <th>Turns</th>
+          <th>Date & Time</th>
+        </tr>
+      </thead>
+
     </table>
   </div>
   )

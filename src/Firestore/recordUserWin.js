@@ -12,12 +12,16 @@ const db = firebase.firestore()
 
 const recordUserWin = async (username, time) => {
 
+    console.log(username, time)
+
     //Query to find document by username
     const query = db.collection("Users").where("username", "==", username)
 
     //Get reference to user's document in collection
     const userDocId = await query.get()
         .then((querySnapshot) => {
+
+            console.log(querySnapshot)
 
             return querySnapshot.docs[0].id
         })

@@ -4,7 +4,7 @@ import firebase from "firebase/compat/app"
 import "firebase/compat/firestore"
 
 //initializes firebase app
-import firebaseConfig from "../FirebaseConfig"
+import "../FirebaseConfig"
 
 
 const db = firebase.firestore();
@@ -20,16 +20,23 @@ const validateUsername = async (username) => {
     if (username.length === 0) return false
 
     //convert username to all lowercase
+    const usernameLowerCase = username.toLowerCase()
+    // console.log(usernameLowerCase)
 
     const usersRef = db.collection("Users")
 
-    const unique = await usersRef.where("username", "==", username).get()
+    // console.log("username===usernameLowerCase", username === usernameLowerCase)
+
+    const unique = await usersRef.where("username", "==", usernameLowerCase).get()
         .then((querySnapshot) => {
 
             //debug
             // console.log("querySnapshot")
+            // querySnapshot.forEach((doc) => {
+            //     console.log(doc.id, "=>", doc.data())
+            // })
 
-            if (querySnapshot.size === 1) {
+            if (querySnapshot.size >= 1) {
 
                 //debug
                 console.log(querySnapshot.size)
@@ -38,7 +45,7 @@ const validateUsername = async (username) => {
             }
 
             //debug
-            // console.log("querySnapshot.size===0")
+            console.log("querySnapshot.size===0")
             return true
         })
         .catch((error) => {
@@ -47,6 +54,17 @@ const validateUsername = async (username) => {
         })
 
     console.log(unique)
+
+    //debug
+    // const result = await usersRef.get()
+    //     .then((querySnapshot) => {
+    //         querySnapshot.forEach((doc) => {
+    //             console.log(doc.id, "=>", doc.data())
+    //         })
+    //     })
+    //     .catch((error) => {
+    //         console.error(error)
+    //     })
 
     return unique
 }

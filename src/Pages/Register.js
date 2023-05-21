@@ -47,7 +47,7 @@ const Register = ({ user }) => {
         }
 
         //Guard: Duplicate username
-        if (!validateUsername(username)) {
+        if (! await validateUsername(username)) {
             setMessage("Username is taken already.")
             return;
         }
@@ -66,7 +66,8 @@ const Register = ({ user }) => {
                 fName: fName,
                 lName: lName,
                 email: email,
-                username: username,
+                username: username.toLowerCase(),
+                displayName: username,
                 won_games: 0,
                 time_played: 0,
                 games_played: 0
@@ -161,7 +162,7 @@ const Register = ({ user }) => {
     //View Decision
     const view = (user !== null) ?
         //Logged-in view
-        <LoggedInView username={user} />
+        <LoggedInView displayName={user.displayName} />
         :
         registrationForm
 

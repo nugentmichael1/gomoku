@@ -1,7 +1,7 @@
 //Gomoku
 
 //React
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 //JWT
 // import { isExpired, decodeToken } from 'react-jwt'
@@ -29,6 +29,8 @@ import { Route, Routes } from "react-router-dom";
 //CSS
 import "./CSS/CSUF_Style.css"
 
+import getUserDisplayName from "./Firestore/getUserDisplayName"
+
 function App() {
 
   //user state, used by Login, Register (want to combine those 2 one day), Game, and Leaderboard.
@@ -36,18 +38,35 @@ function App() {
 
   console.log("app render")
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
+  firebase.auth().onAuthStateChanged(async (firebaseAuthUser) => {
+    if (firebaseAuthUser) {
 
-      //get username from Firebase's auth "email"
-      const username = user.email.split('@')[0]
+      //guard: user already set
+      if (user !== null) return
 
-      setUser(username)
+      //get username from Firebase's auth "email" field/property
+      const username = firebaseAuthUser.email.split('@')[0]
+
+      setUser({ username: username })
     }
     else {
       setUser(null)
     }
   })
+
+  useEffect(() => {
+    const updateViewsUserDisplayName = async (username) => {
+
+      const displayName = await getUserDisplayName(username)
+
+      const userCopy = { ...user }
+      userCopy.displayName = displayName
+
+      setUser(userCopy)
+    }
+    if (user !== null && user.displayName === undefined)
+      updateViewsUserDisplayName(user.username)
+  }, [user])
 
   return (
     <>

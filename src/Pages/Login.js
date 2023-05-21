@@ -54,7 +54,7 @@ const LogInForm = () => {
 
 const heading = <h1>Log-In</h1>
 
-const Login = ({ user, setUser, setJWT }) => {
+const Login = ({ user }) => {
 
 
     //View Decision
@@ -63,7 +63,7 @@ const Login = ({ user, setUser, setJWT }) => {
         return <>
             {heading}
             {/* <FirebaseAuthUI /> */}
-            <LogInForm setUser={setUser} />
+            <LogInForm />
             <p className="loginRegisterSwitchP">No account? <Link to={"/Register"}>Register here.</Link></p>
         </>
     }
@@ -72,7 +72,7 @@ const Login = ({ user, setUser, setJWT }) => {
         // logOutView (currently logged-in)
         return <>
             {heading}
-            <LoggedInView username={user} />
+            <LoggedInView displayName={user.displayName} />
         </>
     }
 

@@ -41,7 +41,7 @@ function Game({ user }) {
 
   useEffect(() => {
     //load user into game model on mount and user updates
-    if (user !== null) ctrl.getPlay().loadUser(user, 0)
+    if (user !== null) ctrl.getPlay().loadUser(user.username, 0)
   }, [user])
 
   return (
