@@ -37,5 +37,6 @@ class playerOptionsM {
     getColor() {
         return this.color
     }
+
 }
 export default playerOptionsM;

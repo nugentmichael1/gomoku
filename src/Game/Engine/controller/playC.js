@@ -26,8 +26,8 @@ class playC {
         this.playM.clicked(i, j)
     }
 
-    loadUser(user) {
-        this.playM.loadUser(user)
+    loadUser(user, id) {
+        this.playM.loadUser(user, id)
     }
 }
 

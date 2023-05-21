@@ -40,10 +40,9 @@ function Game({ user }) {
   viewInterface.getPlay().setUseStateFxTurn(setTurn)
 
   useEffect(() => {
-    //load user into game model on mount
-    // if(user) ctrl.getPlay().loadUser(user.)
-    console.log("game loaded.  will load user data here.")
-  }, [])
+    //load user into game model on mount and user updates
+    if (user !== null) ctrl.getPlay().loadUser(user, 0)
+  }, [user])
 
   return (
     <div className='Game'>

@@ -16,6 +16,9 @@ class player {
 	//keeps count of all 4-long segments;
 	foursCount = 0;
 
+	//Tracks whether or not a user is logged in to this player object
+	user = false;
+
 	constructor(id, view) {
 		this.id = id;//integer 0 or 1
 		this.name = 'Player ' + (id + 1);
@@ -25,6 +28,14 @@ class player {
 
 	getId() {
 		return this.id
+	}
+
+	getName() {
+		return this.name
+	}
+
+	getUser() {
+		return this.user
 	}
 
 	//view updates
@@ -41,6 +52,18 @@ class player {
 
 		//update view (code needs to be changed from dom manipulation to view object function call still!!!)
 		document.getElementById('player' + this.id + 'NameDisplay').innerText = this.name;
+	}
+
+	loadUser(username) {
+
+		if (username === null) {
+			this.user = false
+			this.name = 'Player ' + (this.id + 1)
+		}
+		else {
+			this.user = true
+			this.name = username
+		}
 	}
 
 	addThree(three) {

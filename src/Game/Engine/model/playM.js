@@ -8,8 +8,10 @@ import coordinates from "./coordinates";
 import matrix from "./matrix"
 import turn from "./turnM"
 
-//Used in recordWin() to record game to backend database
-import http from "../../../http-common"
+//database functions
+import recordUserWin from "../../../Firestore/recordUserWin"
+import recordGame from "../../../Firestore/recordGame"
+
 
 class playM {
 
@@ -239,20 +241,22 @@ class playM {
         if (this.winner !== null) {
 
 
-            alert('Player ' + (this.activePlayer.id + 1) + ' won!');
+            // alert('Player ' + (this.activePlayer.id + 1) + ' won!');
+            alert(this.winner.getName() + ' won!')
 
             //Send game stats to backend for leader board table
             //only call if user is logged in
 
-            if (this.winner.username !== null) {
+            if (this.winner.getUser() !== false) {
 
-                this.recordUserWin(this.winner.username)
+                recordUserWin(this.winner.getName(), this.timerM.getCountText())
 
                 //0 means player 1.  Included this parameter in case player 2 ever becomes playable in the future.
-                this.recordGame(
-                    this.winner.username,
+                recordGame(
                     Number(this.timerM.getCountText()),
                     this.turn.getValue(),
+                    this.players[0].getName(),
+                    this.players[1].getName(),
                     0
                 )
             }
@@ -287,72 +291,8 @@ class playM {
     }
 
 
-    loadUser(username) {
-        this.username = username;
-    }
-
-    //update user record of users database collection:
-    // increments games played and games won each by 1
-    recordUserWin = async (username) => {
-        await http.put("updateUserGameRecord", { "username": username })
-    }
-
-    //add record to games database collection with all fields:
-    // time_length, turn_count, date_time, won bool
-    //winner is a number or bool to represent player 1 or 2 (but expressed as 0 or 1).  always 0 for now because player 2 isn't playable.
-    recordGame = async (username, time, turns, winner) => {
-
-        //grab web token from session storage
-        // or passed in as parameter
-        const token = null //just for debug
-
-        await http.post("recordGame", {
-            "time": time,
-            "turns": turns,
-            "Player1": username,
-            "Player2": "Player 2",
-            "winner": winner
-        },
-            {
-                headers: {
-                    'Authorization': `Basic ${token}`
-                }
-            })
-    }
-
-    recordWin() {
-
-
-        // let httpRequest = new XMLHttpRequest();
-        // if (!httpRequest) {
-        //     console.log('httpRequest instance failed in recordWin()');
-        //     return false;
-        // }
-
-        // httpRequest.onreadystatechange = function () {
-        //     if (this.readyState == 4 && this.status == 200) {
-        //         //console.log(this.responseText);
-        //     }
-        // }
-        // httpRequest.open('POST', '../php/recordGame.php');
-        // httpRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-
-        // //send game time, and turn count.  username will be taken from session variable
-        // // because only logged in players will be recorded
-        // let gameTime = document.getElementById('timer').innerText;
-        // let turn = this.turn.getValue();
-
-        // //0 means player 2 won, 1 means player 1 won.  It's more like a true/false for "Did player 1 win?"
-        // let winner = (this.getActivePlayer()) ? 0 : 1;
-
-        // //debug
-        // //console.log(gameTime);
-        // //console.log(turn);
-        // //console.log(winner);
-        // let postString = 'player1=' + p[0].name + '&time=' + gameTime + '&turn=' + turn;
-        // postString += '&winner=' + winner + '&player2=' + p[1].name;
-        // httpRequest.send(postString);
-
+    loadUser(username, id) {
+        this.players[id].loadUser(username);
     }
 }
 

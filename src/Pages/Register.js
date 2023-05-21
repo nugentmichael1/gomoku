@@ -48,13 +48,16 @@ const Register = ({ user }) => {
         //Register user through Firebase's auth service.
         const user = await firebaseSignUpWithUsername(fakeEmail, password, setMessage)
 
-        //update user profile if Firebase auth service is successful
+        //create user profile if Firebase auth service is successful
         if (user !== null)
             createUserInFirestore({
                 fName: fName,
                 lName: lName,
                 email: email,
-                username: username
+                username: username,
+                won_games: 0,
+                time_played: 0,
+                games_played: 0
             })
 
 
