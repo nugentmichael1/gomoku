@@ -31,6 +31,14 @@ import "./CSS/CSUF_Style.css"
 
 import getUserDisplayName from "./Firestore/getUserDisplayName"
 
+//app check
+// import 'firebase/compat/app-check'
+// if (window.location.hostname === "localhost") {
+//   window.self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+// }
+// const appCheck = firebase.appCheck();
+// appCheck.activate("6Lf4DismAAAAALTsj8aGl5sQRUqdXmWPTy7RhmKE", true)
+
 function App() {
 
   //user state, used by Login, Register (want to combine those 2 one day), Game, and Leaderboard.
