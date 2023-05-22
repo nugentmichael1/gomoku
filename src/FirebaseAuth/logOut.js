@@ -1,7 +1,7 @@
 
 import firebase from 'firebase/compat/app'
 
-// import "../FirebaseConfig"
+import "../FirebaseConfig"
 
 const logOut = () => {
     firebase.auth().signOut()

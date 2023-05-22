@@ -13,37 +13,26 @@ function Contact() {
   return (
     <div className='contact'>
       <h1>Contact</h1>
-      <table>
-        <tbody>
-          <tr>
-            <td colSpan="2">
-              <h2>Michael Nugent</h2>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src={Headshot} height="300px" widht="300px" id="profilePic" alt="Headshot" />
-            </td>
-            <td>
-              <ul>
-                <li>
-                  B.S. Computer Science
-                </li>
-                <li>
-                  California State University, Fresno
-                </li>
-                <li>
-                  <a href="mailto:nugentmichael@live.com">
-                    Email me
-                  </a>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-
-      </table>
-
+      <div id='contactGrid'>
+        <h2>Michael Nugent</h2>
+        <img src={Headshot} height="300px" widht="300px" id="profilePic" alt="Headshot" />
+        <ul>
+          <li>
+            B.S. Computer Science
+          </li>
+          <li>
+            California State University, Fresno
+          </li>
+          <li>
+            August, 2022
+          </li>
+          <li>
+            <a href="mailto:nugentmichael@live.com">
+              Email me
+            </a>
+          </li>
+        </ul>
+      </div>
       <footer>
         <ul>
           <li>

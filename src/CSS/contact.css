@@ -1,18 +1,44 @@
-.contact ul {
+#contactGrid ul {
     list-style-type: none;
+    grid-area: c;
 }
 
-.contact h2 {
+#contactGrid h2 {
     text-align: center;
+    grid-area: a;
+
 }
 
+#contactGrid #profilePic {
+    grid-area: b;
+    justify-self: center;
+}
+
+/* 
 .contact table li {
     text-align: right;
     margin: 8% 0;
     padding: 0 0;
-}
+} */
 
-.contact table {
+/* .contact table {
     margin: 8% auto;
     width: 65%;
+} */
+
+#contactGrid li {
+    margin: 4vh auto;
+    text-align: left;
+}
+
+.contact #contactGrid {
+    margin: 5vh auto;
+    width: fit-content;
+    display: grid;
+    gap: 3vh;
+    grid-template:
+        "a a" 40px
+        "b c" 40px
+        "b c" 40px "b c" 40px / 1fr 1fr;
+
 }

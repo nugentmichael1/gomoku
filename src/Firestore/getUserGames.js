@@ -32,7 +32,7 @@ const getUserGames = async (username) => {
 
 const getUserGamesOrHelper = async (collectionRef, username, field) => {
 
-    const query = collectionRef.where(field, "==", username)
+    const query = collectionRef.where(field, "==", username).orderBy("timestamp", "desc").limit(10)
 
     const games = await query.get()
         .then((querySnapshot) => {
