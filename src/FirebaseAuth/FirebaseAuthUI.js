@@ -32,7 +32,9 @@ const uiConfig = {
 
 const auth = firebase.auth();
 
-auth.useEmulator("http://localhost:9099")
+if (window.location.hostname === "localhost") {
+    auth.useEmulator("http://localhost:9099")
+}
 
 //Initialize firebase authorization ui
 const ui = new firebaseui.auth.AuthUI(auth);

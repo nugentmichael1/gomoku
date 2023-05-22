@@ -4,8 +4,6 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import "../FirebaseConfig"
 
-firebase.auth().useEmulator("http://localhost:9099")
-
 const signInWithUsername = async (username, password) => {
 
     //append @nugentmichael.com to username

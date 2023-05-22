@@ -3,9 +3,6 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import "../FirebaseConfig"
 
-firebase.auth().useEmulator("http://localhost:9099")
-
-
 //Mis-use Firebase's auth service to implement username instead of email for user sign-up
 const firebaseSignUpWithUsername = async (username, password, setMessage) => {
     const result = await firebase.auth().createUserWithEmailAndPassword(username, password)

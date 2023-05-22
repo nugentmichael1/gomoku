@@ -20,6 +20,11 @@ const firebaseConfig = {
 
 };
 
+
 const app = firebase.initializeApp(firebaseConfig)
+
+if (window.location.hostname === "localhost") {
+    firebase.auth().useEmulator("http://localhost:9099")
+}
 
 export default app;
